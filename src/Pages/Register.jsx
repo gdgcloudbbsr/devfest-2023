@@ -32,7 +32,7 @@ const Register = () => {
     const { name, value } = e.target;
     setData({
       ...data,
-      [name]: value.trim(),
+      [name]: value,
     });
 
     if (name === "emailAddress") {
