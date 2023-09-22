@@ -1,0 +1,247 @@
+{
+  "title": "DevFest 2023 Bhubaneswar",
+  "date": "November 18, 2023",
+  "venueData": {
+    "h1": "Venue Location",
+    "p": "Join us at DevFest 2023 Bhubaneswar, hosted at a modern, centrally located venue equipped for tech talks, networking, and innovation.",
+    "text": "Coming Soon",
+    "link": "#",
+    "MapData": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6822.878635924956!2d85.82268916828282!3d20.293935529176753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909d2d5170aa5%3A0xfc580e2b68b33fa8!2sBhubaneswar%2C%20Odisha!5e0!3m2!1sen!2sin!4v1694245605987!5m2!1sen!2sin"
+  },
+  "Header": {
+    "logo": "/assets/logo.svg",
+    "links": [
+      {
+        "text": "home",
+        "link": "hero"
+      },
+      {
+        "text": "what's Devfest",
+        "link": "WhatDevFest-container"
+      },
+      {
+        "text": "Speakers",
+        "link": "SpeakerSection"
+      },
+      {
+        "text": "Venue",
+        "link": "Venue"
+      },
+      {
+        "text": "Schedule",
+        "link": "#"
+      },
+      {
+        "text": "Team",
+        "link": "#"
+      }
+    ],
+    "linksDemo": [
+      {
+        "text": "home",
+        "link": "hero"
+      },
+      {
+        "text": "what's Devfest",
+        "link": "WhatDevFest-container"
+      },
+      {
+        "text": "DevFest 2022 Bhubaneswar",
+        "link": "Highlights"
+      }
+    ]
+  },
+  "Footer": {
+    "socialMedia": {
+      "h2": "Keep in touch with DevFest Bhubaneswar for the latest announcements",
+      "tag": "#DevFest2023BBSR",
+      "p": "Let's get connected so that we can reach out to each other via a simple notification."
+    },
+    "links": [
+      {
+        "text": "DevFest Bhubaneswar 2022",
+        "link": "https://gdg.community.dev/events/details/google-gdg-bhubaneswar-presents-devfest-2022-bhubaneswar/"
+      },
+      {
+        "text": "About GDG Bhubaneswar",
+        "link": "https://gdg.community.dev/gdg-bhubaneswar/"
+      },
+      {
+        "text": "Code Of Conduct",
+        "link": "https://devfestindia.com/coc"
+      },
+      {
+        "text": "Community Guidelines",
+        "link": "https://developers.google.com/community-guidelines"
+      }
+    ]
+  },
+  "socialLinks": {
+    "instagram": "https://www.instagram.com/gdgbbsr/",
+    "linkedin": "https://www.linkedin.com/company/gdg-bhubaneswar/",
+    "twitter": "https://twitter.com/gdgbbsr",
+    "facebook": "https://www.facebook.com/GDGBBSR/"
+  },
+  "statsText": "Devfest 2022 Bhubaneswar",
+  "stats": [
+    {
+      "text": "Attendees",
+      "num": "650"
+    },
+    {
+      "text": "Days",
+      "num": "01"
+    },
+    {
+      "text": "Tracks",
+      "num": "05"
+    },
+    {
+      "text": "Technologies",
+      "num": "08"
+    },
+    {
+      "text": "Speaker",
+      "num": "12"
+    },
+    {
+      "text": "Sessions",
+      "num": "12"
+    }
+  ],
+  "hero": {
+    "h1": "Odisha’s Largest Developer Event of 2023",
+    "p": "Come learn, network and celebrate with the Google Developer Ecosystem while also learning to new technologies on Android, Chrome, and Web.",
+    "btnGroups": {
+      "primaryLink": {
+        "text": "Get Tickets",
+        "link": "#"
+      },
+      "secondaryLink": {
+        "text": "Learn More",
+        "link": "#"
+      }
+    }
+  },
+  "about": {
+    "WhatIsDevFest": {
+      "h1": "What is DevFest?",
+      "p": "DevFests are local conferences hosted by Google Developer Groups (GDG) around the world. Each DevFest event is crafted by its local organizers to fit the needs and interests of its local developer community. Whether it be through hands-on learning experiences, technical talks delivered in local languages by experts, or by simply meeting fellow local developers, DevFest attendees learn how to build together and innovate on Google's developer tools."
+    },
+    "whyAttend": {
+      "h1": "Why attend?",
+      "p": "We have a fantastic lineup of speakers and sessions for you to learn and enhance your skills.",
+      "points": [
+        {
+          "txt": "Tech Talks",
+          "p": "Several speakers are coming together to talk about their experiences in the industry. We will also have a few lightning talks with our members.",
+          "img": "/assets/tech.svg"
+        },
+        {
+          "txt": "Expert Speakers",
+          "p": "Experts from the industry will be on hand to answer your questions and give you advice on how to get into the industry.",
+          "img": "/assets/expert.svg"
+        },
+        {
+          "txt": "Networking",
+          "p": "You will have the opportunity to network with other students and professionals in the industry.",
+          "img": "/assets/network.svg"
+        },
+        {
+          "txt": "Workshops",
+          "p": "We will be hosting a series of workshops to assist you in getting started with your tech career. Our members will also give a few lightning talks.",
+          "img": "/assets/workshop.svg"
+        }
+      ]
+    },
+    "Technologies": {
+      "h1": "Technologies to be focused",
+      "p": "The sessions that span from technical to visionary, let’s celebrate and discover what the technologies can enable: how product innovation, open source, and ML and AI can propel enterprises forward and solve the big problems that impact all of us."
+    }
+  },
+  "highlights": {
+    "h1": "Devfest 2022 Highlights",
+    "p": "DevFest: Global tech conference by GDG, tailored to local devs, emphasizes knowledge sharing, networking, and Google tech.",
+    "images": [
+      "/assets/images/img1.webp",
+      "/assets/images/img2.webp",
+      "/assets/images/img3.webp",
+      "/assets/images/img4.webp",
+      "/assets/images/img5.webp",
+      "/assets/images/img6.webp",
+      "/assets/images/img7.webp",
+      "/assets/images/img8.webp",
+      "/assets/images/img9.webp",
+      "/assets/images/img10.webp",
+      "/assets/images/img11.webp",
+      "/assets/images/img12.webp",
+      "/assets/images/img13.webp"
+    ]
+  },
+  "speaker": {
+    "h1": "Our Speakers",
+    "p": "Discover industry experts, thought leaders, and innovators who'll inspire, educate, and share invaluable insights. Join us to learn from tech's finest.",
+    "speakerlists": [
+      {
+        "name": "Suraj Harichandan",
+        "technology": "AI/ML",
+        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "socialLinks": {
+          "instagram": "#",
+          "linkedin": "#"
+        },
+        "img": "/assets/images/Speaker/1.png"
+      },
+      {
+        "name": "Suraj Harichandan",
+        "technology": "AI/ML",
+        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "socialLinks": {
+          "linkedin": "#",
+          "twitter": "#"
+        },
+        "img": "/assets/images/Speaker/1.png"
+      },
+      {
+        "name": "Suraj Harichandan",
+        "technology": "AI/ML",
+        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "socialLinks": {
+          "linkedin": "#",
+          "twitter": "#"
+        },
+        "img": "/assets/images/Speaker/1.png"
+      },
+      {
+        "name": "Suraj Harichandan",
+        "technology": "AI/ML",
+        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "socialLinks": {
+          "instagram": "#",
+          "twitter": "#"
+        },
+        "img": "/assets/images/Speaker/1.png"
+      },
+      {
+        "name": "Suraj Harichandan",
+        "technology": "AI/ML",
+        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "socialLinks": {
+          "instagram": "#",
+          "linkedin": "#"
+        },
+        "img": "/assets/images/Speaker/1.png"
+      },
+      {
+        "name": "Suraj Harichandan",
+        "technology": "AI/ML",
+        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "socialLinks": {
+          "instagram": "#",
+          "linkedin": "#"
+        },
+        "img": "/assets/images/Speaker/1.png"
+      }
+    ]
+  }
+}
