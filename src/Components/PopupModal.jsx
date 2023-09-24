@@ -22,7 +22,7 @@ const PopupModal = () => {
           </div>
         </button>
         <div className="PopupModal-container-text">
-          <h3>Registration Coming Coon</h3>
+          <h3>Registration Coming Soon</h3>
           <div
             onClick={() => {
               dispatch(setPopModal(!popModal));
