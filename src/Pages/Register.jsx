@@ -14,12 +14,14 @@ const Register = () => {
     nameInstitute: "",
     gender: "",
     city: "",
-    howDoYouHear: "",
+    howDoYouHear: "nAn",
   });
 
   const [error, setError] = useState({
-    email: "",
-    workEmail: "",
+    email: false,
+    workEmail: false,
+    howDoYouHear: false,
+    gender: false,
   });
 
   function isValidEmail(email) {
@@ -34,6 +36,12 @@ const Register = () => {
       ...data,
       [name]: value,
     });
+
+    if (name === "gender") {
+      if (value != "") {
+        setError({ ...error, gender: false });
+      }
+    }
 
     if (name === "emailAddress") {
       if (isValidEmail(value)) {
@@ -50,21 +58,51 @@ const Register = () => {
         setError({ ...error, workEmail: true });
       }
     }
+    if (name === "howDoYouHear") {
+      if (value != "nAn") {
+        setError({ ...error, howDoYouHear: false });
+      }
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (data.gender === "") {
+      setError({ ...error, gender: true });
+      return;
+    }
+
+    if (data.howDoYouHear === "nAn") {
+      setError({ ...error, howDoYouHear: true });
+      return;
+    }
+
     alert(`
     ${data.name}
     ${data.gender}
     ${data.occupation}
     ${data.city}
+    ${data.howDoYouHear}
     `);
+
+    setData({
+      name: "",
+      occupation: "student",
+      emailAddress: "",
+      workEmailAddress: "",
+      designation: "",
+      nameInstitute: "",
+      gender: "",
+      city: "",
+      howDoYouHear: "nAn",
+    });
   };
 
   useEffect(() => {
     document.title = "Register | DevFest 2023 Bhubaneswar";
-  }, []);
+    console.log(data);
+  }, [data]);
 
   return (
     <div className="Register">
@@ -122,7 +160,6 @@ const Register = () => {
                       id="maleGender"
                       value="male"
                       checked={data.gender === "male"}
-                      required="required"
                       onChange={handleInputChange}
                     />
                     <label htmlFor="maleGender">Male</label>
@@ -160,6 +197,11 @@ const Register = () => {
                     {/* ---- */}
                   </div>
                 </div>
+                {error.gender === true && (
+                  <div className={`info red`}>
+                    <span>Please choose a gender option</span>
+                  </div>
+                )}
               </div>
               {/* occupation checkbox */}
               <div className="inputCheckBox">
@@ -289,18 +331,35 @@ const Register = () => {
               {/* ---- */}
 
               {/* How did you hear about DevFest'23? */}
-              <div className="inputBox">
-                <input
-                  type="text"
-                  name="howDoYouHear"
-                  id="howDoYouHear"
-                  required="required"
-                  value={data.howDoYouHear}
-                  onChange={handleInputChange}
-                />
+
+              <div className="inputBoxSelect">
                 <label className="label" htmlFor="howDoYouHear">
                   How did you hear about DevFest'23?
                 </label>
+                <select
+                  name="howDoYouHear"
+                  id="howDoYouHear"
+                  onChange={handleInputChange}
+                  required="required"
+                  value={data.howDoYouHear}
+                >
+                  <option value="nAn">Select choose one</option>
+                  <option value="Linkedin">Linkedin</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Twitter">Twitter</option>
+                  <option value="Whatsapp">Whatsapp</option>
+                  <option value="Google">Google</option>
+                  <option value="Friend">Friend</option>
+                  <option value="GDGPage">Google Developer Club page</option>
+                  <option value="Others">Others</option>
+                </select>
+
+                {error.howDoYouHear === true && (
+                  <div className={`info red`}>
+                    <span>Please select an option</span>
+                  </div>
+                )}
               </div>
               {/* ---- */}
               <button type="submit" className="SecondaryBtn">

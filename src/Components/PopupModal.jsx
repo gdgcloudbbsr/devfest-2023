@@ -1,4 +1,3 @@
-// import React from "react";
 import { RxCross2 } from "react-icons/rx";
 import SecondaryBtn from "./SecondaryBtn";
 import { useDispatch, useSelector } from "react-redux";
