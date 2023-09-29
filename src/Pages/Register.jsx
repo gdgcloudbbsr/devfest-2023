@@ -3,7 +3,8 @@ import { BsArrowLeft } from "react-icons/bs";
 import SectionHeadingText from "../Components/SectionHeadingText";
 import Wrapper from "../Components/Wrapper";
 import { useEffect, useState } from "react";
-
+import axios from "axios";
+import { API_URL } from "../utils/constant";
 const Register = () => {
   const [data, setData] = useState({
     name: "",
@@ -60,6 +61,12 @@ const Register = () => {
     ${data.occupation}
     ${data.city}
     `);
+    // Send the form data to the server
+    axios.post(`${API_URL}/save`,{registration:data}).then((res) => {
+      console.log(res.data);
+    }).catch((err) => {
+      console.log(err);
+    })
   };
 
   useEffect(() => {
