@@ -1,10 +1,13 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Layouts/Footer";
-import Header from "./Layouts/Header";
+// import HeaderOld from "./Layouts/HeaderOld";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Lenis from "@studio-freight/lenis";
+import Header from "./Layouts/Header";
+import LoginModal from "./Layouts/LoginModal";
+import { useSelector } from "react-redux";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +15,8 @@ const App = () => {
   const location = useLocation();
   const progressBar = useRef(null);
   const app = useRef(null);
+
+  const loginPopModal = useSelector((state) => state.Main.loginModal);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -62,6 +67,7 @@ const App = () => {
 
   return (
     <div id="App" ref={app}>
+      {loginPopModal && <LoginModal />}
       <div className="progress" ref={progressBar}></div>
       <Header />
       <Outlet />

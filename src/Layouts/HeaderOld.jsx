@@ -1,45 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { Link } from "react-scroll";
 import Wrapper from "../Components/Wrapper";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import SecondaryBtn from "../Components/SecondaryBtn";
-import data from "../Data/data.json";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoginModal } from "../Store/Slices/MainSlice";
+import { setPopModal } from "../Store/Slices/MainSlice";
+import data from "../Data/data.json";
 
-const links = [
-  {
-    text: "home",
-    link: "/",
-  },
-  {
-    text: "schedule",
-    link: "/schedule",
-  },
-  {
-    text: "Speakers",
-    link: "/speakers",
-  },
-  {
-    text: "Tickets",
-    link: "/tickets",
-  },
-  {
-    text: "sponsorships",
-    link: "/sponsorship",
-  },
-  {
-    text: "Team",
-    link: "/team",
-  },
-  {
-    text: "contact",
-    link: "/contact",
-  },
-];
-
-const Header = () => {
+const HeaderOld = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const tl = useRef(
     gsap.timeline({ defaults: { ease: "power1.inOut" } }).reverse()
@@ -77,12 +46,12 @@ const Header = () => {
     tl.current.reversed(!menuOpen);
   }, [menuOpen]);
 
-  const loginPopModal = useSelector((state) => state.Main.loginModal);
+  const popModal = useSelector((state) => state.Main.popModal);
 
   const dispatch = useDispatch();
 
   return (
-    <header id="header">
+    <div id="header">
       <Wrapper>
         <div id="header-container">
           <div className="logo">
@@ -91,26 +60,32 @@ const Header = () => {
           <div id="navmenu">
             <div id="navmenu-container">
               <div id="navlinks">
-                {links.map((elem, index) => (
-                  <NavLink
-                    to={elem.link}
+                {data.Header.linksDemo.map((elem, index) => (
+                  <Link
+                    spy={true}
+                    smooth={true}
+                    offset={-100}
+                    duration={3000}
+                    activeClass="active"
                     key={index}
+                    to={elem.link}
                     onClick={() => {
                       setMenuOpen(false);
                     }}
+                    style={{ cursor: "pointer" }}
                   >
                     {elem.text}
-                  </NavLink>
+                  </Link>
                 ))}
               </div>
               <div className="btn-groups">
                 <SecondaryBtn text={"Get profile badge"} />
                 <div
                   onClick={() => {
-                    dispatch(setLoginModal(!loginPopModal));
+                    dispatch(setPopModal(!popModal));
                   }}
                 >
-                  <PrimaryBtn text={"Sign in"} />
+                  <PrimaryBtn text={"Register Now"} />
                 </div>
               </div>
             </div>
@@ -125,8 +100,8 @@ const Header = () => {
           </div>
         </div>
       </Wrapper>
-    </header>
+    </div>
   );
 };
 
-export default Header;
+export default HeaderOld;
