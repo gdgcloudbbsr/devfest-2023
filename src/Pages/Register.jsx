@@ -3,6 +3,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import SectionHeadingText from "../Components/SectionHeadingText";
 import Wrapper from "../Components/Wrapper";
 import { useEffect, useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -15,6 +16,7 @@ const Register = () => {
     gender: "",
     city: "",
     howDoYouHear: "nAn",
+    password: "",
   });
 
   const [error, setError] = useState({
@@ -23,6 +25,8 @@ const Register = () => {
     howDoYouHear: false,
     gender: false,
   });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   function isValidEmail(email) {
     const pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -84,6 +88,7 @@ const Register = () => {
     ${data.occupation}
     ${data.city}
     ${data.howDoYouHear}
+    ${data.password}
     `);
 
     setData({
@@ -96,7 +101,10 @@ const Register = () => {
       gender: "",
       city: "",
       howDoYouHear: "nAn",
+      password: "",
     });
+
+    setShowPassword(false);
   };
 
   useEffect(() => {
@@ -107,7 +115,10 @@ const Register = () => {
   return (
     <div className="Register">
       <div id="bgImage">
-        <img src="/assets/images/img1.webp" alt="" />
+        <img
+          src="/assets/images/img1.webp"
+          alt="DevFest 2023 Bhubaneswar image"
+        />
       </div>
       <Wrapper>
         <div className="Register-heading">
@@ -253,7 +264,7 @@ const Register = () => {
                 </label>
                 {error.email === true && (
                   <div className={`info red`}>
-                    <span>{"invalid email address"}</span>
+                    <span>Please enter a valid email address.</span>
                   </div>
                 )}
               </div>
@@ -273,12 +284,38 @@ const Register = () => {
                   </label>
                   {error.workEmail === true && (
                     <div className={`info red`}>
-                      <span>invalid work email address</span>
+                      <span>Please enter a valid work email address</span>
                     </div>
                   )}
                 </div>
               )}
               {/* ---- */}
+
+              {/* password */}
+              <div className="inputBox">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  required="required"
+                  value={data.password}
+                  onChange={handleInputChange}
+                />
+                <label className="label" htmlFor="password">
+                  Password
+                </label>
+                <div
+                  className="ico"
+                  onClick={() => {
+                    setShowPassword(!showPassword);
+                  }}
+                >
+                  {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </div>
+              </div>
+
+              {/* ---- */}
+
               {/* designation  */}
               <div className="inputBox">
                 <input
@@ -310,7 +347,7 @@ const Register = () => {
                 <label className="label" htmlFor="nameInstitute">
                   {data.occupation === "professional"
                     ? "Company Name"
-                    : "University Name"}
+                    : "College Name"}
                 </label>
               </div>
               {/* ---- */}
