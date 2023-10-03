@@ -1,40 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import Home from "./Pages/Home";
-import ErrorPage from "./Pages/ErrorPage";
+import { RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import Store from "./Store/Store";
-import Register from "./Pages/Register";
 import { Toaster } from "react-hot-toast";
+import appRouter from "./router/appRouter";
 
-const AppRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <ErrorPage />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={Store}>
-      <RouterProvider router={AppRouter} />
+      <RouterProvider router={appRouter} />
       <Toaster
         position="top-center"
         reverseOrder={false}

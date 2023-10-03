@@ -5,6 +5,8 @@ import Wrapper from "../Components/Wrapper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../utils/constant";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+
 const Register = () => {
   const [data, setData] = useState({
     name: "",
@@ -15,13 +17,18 @@ const Register = () => {
     nameInstitute: "",
     gender: "",
     city: "",
-    howDoYouHear: "",
+    howDoYouHear: "nAn",
+    password: "",
   });
 
   const [error, setError] = useState({
-    email: "",
-    workEmail: "",
+    email: false,
+    workEmail: false,
+    howDoYouHear: false,
+    gender: false,
   });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   function isValidEmail(email) {
     const pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -35,6 +42,12 @@ const Register = () => {
       ...data,
       [name]: value,
     });
+
+    if (name === "gender") {
+      if (value != "") {
+        setError({ ...error, gender: false });
+      }
+    }
 
     if (name === "emailAddress") {
       if (isValidEmail(value)) {
@@ -51,15 +64,33 @@ const Register = () => {
         setError({ ...error, workEmail: true });
       }
     }
+    if (name === "howDoYouHear") {
+      if (value != "nAn") {
+        setError({ ...error, howDoYouHear: false });
+      }
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (data.gender === "") {
+      setError({ ...error, gender: true });
+      return;
+    }
+
+    if (data.howDoYouHear === "nAn") {
+      setError({ ...error, howDoYouHear: true });
+      return;
+    }
+
     alert(`
     ${data.name}
     ${data.gender}
     ${data.occupation}
     ${data.city}
+    ${data.howDoYouHear}
+    ${data.password}
     `);
     // Send the form data to the server
     axios.post(`${API_URL}/save`,{registration:data}).then((res) => {
@@ -67,16 +98,35 @@ const Register = () => {
     }).catch((err) => {
       console.log(err);
     })
+
+    setData({
+      name: "",
+      occupation: "student",
+      emailAddress: "",
+      workEmailAddress: "",
+      designation: "",
+      nameInstitute: "",
+      gender: "",
+      city: "",
+      howDoYouHear: "nAn",
+      password: "",
+    });
+
+    setShowPassword(false);
   };
 
   useEffect(() => {
     document.title = "Register | DevFest 2023 Bhubaneswar";
-  }, []);
+    console.log(data);
+  }, [data]);
 
   return (
     <div className="Register">
       <div id="bgImage">
-        <img src="/assets/images/img1.webp" alt="" />
+        <img
+          src="/assets/images/img1.webp"
+          alt="DevFest 2023 Bhubaneswar image"
+        />
       </div>
       <Wrapper>
         <div className="Register-heading">
@@ -129,7 +179,6 @@ const Register = () => {
                       id="maleGender"
                       value="male"
                       checked={data.gender === "male"}
-                      required="required"
                       onChange={handleInputChange}
                     />
                     <label htmlFor="maleGender">Male</label>
@@ -167,6 +216,11 @@ const Register = () => {
                     {/* ---- */}
                   </div>
                 </div>
+                {error.gender === true && (
+                  <div className={`info red`}>
+                    <span>Please choose a gender option</span>
+                  </div>
+                )}
               </div>
               {/* occupation checkbox */}
               <div className="inputCheckBox">
@@ -218,7 +272,7 @@ const Register = () => {
                 </label>
                 {error.email === true && (
                   <div className={`info red`}>
-                    <span>{"invalid email address"}</span>
+                    <span>Please enter a valid email address.</span>
                   </div>
                 )}
               </div>
@@ -238,12 +292,38 @@ const Register = () => {
                   </label>
                   {error.workEmail === true && (
                     <div className={`info red`}>
-                      <span>invalid work email address</span>
+                      <span>Please enter a valid work email address</span>
                     </div>
                   )}
                 </div>
               )}
               {/* ---- */}
+
+              {/* password */}
+              <div className="inputBox">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  required="required"
+                  value={data.password}
+                  onChange={handleInputChange}
+                />
+                <label className="label" htmlFor="password">
+                  Password
+                </label>
+                <div
+                  className="ico"
+                  onClick={() => {
+                    setShowPassword(!showPassword);
+                  }}
+                >
+                  {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </div>
+              </div>
+
+              {/* ---- */}
+
               {/* designation  */}
               <div className="inputBox">
                 <input
@@ -275,7 +355,7 @@ const Register = () => {
                 <label className="label" htmlFor="nameInstitute">
                   {data.occupation === "professional"
                     ? "Company Name"
-                    : "University Name"}
+                    : "College Name"}
                 </label>
               </div>
               {/* ---- */}
@@ -296,18 +376,35 @@ const Register = () => {
               {/* ---- */}
 
               {/* How did you hear about DevFest'23? */}
-              <div className="inputBox">
-                <input
-                  type="text"
-                  name="howDoYouHear"
-                  id="howDoYouHear"
-                  required="required"
-                  value={data.howDoYouHear}
-                  onChange={handleInputChange}
-                />
+
+              <div className="inputBoxSelect">
                 <label className="label" htmlFor="howDoYouHear">
                   How did you hear about DevFest'23?
                 </label>
+                <select
+                  name="howDoYouHear"
+                  id="howDoYouHear"
+                  onChange={handleInputChange}
+                  required="required"
+                  value={data.howDoYouHear}
+                >
+                  <option value="nAn">Select choose one</option>
+                  <option value="Linkedin">Linkedin</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Twitter">Twitter</option>
+                  <option value="Whatsapp">Whatsapp</option>
+                  <option value="Google">Google</option>
+                  <option value="Friend">Friend</option>
+                  <option value="GDGPage">Google Developer Club page</option>
+                  <option value="Others">Others</option>
+                </select>
+
+                {error.howDoYouHear === true && (
+                  <div className={`info red`}>
+                    <span>Please select an option</span>
+                  </div>
+                )}
               </div>
               {/* ---- */}
               <button type="submit" className="SecondaryBtn">

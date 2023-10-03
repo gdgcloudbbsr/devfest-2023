@@ -1,34 +1,29 @@
-// import React from "react";
 import { RxCross2 } from "react-icons/rx";
 import SecondaryBtn from "./SecondaryBtn";
-import { useDispatch, useSelector } from "react-redux";
-import { setPopModal } from "../Store/Slices/MainSlice";
 
-const PopupModal = () => {
-  const popModal = useSelector((state) => state.Main.popModal);
-  const dispatch = useDispatch();
-
+const PopupModal = ({
+  text,
+  btnTxt = ["Yes", "No"],
+  linkFirstOption,
+  linkSecondOption,
+}) => {
   return (
     <div className="PopupModal">
       <div className="PopupModal-container">
-        <button
-          id="cancel"
-          onClick={() => {
-            dispatch(setPopModal(!popModal));
-          }}
-        >
+        <button id="cancel">
           <div className="ico">
             <RxCross2 />
           </div>
         </button>
         <div className="PopupModal-container-text">
-          <h3>Registration Coming Soon</h3>
-          <div
-            onClick={() => {
-              dispatch(setPopModal(!popModal));
-            }}
-          >
-            <SecondaryBtn text={"Okay"} />
+          <h3>{text}</h3>
+          <div className="btnGroups">
+            <SecondaryBtn text={btnTxt[0]} link={linkFirstOption} />
+            <SecondaryBtn
+              text={btnTxt[1]}
+              className={"SecondaryBtn-2"}
+              link={linkSecondOption}
+            />
           </div>
         </div>
       </div>
