@@ -7,6 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import { gsap } from "gsap";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginModal } from "../Store/Slices/MainSlice";
+import { animateScroll } from "react-scroll";
 
 const links = [
   {
@@ -97,6 +98,7 @@ const Header = () => {
                     key={index}
                     onClick={() => {
                       setMenuOpen(false);
+                      animateScroll.scrollToTop();
                     }}
                   >
                     {elem.text}

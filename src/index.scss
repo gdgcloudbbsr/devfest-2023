@@ -1035,6 +1035,8 @@ button {
     h4 {
       text-transform: capitalize;
       white-space: nowrap;
+      letter-spacing: 1px;
+      font-weight: normal;
     }
 
     .ico {
@@ -2446,5 +2448,220 @@ select {
   option {
     font-family: "GoogleSansRegular";
     color: var(--gray);
+  }
+}
+
+.SectionHeader {
+  width: 100%;
+  height: 450px;
+  position: relative;
+
+  background: linear-gradient(
+    180deg,
+    #202124 5.68%,
+    rgba(32, 33, 36, 0) 50.86%
+  );
+  &-Bgimage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(1);
+    position: relative;
+    z-index: -1;
+    opacity: 0.1;
+  }
+
+  &-container {
+    // border: 2px solid red;
+    max-width: max-content;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    translate: -50% 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    p {
+      text-align: center;
+      color: var(--white);
+    }
+
+    h2 {
+      white-space: nowrap;
+    }
+  }
+}
+
+#Contact {
+  margin-top: 6rem;
+
+  &-container {
+    margin-bottom: 2rem;
+    // border: 2px solid red;
+    width: 100%;
+    height: 100%;
+    // max-width: 600px;
+    margin-inline: auto;
+    background-color: var(--black);
+    padding: 3rem 2rem;
+
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-bottom: 2px solid var(--red);
+    border-right: 2px solid var(--blue);
+    border-top: 2px solid var(--green);
+    border-left: 2px solid var(--yellow);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4rem;
+    flex-wrap: wrap;
+
+    &-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      width: 100%;
+      max-width: 600px;
+
+      button {
+        background-color: var(--light);
+        color: var(--black);
+        // width: max-content;
+        height: 50px;
+        position: relative;
+        padding: 0.8rem 2rem;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.18, 0.37, 0.42, 1.01);
+        border: 3px solid var(--border);
+
+        span {
+          font-size: var(--fs-16);
+          position: relative;
+        }
+
+        &:hover,
+        &:focus {
+          border: 3px solid var(--black) !important;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px,
+            var(--blue) 0px 0px 0px 3px;
+        }
+
+        @include breakpoints(mdMax) {
+          padding: 1.2rem 2rem;
+          span {
+            font-size: var(--fs-18) !important;
+          }
+        }
+
+        @include breakpoints(smMax) {
+          padding: 1.2rem 2rem !important;
+        }
+        @include breakpoints(lgMax) {
+          padding: 1rem 2rem;
+        }
+      }
+    }
+  }
+
+  .info {
+    text-transform: capitalize;
+    font-size: var(--fs-14);
+    color: var(--gray);
+    padding-left: 0.5 rem;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .info.red {
+    color: var(--red);
+  }
+
+  .inputBox {
+    position: relative;
+    #email,
+    #workEmail {
+      text-transform: lowercase;
+    }
+    #name {
+      text-transform: capitalize;
+    }
+
+    .ico {
+      font-size: var(--fs-24);
+      color: var(--gray);
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      scale: 0;
+      transition: all 0.3s cubic-bezier(0.18, 0.37, 0.42, 1.01);
+      cursor: pointer;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    #name {
+      text-transform: capitalize;
+    }
+
+    input,
+    textarea {
+      background-color: transparent;
+      width: 100%;
+      border: 2px solid #8f8f8f2d;
+      border-radius: 8px;
+      padding: 1rem;
+      outline: none;
+      color: var(--white);
+      font-family: var(--fontS);
+      font-size: var(--fs-16);
+      position: relative;
+
+      &:valid,
+      &:focus {
+        border: 1px solid var(--blue);
+      }
+
+      &:valid ~ .ico,
+      &:focus ~ .ico {
+        scale: 1;
+      }
+
+      &:valid ~ .label,
+      &:focus ~ .label {
+        color: var(--blue);
+        translate: 20px -0.8rem;
+        font-size: var(--fs-14);
+        padding: 0 10px;
+        background-color: var(--black);
+        border-left: 2px solid var(--blue);
+        border-right: 2px solid var(--blue);
+      }
+    }
+
+    .label {
+      position: absolute;
+      top: 0.1rem;
+      left: 0;
+      padding: 1rem;
+      pointer-events: none;
+      font-size: var(--fs-16);
+      color: var(--gray);
+      text-transform: uppercase;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
   }
 }
