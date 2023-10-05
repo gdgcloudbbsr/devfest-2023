@@ -76,10 +76,6 @@ const LoginModal = () => {
     setShowPassword(false);
   };
 
-  useEffect(() => {
-    console.log(`${data.password.length} ${error.password}`);
-  }, [data]);
-
   const loginPopModal = useSelector((state) => state.Main.loginModal);
 
   const dispatch = useDispatch();

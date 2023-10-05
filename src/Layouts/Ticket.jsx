@@ -44,7 +44,7 @@ const Ticket = () => {
       <Wrapper>
         <div id="Ticket-container">
           <img
-            src="/assets/ticket.png"
+            src="/assets/ticket.webp"
             alt="Devfest BBSR 2023 Ticket"
             ref={main}
           />
