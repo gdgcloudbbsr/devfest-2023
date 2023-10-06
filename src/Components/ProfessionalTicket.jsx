@@ -46,7 +46,7 @@ const ProfessionalTicket = ({ link = "/register" }) => {
               {stock !== 0 && (
                 <div className="stock">
                   <h3>
-                    {stock} <span>Ticket left</span>
+                    {stock} <span>Ticket left's</span>
                   </h3>
                 </div>
               )}

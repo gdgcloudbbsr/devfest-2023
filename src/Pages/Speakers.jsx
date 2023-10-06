@@ -15,7 +15,7 @@ const Speakers = () => {
           text={data.speaker.h1}
           image={"/assets/images/img4.webp"}
           paragraph={data.speaker.p}
-          color={"#ff5145"}
+          color={"#ff5145"}s
         />
       </div>
       <Wrapper>
