@@ -19,3 +19,4 @@ mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB connecti
 app.use("/api",routes);
 
 app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`))
+

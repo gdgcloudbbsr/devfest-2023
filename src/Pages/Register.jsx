@@ -92,9 +92,11 @@ const Register = () => {
     ${data.howDoYouHear}
     ${data.password}
     `);
+    data.emailAddress = data.emailAddress.toLowerCase();
     // Send the form data to the server
     axios.post(`${API_URL}/save`,{registration:data}).then((res) => {
       console.log(res.data);
+      
     }).catch((err) => {
       console.log(err);
     })
