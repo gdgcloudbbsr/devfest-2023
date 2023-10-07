@@ -1,17 +1,24 @@
 import { RxCross2 } from "react-icons/rx";
 import SectionHeadingText from "../Components/SectionHeadingText";
 import { useEffect, useState } from "react";
-import { Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Router } from "../router/appRouter";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoginModal } from "../Store/Slices/MainSlice";
+import { setLoginModal, setUserData } from "../Store/Slices/MainSlice";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { animateScroll } from "react-scroll";
 import axios from "axios";
 import { API_URL } from "../utils/constant";
 
 const LoginModal = () => {
+  const loginPopModal = useSelector((state) => state.Main.loginModal);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -53,7 +60,7 @@ const LoginModal = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log("lol");
+    setLoading(true);
     e.preventDefault();
 
     if (error.email) {
@@ -61,35 +68,54 @@ const LoginModal = () => {
       return;
     }
 
-    setData({
-      ...data,
-      email: "",
-      password: "",
-    });
+    let Email = data.email;
+    let Password = data.password;
 
-    setError({
-      ...error,
-      email: false,
-      valid: true,
-    });
-
-    setShowPassword(false);
-
-    var Email=data.email;
-    var Password=data.password;
+    let tempEmail = Email;
 
     try {
-      const response = await axios.post(`${API_URL}/login`,{ email:Email, password:Password });
-      toast.success("Welcome "+response.data.name);
+      const response = await axios.post(`${API_URL}/login`, {
+        email: Email,
+        password: Password,
+      });
+      console.log(response);
+
+      dispatch(setUserData(response.data));
+      navigate(Router.dashboard);
+      dispatch(setLoginModal(!loginPopModal));
+      toast.success("Welcome " + response.data.name);
+      tempEmail = null;
+      
     } catch (error) {
-      toast.error("Login failed "+error.response.data.error);
+      // toast.error("Login failed : " + error.response.data.error);
+      if (error.response.data.error === "User not found") {
+        toast.error("Please register first");
+        setData({
+          ...data,
+          email: "",
+          password: "",
+        });
+
+        setError({
+          ...error,
+          email: false,
+          valid: true,
+        });
+
+        setShowPassword(false);
+
+        setLoading(false);
+      } else {
+        toast.error("Login failed : " + error.response.data.error);
+        setData({
+          ...data,
+          email: tempEmail,
+          password: "",
+        });
+        setLoading(false);
+      }
     }
-    
   };
-
-  const loginPopModal = useSelector((state) => state.Main.loginModal);
-
-  const dispatch = useDispatch();
 
   return (
     <div className="LoginModal PopupModal">
@@ -168,7 +194,7 @@ const LoginModal = () => {
               }
               disabled={!data.email || !data.password}
             >
-              <span>Sign in</span>
+              <span>{!loading ? "Sign in" : "Loading..."}</span>
             </button>
           </form>
           {/* -- */}

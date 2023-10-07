@@ -13,6 +13,8 @@ import {
   Team,
 } from "../Pages/index";
 
+import PrivateRouter from "./PrivateRouter";
+
 const Router = {
   home: "/",
   register: "/register",
@@ -71,7 +73,11 @@ const appRouter = createBrowserRouter([
   },
   {
     path: Router.dashboard,
-    element: <Dashboard />,
+    element: (
+      <PrivateRouter>
+        <Dashboard />
+      </PrivateRouter>
+    ),
   },
 ]);
 
