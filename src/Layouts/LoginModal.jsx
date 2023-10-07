@@ -1,13 +1,15 @@
 import { RxCross2 } from "react-icons/rx";
 import SectionHeadingText from "../Components/SectionHeadingText";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Router } from "../router/appRouter";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginModal } from "../Store/Slices/MainSlice";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { animateScroll } from "react-scroll";
+import axios from "axios";
+import { API_URL } from "../utils/constant";
 
 const LoginModal = () => {
   const [data, setData] = useState({
@@ -50,7 +52,7 @@ const LoginModal = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     console.log("lol");
     e.preventDefault();
 
@@ -58,8 +60,6 @@ const LoginModal = () => {
       toast.error("Please enter a valid email address.");
       return;
     }
-
-    alert(`${data.email} ${data.password}`);
 
     setData({
       ...data,
@@ -74,6 +74,17 @@ const LoginModal = () => {
     });
 
     setShowPassword(false);
+
+    var Email=data.email;
+    var Password=data.password;
+
+    try {
+      const response = await axios.post(`${API_URL}/login`,{ email:Email, password:Password });
+      toast.success("Welcome "+response.data.name);
+    } catch (error) {
+      toast.error("Login failed "+error.response.data.error);
+    }
+    
   };
 
   const loginPopModal = useSelector((state) => state.Main.loginModal);

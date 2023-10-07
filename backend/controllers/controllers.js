@@ -14,3 +14,4 @@ module.exports.saveRegistration = (req, res) => {
         res.status(500).send({ error: err, message: "Error Occurred" });
       });
   };
+  
