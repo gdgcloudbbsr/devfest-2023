@@ -256,13 +256,14 @@
     "h1": "Book your seat",
     "p": "Secure your spot at DevFest 2023 in Bhubaneswar! Book your ticket now for a tech-filled experience and networking opportunities. Don't miss out!",
     "ticketSection": {
+      "link": "/",
       "title": "Tickets",
       "p": "Embark on a tech journey at DevFest 2023 Bhubaneswar! Reserve your seat for cutting-edge insights, workshops, and networking. Seize the opportunity—book your ticket today!",
       "options": [
         {
           "type": "Student Ticket",
           "description": "Perfect for students eager to learn and connect.",
-          "price": "₹ 100",
+          "price": "Coming soon",
           "benefits": [
             "Access to hands-on workshops and sessions",
             "Community interaction and networking opportunities",
@@ -273,13 +274,13 @@
             "Chance to participate in fun activities",
             "Cool swags to take home"
           ],
-          "button": "Book Now",
+          "button": "coming soon",
           "image": "/assets/studentTicket.webp"
         },
         {
           "type": "Professional Ticket",
           "description": "Designed for professionals aiming to elevate their skills.",
-          "price": "₹ 100",
+          "price": "Coming soon",
           "benefits": [
             "Access to hands-on workshops and advanced sessions",
             "Network with industry experts and fellow professionals",
@@ -290,7 +291,7 @@
             "Opportunity to engage in networking activities",
             "Exclusive swags for professionals"
           ],
-          "button": "Book Now",
+          "button": "coming soon",
           "image": "/assets/professionalTicket.webp"
         }
       ]
@@ -299,8 +300,6 @@
   "team": {
     "h1": "Meet the Team",
     "p": "",
-    "members": {
-      
-    }
+    "members": {}
   }
 }

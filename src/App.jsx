@@ -5,9 +5,10 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Lenis from "@studio-freight/lenis";
-import Header from "./Layouts/Header";
-import LoginModal from "./Layouts/LoginModal";
+// import Header from "./Layouts/Header";
+// import LoginModal from "./Layouts/LoginModal";
 import { useSelector } from "react-redux";
+import HeaderOld from "./Layouts/HeaderOld";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +17,8 @@ const App = () => {
   const progressBar = useRef(null);
   const app = useRef(null);
 
-  const loginPopModal = useSelector((state) => state.Main.loginModal);
+  // const loginPopModal = useSelector((state) => state.Main.loginModal);
+  const popModal = useSelector((state) => state.Main.popModal);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -67,9 +69,10 @@ const App = () => {
 
   return (
     <div id="App" ref={app}>
-      {loginPopModal && <LoginModal />}
+      {/* {loginPopModal && <LoginModal />} */}
       <div className="progress" ref={progressBar}></div>
-      <Header />
+      {/* <Header /> */}
+      <HeaderOld />
       <Outlet />
       <Footer />
     </div>

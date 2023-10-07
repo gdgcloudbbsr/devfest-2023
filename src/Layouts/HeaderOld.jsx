@@ -1,4 +1,3 @@
-import { Link } from "react-scroll";
 import Wrapper from "../Components/Wrapper";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import SecondaryBtn from "../Components/SecondaryBtn";
@@ -7,6 +6,38 @@ import { gsap } from "gsap";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopModal } from "../Store/Slices/MainSlice";
 import data from "../Data/data.json";
+import { NavLink } from "react-router-dom";
+
+const links = [
+  {
+    text: "home",
+    link: "/",
+  },
+  {
+    text: "schedule",
+    link: "/schedule",
+  },
+  {
+    text: "Speakers",
+    link: "/speakers",
+  },
+  {
+    text: "Tickets",
+    link: "/tickets",
+  },
+  {
+    text: "sponsorships",
+    link: "/sponsorship",
+  },
+  {
+    text: "Team",
+    link: "/team",
+  },
+  {
+    text: "contact",
+    link: "/contact",
+  },
+];
 
 const HeaderOld = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -60,22 +91,17 @@ const HeaderOld = () => {
           <div id="navmenu">
             <div id="navmenu-container">
               <div id="navlinks">
-                {data.Header.linksDemo.map((elem, index) => (
-                  <Link
-                    spy={true}
-                    smooth={true}
-                    offset={-100}
-                    duration={3000}
-                    activeClass="active"
-                    key={index}
+                {links.map((elem, index) => (
+                  <NavLink
                     to={elem.link}
+                    key={index}
                     onClick={() => {
                       setMenuOpen(false);
+                      animateScroll.scrollToTop();
                     }}
-                    style={{ cursor: "pointer" }}
                   >
                     {elem.text}
-                  </Link>
+                  </NavLink>
                 ))}
               </div>
               <div className="btn-groups">
