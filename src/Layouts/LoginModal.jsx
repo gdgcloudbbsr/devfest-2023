@@ -78,14 +78,13 @@ const LoginModal = () => {
         email: Email,
         password: Password,
       });
-      console.log(response);
+      console.log(response.data);
 
       dispatch(setUserData(response.data));
       navigate(Router.dashboard);
       dispatch(setLoginModal(!loginPopModal));
       toast.success("Welcome " + response.data.name);
       tempEmail = null;
-      
     } catch (error) {
       // toast.error("Login failed : " + error.response.data.error);
       if (error.response.data.error === "User not found") {

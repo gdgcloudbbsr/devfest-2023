@@ -1,6 +1,7 @@
 {
   "title": "DevFest 2023 Bhubaneswar",
   "date": "November 18, 2023",
+  "time": "9:00 AM - 5:00 PM",
   "venueData": {
     "h1": "Venue Location",
     "p": "Join us at DevFest 2023 Bhubaneswar, hosted at a modern, centrally located venue equipped for tech talks, networking, and innovation.",
@@ -114,12 +115,7 @@
     "p": "Come learn, network and celebrate with the Google Developer Ecosystem while also learning to new technologies on Android, Chrome, and Web.",
     "btnGroups": {
       "primaryLink": {
-        "text": "Get Tickets",
-        "link": "#"
-      },
-      "secondaryLink": {
-        "text": "Learn More",
-        "link": "#"
+        "text": "Get Tickets"
       }
     }
   },
@@ -299,8 +295,6 @@
   "team": {
     "h1": "Meet the Team",
     "p": "",
-    "members": {
-      
-    }
+    "members": {}
   }
 }

@@ -26,6 +26,7 @@ const Router = {
   team: "/team",
   dashboard: "/dashboard",
   error: "*",
+  paymentLink: "#",
 };
 
 const appRouter = createBrowserRouter([

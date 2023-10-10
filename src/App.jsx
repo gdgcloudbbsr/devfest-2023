@@ -4,10 +4,10 @@ import Footer from "./Layouts/Footer";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import Lenis from "@studio-freight/lenis";
 import Header from "./Layouts/Header";
 import LoginModal from "./Layouts/LoginModal";
 import { useSelector } from "react-redux";
+import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,8 +15,24 @@ const App = () => {
   const location = useLocation();
   const progressBar = useRef(null);
   const app = useRef(null);
+  const lenisRef = useRef();
 
   const loginPopModal = useSelector((state) => state.Main.loginModal);
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+    direction: "vertical",
+    gestureDirection: "vertical",
+    smooth: true,
+    smoothTouch: false,
+    touchMultiplier: 2,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -47,21 +63,6 @@ const App = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    const lenis = new Lenis();
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
     requestAnimationFrame(raf);
   }, []);
 

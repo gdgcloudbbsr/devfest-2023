@@ -3014,10 +3014,318 @@ li {
   list-style: none;
 }
 
+// Team
 
-// Team 
+#Team {
+}
 
+// DashboardHeader
 
-#Team{
+#DashboardHeader {
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  padding-top: 1rem;
+  padding-bottom: 1rem !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  max-height: 66px;
+  display: grid;
+  place-items: center;
 
-} 
+  @include breakpoints(sm) {
+    max-height: 71px;
+    padding-bottom: 0.5rem;
+  }
+
+  @include breakpoints(md) {
+    max-height: 65px;
+    padding-block: 0.5rem;
+  }
+
+  @include breakpoints(lg) {
+    max-height: 70px;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &-left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      @include breakpoints(smMax) {
+        h5 {
+          display: none;
+        }
+        .logo {
+          border: none !important;
+        }
+      }
+      h5 {
+        font-weight: normal;
+        font-size: var(--fs-15);
+      }
+      .logo {
+        width: 150px;
+        object-fit: contain;
+        border-right: 2px solid var(--border);
+        padding-right: 1rem;
+
+        @include breakpoints(mdMax) {
+          width: 150px;
+        }
+
+        @include breakpoints(smMax) {
+          width: 120px;
+        }
+      }
+    }
+
+    &-right {
+      &-profile {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: var(--fs-21);
+        position: relative;
+
+        .LogOutBtn {
+          position: absolute;
+          bottom: -3rem;
+          right: 1rem;
+          padding: 0.5rem 1rem;
+          border-radius: 0.2rem;
+          span {
+            font-size: var(--fs-14);
+            color: var(--black);
+          }
+        }
+
+        .profile {
+          &-name {
+            h5 {
+              font-weight: normal;
+              font-size: var(--fs-16);
+            }
+            margin-right: 1rem;
+          }
+          &-img {
+            width: 40px;
+            aspect-ratio: 1;
+            background-color: var(--blue);
+            border-radius: 50%;
+            display: grid;
+            place-content: center;
+            font-size: var(--fs-21);
+            border: 2px solid var(--border);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+#Dashboard {
+  width: 100%;
+  height: 100%;
+  &-container {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  #Footer {
+    padding-top: 0 !important;
+  }
+
+  #Footer-social-media {
+    display: none;
+  }
+}
+
+.HeadingMessage {
+  background-color: var(--blue);
+  padding-block: 0.8rem;
+  background-image: url(/assets/linebg.webp);
+  margin-top: 5.35rem;
+
+  @include breakpoints(sm) {
+    margin-top: 5.8rem;
+  }
+
+  @include breakpoints(md) {
+    margin-top: 4.7rem;
+  }
+  @include breakpoints(lg) {
+    margin-top: 4.4rem;
+  }
+
+  p {
+    color: var(--white);
+    text-align: center;
+    margin-inline: auto;
+    max-width: 800px;
+  }
+}
+
+#DashboardTicket {
+  &-container {
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-bottom: 2px solid var(--red);
+    border-right: 2px solid var(--blue);
+    border-top: 2px solid var(--green);
+    border-left: 2px solid var(--yellow);
+    background-color: var(--black);
+    background-image: url(/assets/overlayBG.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    padding: 1rem;
+
+    &-price {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      h3 {
+        color: var(--gray);
+        span {
+          font-size: var(--fs-47);
+          margin-left: 8px;
+          color: var(--white);
+        }
+      }
+      h5 {
+        font-size: var(--fs-18) !important;
+        font-weight: normal;
+        background-color: var(--yellow);
+        color: var(--black);
+        padding: 0.5rem 1rem;
+        border-radius: 5rem;
+      }
+    }
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      max-width: 900px;
+      padding: 1rem;
+      margin-inline: auto;
+
+      img {
+        object-fit: contain;
+      }
+    }
+
+    &-details-container {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+
+      @include breakpoints(lg) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    &-ticketDetails {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      margin-top: 0rem;
+      margin-bottom: 4rem;
+
+      @include breakpoints(sm) {
+        margin-top: -1.5rem;
+      }
+
+      @include breakpoints(md) {
+        margin-top: -2rem;
+      }
+
+      #btn-group {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .outOfStock {
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+
+        button {
+          background-color: transparent;
+          font-size: var(--fs-18);
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          gap: 0.5rem;
+          border: 2px solid var(--border);
+          border-radius: 1rem;
+          padding: 0.5rem 2rem;
+        }
+      }
+    }
+
+    &-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .payment {
+        h4 {
+          margin-top: 0.5rem;
+          max-width: max-content;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          color: var(--white);
+        }
+      }
+
+      .email {
+        h4 {
+          @include breakpoints(smMax) {
+            font-size: 4.5vw !important;
+          }
+        }
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        h4 {
+          text-transform: capitalize;
+          font-weight: normal;
+          line-height: 1.5;
+          max-width: 400px;
+        }
+        span {
+          font-size: var(--fs-14);
+          color: var(--gray);
+        }
+      }
+    }
+
+    .SectionHeadingText {
+      h2 {
+        font-size: var(--fs-32);
+      }
+    }
+  }
+}
