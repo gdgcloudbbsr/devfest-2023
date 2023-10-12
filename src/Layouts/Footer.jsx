@@ -7,6 +7,7 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { animateScroll } from "react-scroll";
 
 const Footer = () => {
   return (
@@ -61,7 +62,13 @@ const Footer = () => {
           </div>
           <div id="Footer-menu-links">
             {data.Footer.links.map((elem, index) => (
-              <Link key={index} to={elem.link}>
+              <Link
+                key={index}
+                to={elem.link}
+                onClick={() => {
+                  animateScroll.scrollToTop();
+                }}
+              >
                 {elem.text}
               </Link>
             ))}

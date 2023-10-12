@@ -8,6 +8,10 @@ import Sponsorship from "./Sponsorship";
 import Contact from "./Contact";
 import Speakers from "./Speakers";
 import Team from "./Team";
+import TermsAndCondition from "./TermsAndCondition";
+import PrivacyPolicy from "./PrivacyPolicy";
+import RefundPolicy from "./RefundPolicy";
+import DeliveryPolicy from "./DeliveryPolicy";
 
 export {
   Dashboard,
@@ -20,4 +24,8 @@ export {
   Contact,
   Speakers,
   Team,
+  TermsAndCondition,
+  PrivacyPolicy,
+  RefundPolicy,
+  DeliveryPolicy,
 };

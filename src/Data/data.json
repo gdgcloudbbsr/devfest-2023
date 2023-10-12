@@ -74,6 +74,22 @@
       {
         "text": "Community Guidelines",
         "link": "https://developers.google.com/community-guidelines"
+      },
+      {
+        "text": "Terms and condition",
+        "link": "/terms_and_condition"
+      },
+      {
+        "text": "Privacy Policy",
+        "link": "/privacy_policy"
+      },
+      {
+        "text": "Refund Policy",
+        "link": "/refund_policy"
+      },
+      {
+        "text": "Delivery Policy",
+        "link": "/delivery"
       }
     ]
   },
@@ -296,5 +312,10 @@
     "h1": "Meet the Team",
     "p": "",
     "members": {}
+  },
+  "contact": {
+    "address": "Bhubaneswar",
+    "email": "gdgcloudbbsr@gmail.com",
+    "mobileNumber": "+919861870811"
   }
 }

@@ -52,10 +52,17 @@ const App = () => {
       if (location.pathname === "/") {
         document.title = "Home | DevFest Bhubaneswar 2023";
       } else {
-        document.title = `${
-          location.pathname.substring(1).charAt(0).toUpperCase() +
-          location.pathname.substring(1).slice(1)
-        }  | DevFest Bhubaneswar 2023`;
+        if (location.pathname.includes("_")) {
+          document.title = `${(
+            location.pathname.substring(1).charAt(0).toUpperCase() +
+            location.pathname.substring(1).slice(1)
+          ).replace(/_/g, " ")}  | DevFest Bhubaneswar 2023`;
+        } else {
+          document.title = `${
+            location.pathname.substring(1).charAt(0).toUpperCase() +
+            location.pathname.substring(1).slice(1)
+          }  | DevFest Bhubaneswar 2023`;
+        }
       }
     }, app.current);
 
