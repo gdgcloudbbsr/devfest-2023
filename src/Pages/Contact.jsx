@@ -1,8 +1,9 @@
 import { useState } from "react";
-import SectionHeader from "../Components/SectionHeader";
 import Wrapper from "../Components/Wrapper";
 import toast from "react-hot-toast";
 import SectionHeadingText from "../Components/SectionHeadingText";
+import { MdLocationOn, MdEmail, MdPhone } from "react-icons/md";
+import info from "../Data/data.json";
 
 const Contact = () => {
   const [data, setData] = useState({
@@ -68,6 +69,28 @@ const Contact = () => {
               Fill up the form and our Team will get back to you within 24
               hours.
             </p>
+            <div id="Contact-container-header-info">
+              <ul>
+                <li>
+                  <div className="ico">
+                    <MdEmail />
+                  </div>
+                  <span>{info.contact.email}</span>
+                </li>
+                <li>
+                  <div className="ico">
+                    <MdPhone />
+                  </div>
+                  <span>{info.contact.mobileNumber}</span>
+                </li>
+                <li>
+                  <div className="ico">
+                    <MdLocationOn />
+                  </div>
+                  <span>{info.contact.address}</span>
+                </li>
+              </ul>
+            </div>
           </div>
           <form onSubmit={handleSubmit}>
             {/* name input  */}

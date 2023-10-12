@@ -16,9 +16,25 @@ const App = () => {
   const location = useLocation();
   const progressBar = useRef(null);
   const app = useRef(null);
+  const lenisRef = useRef();
 
   // const loginPopModal = useSelector((state) => state.Main.loginModal);
   const popModal = useSelector((state) => state.Main.popModal);
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+    direction: "vertical",
+    gestureDirection: "vertical",
+    smooth: true,
+    smoothTouch: false,
+    touchMultiplier: 2,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -38,10 +54,17 @@ const App = () => {
       if (location.pathname === "/") {
         document.title = "Home | DevFest Bhubaneswar 2023";
       } else {
-        document.title = `${
-          location.pathname.substring(1).charAt(0).toUpperCase() +
-          location.pathname.substring(1).slice(1)
-        }  | DevFest Bhubaneswar 2023`;
+        if (location.pathname.includes("_")) {
+          document.title = `${(
+            location.pathname.substring(1).charAt(0).toUpperCase() +
+            location.pathname.substring(1).slice(1)
+          ).replace(/_/g, " ")}  | DevFest Bhubaneswar 2023`;
+        } else {
+          document.title = `${
+            location.pathname.substring(1).charAt(0).toUpperCase() +
+            location.pathname.substring(1).slice(1)
+          }  | DevFest Bhubaneswar 2023`;
+        }
       }
     }, app.current);
 
@@ -49,21 +72,6 @@ const App = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    const lenis = new Lenis();
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
     requestAnimationFrame(raf);
   }, []);
 

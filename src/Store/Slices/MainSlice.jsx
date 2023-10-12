@@ -19,8 +19,13 @@ const MainSlice = createSlice({
       state.status = true;
       state.userData = action.payload;
     },
+    setLogout: (state) => {
+      state.status = false;
+      state.userData = null;
+    },
   },
 });
 
-export const { setPopModal, setLoginModal, setUserData } = MainSlice.actions;
+export const { setPopModal, setLoginModal, setUserData, setLogout } =
+  MainSlice.actions;
 export default MainSlice.reducer;
