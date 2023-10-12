@@ -1,6 +1,7 @@
 {
   "title": "DevFest 2023 Bhubaneswar",
   "date": "November 18, 2023",
+  "time": "9:00 AM - 5:00 PM",
   "venueData": {
     "h1": "Venue Location",
     "p": "Join us at DevFest 2023 Bhubaneswar, hosted at a modern, centrally located venue equipped for tech talks, networking, and innovation.",
@@ -73,6 +74,22 @@
       {
         "text": "Community Guidelines",
         "link": "https://developers.google.com/community-guidelines"
+      },
+      {
+        "text": "Terms and condition",
+        "link": "/terms_and_condition"
+      },
+      {
+        "text": "Privacy Policy",
+        "link": "/privacy_policy"
+      },
+      {
+        "text": "Refund Policy",
+        "link": "/refund_policy"
+      },
+      {
+        "text": "Delivery Policy",
+        "link": "/delivery"
       }
     ]
   },
@@ -114,12 +131,7 @@
     "p": "Come learn, network and celebrate with the Google Developer Ecosystem while also learning to new technologies on Android, Chrome, and Web.",
     "btnGroups": {
       "primaryLink": {
-        "text": "Get Tickets",
-        "link": "#"
-      },
-      "secondaryLink": {
-        "text": "Learn More",
-        "link": "#"
+        "text": "Get Tickets"
       }
     }
   },
@@ -243,5 +255,68 @@
         "img": "/assets/images/Speaker/1.png"
       }
     ]
+  },
+  "schedule": {
+    "h1": "Schedule",
+    "p": ""
+  },
+  "sponsorship": {
+    "h1": "Sponsorships",
+    "p": ""
+  },
+  "tickets": {
+    "h1": "Book your seat",
+    "p": "Secure your spot at DevFest 2023 in Bhubaneswar! Book your ticket now for a tech-filled experience and networking opportunities. Don't miss out!",
+    "ticketSection": {
+      "link": "/",
+      "title": "Tickets",
+      "p": "Embark on a tech journey at DevFest 2023 Bhubaneswar! Reserve your seat for cutting-edge insights, workshops, and networking. Seize the opportunity—book your ticket today!",
+      "options": [
+        {
+          "type": "Student Ticket",
+          "description": "Perfect for students eager to learn and connect.",
+          "price": "Coming soon",
+          "benefits": [
+            "Access to hands-on workshops and sessions",
+            "Community interaction and networking opportunities",
+            "Learn, Enjoy, and Participate in a vibrant tech community",
+            "Grow your knowledge with expert insights",
+            "Learn resource optimization strategies",
+            "Scrumptious food included",
+            "Chance to participate in fun activities",
+            "Cool swags to take home"
+          ],
+          "button": "coming soon",
+          "image": "/assets/studentTicket.webp"
+        },
+        {
+          "type": "Professional Ticket",
+          "description": "Designed for professionals aiming to elevate their skills.",
+          "price": "Coming soon",
+          "benefits": [
+            "Access to hands-on workshops and advanced sessions",
+            "Network with industry experts and fellow professionals",
+            "Learn, Enjoy, and Participate in cutting-edge discussions",
+            "Expand your knowledge with insights from expert speakers",
+            "Optimize your resources for professional growth",
+            "Scrumptious food included",
+            "Opportunity to engage in networking activities",
+            "Exclusive swags for professionals"
+          ],
+          "button": "coming soon",
+          "image": "/assets/professionalTicket.webp"
+        }
+      ]
+    }
+  },
+  "team": {
+    "h1": "Meet the Team",
+    "p": "",
+    "members": {}
+  },
+  "contact": {
+    "address": "Bhubaneswar",
+    "email": "gdgcloudbbsr@gmail.com",
+    "mobileNumber": "+919861870811"
   }
 }

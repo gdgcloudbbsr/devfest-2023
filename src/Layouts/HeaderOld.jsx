@@ -1,13 +1,12 @@
-import { useEffect, useRef, useState } from "react";
 import Wrapper from "../Components/Wrapper";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import SecondaryBtn from "../Components/SecondaryBtn";
-import data from "../Data/data.json";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoginModal } from "../Store/Slices/MainSlice";
-import { animateScroll } from "react-scroll";
+import { setPopModal } from "../Store/Slices/MainSlice";
+import data from "../Data/data.json";
+import { NavLink } from "react-router-dom";
 
 const links = [
   {
@@ -40,7 +39,7 @@ const links = [
   },
 ];
 
-const Header = () => {
+const HeaderOld = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const tl = useRef(
     gsap.timeline({ defaults: { ease: "power1.inOut" } }).reverse()
@@ -78,12 +77,12 @@ const Header = () => {
     tl.current.reversed(!menuOpen);
   }, [menuOpen]);
 
-  const loginPopModal = useSelector((state) => state.Main.loginModal);
+  const popModal = useSelector((state) => state.Main.popModal);
 
   const dispatch = useDispatch();
 
   return (
-    <header id="header">
+    <div id="header">
       <Wrapper>
         <div id="header-container">
           <div className="logo">
@@ -109,10 +108,10 @@ const Header = () => {
                 <SecondaryBtn text={"Get profile badge"} />
                 <div
                   onClick={() => {
-                    dispatch(setLoginModal(!loginPopModal));
+                    dispatch(setPopModal(!popModal));
                   }}
                 >
-                  <PrimaryBtn text={"Sign in"} />
+                  <PrimaryBtn text={"Register Now"} />
                 </div>
               </div>
             </div>
@@ -127,8 +126,8 @@ const Header = () => {
           </div>
         </div>
       </Wrapper>
-    </header>
+    </div>
   );
 };
 
-export default Header;
+export default HeaderOld;

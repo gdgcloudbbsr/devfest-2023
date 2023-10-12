@@ -8,6 +8,7 @@ import AfterMovie from "./AfterMovie";
 import OverlayBg from "../Components/OverlayBg";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopModal } from "../Store/Slices/MainSlice";
+import { Router } from "../router/appRouter";
 
 const Hero = () => {
   const popModal = useSelector((state) => state.Main.popModal);
@@ -49,17 +50,11 @@ const Hero = () => {
               </div>
             </div>
             <div className="btn-groups">
-              <div
-                onClick={() => {
-                  dispatch(setPopModal(!popModal));
-                }}
-              >
-                <PrimaryBtn text={data.hero.btnGroups.primaryLink.text} />
-              </div>
-              {/* <SecondaryBtn
-                text={data.hero.btnGroups.secondaryLink.text}
-                link={"/assets/InformationBrochureDevFest23BBSR.pdf"}
-              /> */}
+              <PrimaryBtn
+                text={data.hero.btnGroups.primaryLink.text}
+                link={Router.tickets}
+              />
+
               <a
                 href={"/assets/InformationBrochureDevFest23BBSR.pdf"}
                 target="_blank"
@@ -71,7 +66,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      <AfterMovie />
+        <AfterMovie />
       </Wrapper>
     </div>
   );

@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopModal } from "../Store/Slices/MainSlice";
+import { Router } from "../router/appRouter";
 
 const Ticket = () => {
   const main = useRef(null);
@@ -44,17 +45,11 @@ const Ticket = () => {
       <Wrapper>
         <div id="Ticket-container">
           <img
-            src="/assets/ticket.png"
+            src="/assets/ticket.webp"
             alt="Devfest BBSR 2023 Ticket"
             ref={main}
           />
-          <div
-            onClick={() => {
-              dispatch(setPopModal(!popModal));
-            }}
-          >
-            <PrimaryBtn text={"Coming Soon"} size={true} />
-          </div>
+          <PrimaryBtn text={"Get Tickets"} size={true} link={Router.tickets} />
         </div>
       </Wrapper>
     </div>
