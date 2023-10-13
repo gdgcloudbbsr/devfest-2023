@@ -5,6 +5,7 @@ import SectionHeadingText from "../Components/SectionHeadingText";
 import SpeakerCard from "../Components/SpeakerCard";
 import Wrapper from "../Components/Wrapper";
 import data from "../Data/data.json";
+import { Router } from "../router/appRouter";
 
 const Speakers = () => {
   const SpeakersShow = false;
@@ -15,7 +16,8 @@ const Speakers = () => {
           text={data.speaker.h1}
           image={"/assets/images/img4.webp"}
           paragraph={data.speaker.p}
-          color={"#ff5145"}s
+          color={"#ff5145"}
+          s
         />
       </div>
       <Wrapper>
@@ -44,7 +46,16 @@ const Speakers = () => {
                   If you are passionate about your work and want to share your
                   experience with the biggest tech audience in Bhubaneswar, you
                   knocked on the right door.
-                  <SecondaryBtn text={"Submit a Proposal"} link={"#"} />
+                  <div
+                    onClick={() => {
+                      animateScroll.scrollToTop();
+                    }}
+                  >
+                    <SecondaryBtn
+                      text={"Submit a Proposal"}
+                      link={Router.cfp}
+                    />
+                  </div>
                 </p>
               </div>
               <div id="callForSpeakers-image">
