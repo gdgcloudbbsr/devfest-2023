@@ -15,6 +15,7 @@ import {
   PrivacyPolicy,
   RefundPolicy,
   DeliveryPolicy,
+  CFP,
 } from "../Pages/index";
 
 import PrivateRouter from "./PrivateRouter";
@@ -35,6 +36,7 @@ const Router = {
   privacyPolicy: "/privacy_policy",
   refundPolicy: "/refund_policy",
   delivery: "/delivery",
+  cfp: "/cfp",
 };
 
 const appRouter = createBrowserRouter([
@@ -85,6 +87,10 @@ const appRouter = createBrowserRouter([
       {
         path: Router.delivery,
         element: <DeliveryPolicy />,
+      },
+      {
+        path: Router.cfp,
+        element: <CFP />,
       },
     ],
   },
