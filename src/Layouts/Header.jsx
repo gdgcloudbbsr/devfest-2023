@@ -91,8 +91,6 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const { name } = userData;
-
   return (
     <header id="header">
       <Wrapper>
@@ -121,6 +119,7 @@ const Header = () => {
                 {!authStatus && (
                   <div
                     onClick={() => {
+                      setMenuOpen(false);
                       dispatch(setLoginModal(!loginPopModal));
                     }}
                   >
@@ -142,7 +141,7 @@ const Header = () => {
             {authStatus && (
               <div id="header-profile">
                 <div id="header-profile-name">
-                  <h5>{name.split(" ")[0]}</h5>
+                  <h5>{userData?.name.split(" ")[0]}</h5>
                 </div>
                 <div
                   id="header-profile-col"
@@ -150,7 +149,7 @@ const Header = () => {
                     setDropDownOpen(!dropDownOpen);
                   }}
                 >
-                  <div id="header-profile-img">{name[0]}</div>
+                  <div id="header-profile-img">{userData?.name[0]}</div>
                   <div className="ico">
                     <IoIosArrowDown />
                   </div>

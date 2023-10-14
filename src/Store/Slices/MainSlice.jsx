@@ -5,7 +5,18 @@ const MainSlice = createSlice({
   initialState: {
     popModal: false,
     loginModal: false,
-    userData: {},
+    occupationCheck: "student",
+    userData: {
+      name: "",
+      occupation: "student",
+      emailAddress: "",
+      workEmailAddress: "",
+      designation: "",
+      nameInstitute: "",
+      gender: "",
+      city: "",
+      howDoYouHear: "nAn",
+    },
     status: false,
   },
   reducers: {
@@ -23,9 +34,17 @@ const MainSlice = createSlice({
       state.status = false;
       state.userData = {};
     },
+    setOccupation: (state, action) => () => {
+      state.occupationCheck = action.payload;
+    },
   },
 });
 
-export const { setPopModal, setLoginModal, setUserData, setLogout } =
-  MainSlice.actions;
+export const {
+  setPopModal,
+  setLoginModal,
+  setUserData,
+  setLogout,
+  setOccupation,
+} = MainSlice.actions;
 export default MainSlice.reducer;

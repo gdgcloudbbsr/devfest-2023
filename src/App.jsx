@@ -15,7 +15,6 @@ const App = () => {
   const location = useLocation();
   const progressBar = useRef(null);
   const app = useRef(null);
-  const lenisRef = useRef();
 
   const loginPopModal = useSelector((state) => state.Main.loginModal);
 

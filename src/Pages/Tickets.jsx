@@ -14,7 +14,7 @@ const Tickets = () => {
   const authStatus = useSelector((state) => state.Main.status);
   const userData = useSelector((state) => state.Main.userData);
 
-  const { occupation } = userData;
+  const { occupation } = userData || "";
 
   const paymentStatus = false;
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Tickets = () => {
       navigate(Router.tickets);
     }
   }, [paymentStatus]);
-  
+
   return (
     <div id="Tickets">
       <div id="Tickets-header">

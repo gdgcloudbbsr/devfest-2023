@@ -16,6 +16,7 @@ import {
   RefundPolicy,
   DeliveryPolicy,
   CFP,
+  CheckOut,
 } from "../Pages/index";
 
 import PrivateRouter from "./PrivateRouter";
@@ -39,6 +40,7 @@ const Router = {
   delivery: "/delivery",
   cfp: "/cfp",
   myTickets: "/my_tickets",
+  checkout: "/ticket/checkout",
 };
 
 const appRouter = createBrowserRouter([
@@ -101,6 +103,10 @@ const appRouter = createBrowserRouter([
             <Dashboard />
           </PrivateRouter>
         ),
+      },
+      {
+        path: Router.checkout,
+        element: <CheckOut />,
       },
     ],
   },
