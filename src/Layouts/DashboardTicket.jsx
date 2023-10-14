@@ -8,9 +8,7 @@ import toast from "react-hot-toast";
 import { useEffect } from "react";
 
 const DashboardTicket = ({ paymentStatus, stock }) => {
-  const dispatch = useDispatch();
   const userData = useSelector((state) => state.Main.userData);
-  const paymentLink = Router.paymentLink;
   const downloadLink = "#";
 
   const {
@@ -36,37 +34,6 @@ const DashboardTicket = ({ paymentStatus, stock }) => {
               }
             />
           </div>
-          {!paymentStatus && (
-            <div
-              style={{
-                marginTop: ".5rem",
-              }}
-            >
-              <p>
-                <span>Note:</span> Please complete your payment to get your
-                ticket.
-              </p>
-            </div>
-          )}
-          {!paymentStatus && (
-            <div id="DashboardTicket-container-price">
-              <h3>
-                Price:
-                <span>
-                  {occupation === "student"
-                    ? data.tickets.ticketSection.options[0].price
-                    : data.tickets.ticketSection.options[1].price}
-                </span>
-              </h3>
-              {!stock ? (
-                <h5>Out of Stock</h5>
-              ) : (
-                <h5>
-                  {stock} <span>ticket's left</span>
-                </h5>
-              )}
-            </div>
-          )}
           <div id="DashboardTicket-container-image">
             {occupation === "student" ? (
               <img
@@ -82,21 +49,11 @@ const DashboardTicket = ({ paymentStatus, stock }) => {
           </div>
           <div id="DashboardTicket-container-ticketDetails">
             <div id={`btn-group`}>
-              {!paymentStatus ? (
-                <PrimaryBtn
-                  text={!stock ? "Out of Stock" : "Payment Now"}
-                  link={!stock ? null : paymentLink}
-                  classname={!stock ? "outOfStock" : ""}
-                />
-              ) : (
-                <>
-                  <PrimaryBtn text={"Download Ticket"} link={downloadLink} />
-                  <button>
-                    <FaShareAlt />
-                    <span>Share</span>
-                  </button>
-                </>
-              )}
+              <PrimaryBtn text={"Download Ticket"} link={downloadLink} />
+              <button>
+                <FaShareAlt />
+                <span>Share</span>
+              </button>
             </div>
           </div>
           <div id="DashboardTicket-container-details-container">

@@ -3,11 +3,14 @@ import Wrapper from "../Components/Wrapper";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import SecondaryBtn from "../Components/SecondaryBtn";
 import data from "../Data/data.json";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { gsap } from "gsap";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoginModal } from "../Store/Slices/MainSlice";
+import { setLoginModal, setLogout } from "../Store/Slices/MainSlice";
 import { animateScroll } from "react-scroll";
+import { IoIosArrowDown } from "react-icons/io";
+import toast from "react-hot-toast";
+import { Router } from "../router/appRouter";
 
 const links = [
   {
@@ -42,6 +45,8 @@ const links = [
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+
   const tl = useRef(
     gsap.timeline({ defaults: { ease: "power1.inOut" } }).reverse()
   );
@@ -80,7 +85,13 @@ const Header = () => {
 
   const loginPopModal = useSelector((state) => state.Main.loginModal);
 
+  const authStatus = useSelector((state) => state.Main.status);
+
+  const userData = useSelector((state) => state.Main.userData);
+
   const dispatch = useDispatch();
+
+  const { name } = userData;
 
   return (
     <header id="header">
@@ -107,23 +118,75 @@ const Header = () => {
               </div>
               <div className="btn-groups">
                 <SecondaryBtn text={"Get profile badge"} />
-                <div
-                  onClick={() => {
-                    dispatch(setLoginModal(!loginPopModal));
-                  }}
-                >
-                  <PrimaryBtn text={"Sign in"} />
-                </div>
+                {!authStatus && (
+                  <div
+                    onClick={() => {
+                      dispatch(setLoginModal(!loginPopModal));
+                    }}
+                  >
+                    <PrimaryBtn text={"Sign in"} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
-          <div
-            className={`hamMenu ${menuOpen && "active"}`}
-            onClick={handleClick}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
+          <div id="header-right">
+            <div
+              className={`hamMenu ${menuOpen && "active"}`}
+              onClick={handleClick}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            {authStatus && (
+              <div id="header-profile">
+                <div id="header-profile-name">
+                  <h5>{name.split(" ")[0]}</h5>
+                </div>
+                <div
+                  id="header-profile-col"
+                  onClick={() => {
+                    setDropDownOpen(!dropDownOpen);
+                  }}
+                >
+                  <div id="header-profile-img">{name[0]}</div>
+                  <div className="ico">
+                    <IoIosArrowDown />
+                  </div>
+                </div>
+                {dropDownOpen ? (
+                  <div id="header-profile-dropdown">
+                    <div className="dropdown">
+                      <NavLink
+                        className="dropdown-item"
+                        to={Router.myTickets}
+                        onClick={() => {
+                          setDropDownOpen(false);
+                          animateScroll.scrollToTop();
+                        }}
+                      >
+                        My Tickets
+                      </NavLink>
+                      <div
+                        className="dropdown-item"
+                        onClick={() => {
+                          dispatch(setLogout());
+                          animateScroll.scrollToTop();
+
+                          toast.success("Logged out successfully");
+                          setDropDownOpen(false);
+                        }}
+                      >
+                        Logout
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+            )}
           </div>
         </div>
       </Wrapper>

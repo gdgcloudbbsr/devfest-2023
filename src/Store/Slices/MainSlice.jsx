@@ -5,7 +5,7 @@ const MainSlice = createSlice({
   initialState: {
     popModal: false,
     loginModal: false,
-    userData: null,
+    userData: {},
     status: false,
   },
   reducers: {
@@ -21,7 +21,7 @@ const MainSlice = createSlice({
     },
     setLogout: (state) => {
       state.status = false;
-      state.userData = null;
+      state.userData = {};
     },
   },
 });

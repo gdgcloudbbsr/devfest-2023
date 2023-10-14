@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 import SectionHeadingText from "../Components/SectionHeadingText";
 import Wrapper from "../Components/Wrapper";
@@ -8,9 +8,16 @@ import { API_URL } from "../utils/constant";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import LoginModal from "../Layouts/LoginModal";
-import { setLoginModal } from "../Store/Slices/MainSlice";
+import { setLoginModal, setUserData } from "../Store/Slices/MainSlice";
+import { Router } from "../router/appRouter";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const loginPopModal = useSelector((state) => state.Main.loginModal);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     name: "",
     occupation: "student",
@@ -87,20 +94,15 @@ const Register = () => {
       return;
     }
 
-    alert(`
-    ${data.name}
-    ${data.gender}
-    ${data.occupation}
-    ${data.city}
-    ${data.howDoYouHear}
-    ${data.password}
-    `);
     data.emailAddress = data.emailAddress.toLowerCase();
     // Send the form data to the server
     axios
       .post(`${API_URL}/save`, { registration: data })
       .then((res) => {
         console.log(res.data);
+        dispatch(setUserData(res.data));
+        navigate(Router.home);
+        toast.success("Registered successfully");
       })
       .catch((err) => {
         console.log(err);
@@ -125,10 +127,6 @@ const Register = () => {
   useEffect(() => {
     document.title = "Register | DevFest 2023 Bhubaneswar";
   }, [data]);
-
-  const loginPopModal = useSelector((state) => state.Main.loginModal);
-
-  const dispatch = useDispatch();
 
   return (
     <>
@@ -435,7 +433,7 @@ const Register = () => {
                 </div>
                 {/* ---- */}
                 <button type="submit" className="SecondaryBtn">
-                  <span>Next</span>
+                  <span>Register</span>
                 </button>
               </form>
               {/* ---- */}

@@ -14,6 +14,29 @@ const Sponsorship = () => {
         />
       </div>
       <Wrapper>
+        <div className="BrochureSection">
+          <div className="BrochureSection-text">
+            <h3>Download Brochure</h3>
+            <p>
+              Download the brochure to know more about the sponsorship
+              opportunities.
+            </p>
+            <a
+              href={"/assets/InformationBrochureDevFest23BBSR.pdf"}
+              target="_blank"
+              rel="noreferrer"
+              className="SecondaryBtn"
+            >
+              <span>Official Brochure</span>
+            </a>
+          </div>
+          <div className="BrochureSection-image">
+            <img
+              src="/assets/bgImage.png"
+              alt="DevFest 2023 Bhubaneswar Brochure"
+            />
+          </div>
+        </div>
         <div
           id="Schedule-container"
           style={{
