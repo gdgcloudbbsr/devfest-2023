@@ -7,7 +7,7 @@ import { setOccupation } from "../Store/Slices/MainSlice";
 import { useDispatch } from "react-redux";
 import { Router } from "../router/appRouter";
 
-const ProfessionalTicket = ({ link = Router.checkout }) => {
+const ProfessionalTicket = ({ link = Router.tickets }) => {
   const dispatch = useDispatch();
   const stock = 300;
   const ticketData = data.tickets.ticketSection.options[1];
