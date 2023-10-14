@@ -3,7 +3,7 @@ import data from "../Data/data.json";
 import PrimaryBtn from "./PrimaryBtn";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
-const StudentTicket = ({ link = "/register" }) => {
+const StudentTicket = ({ link = "/tickets" }) => {
   const stock = 300;
   const ticketData = data.tickets.ticketSection.options[0];
 
