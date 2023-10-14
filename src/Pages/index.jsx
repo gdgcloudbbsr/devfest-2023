@@ -12,6 +12,7 @@ import TermsAndCondition from "./TermsAndCondition";
 import PrivacyPolicy from "./PrivacyPolicy";
 import RefundPolicy from "./RefundPolicy";
 import DeliveryPolicy from "./DeliveryPolicy";
+import CFP from "./CFP";
 
 export {
   Dashboard,
@@ -28,4 +29,5 @@ export {
   PrivacyPolicy,
   RefundPolicy,
   DeliveryPolicy,
+  CFP,
 };
