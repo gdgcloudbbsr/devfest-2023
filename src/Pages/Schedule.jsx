@@ -9,7 +9,7 @@ const Schedule = () => {
       <div id="Schedule-header">
         <SectionHeader
           text={data.schedule.h1}
-          image={"/assets/images/img10.webp"}
+          image={"/assets/images/img8.webp"}
           paragraph={data.schedule.p}
           color={"#428eff"}
         />

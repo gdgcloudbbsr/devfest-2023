@@ -16,9 +16,11 @@ import {
   RefundPolicy,
   DeliveryPolicy,
   CFP,
+  CheckOut,
 } from "../Pages/index";
 
 import PrivateRouter from "./PrivateRouter";
+import DashboardTicket from "../Layouts/DashboardTicket";
 
 const Router = {
   home: "/",
@@ -37,6 +39,8 @@ const Router = {
   refundPolicy: "/refund_policy",
   delivery: "/delivery",
   cfp: "/cfp",
+  myTickets: "/my_tickets",
+  checkout: "/ticket/checkout",
 };
 
 const appRouter = createBrowserRouter([
@@ -91,6 +95,18 @@ const appRouter = createBrowserRouter([
       {
         path: Router.cfp,
         element: <CFP />,
+      },
+      {
+        path: Router.myTickets,
+        element: (
+          <PrivateRouter>
+            <Dashboard />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: Router.checkout,
+        element: <CheckOut />,
       },
     ],
   },
