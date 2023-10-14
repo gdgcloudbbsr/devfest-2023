@@ -4,7 +4,7 @@ import data from "../Data/data.json";
 import PrimaryBtn from "./PrimaryBtn";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
-const ProfessionalTicket = ({ link = "/register" }) => {
+const ProfessionalTicket = ({ link = "/tickets" }) => {
   const stock = 300;
   const ticketData = data.tickets.ticketSection.options[1];
 
