@@ -100,7 +100,11 @@ const appRouter = createBrowserRouter([
   },
   {
     path: Router.register,
-    element: <Register />,
+    element: (
+      <PrivateRouter>
+        <Register />
+      </PrivateRouter>
+    ),
   },
   {
     path: Router.dashboard,
