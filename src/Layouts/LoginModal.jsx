@@ -81,7 +81,7 @@ const LoginModal = () => {
       console.log(response.data);
 
       dispatch(setUserData(response.data));
-      navigate(Router.dashboard);
+      navigate(Router.home);
       dispatch(setLoginModal(!loginPopModal));
       toast.success("Welcome " + response.data.name);
       tempEmail = null;

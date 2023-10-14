@@ -13,6 +13,7 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import RefundPolicy from "./RefundPolicy";
 import DeliveryPolicy from "./DeliveryPolicy";
 import CFP from "./CFP";
+import CheckOut from "./CheckOut";
 
 export {
   Dashboard,
@@ -30,4 +31,5 @@ export {
   RefundPolicy,
   DeliveryPolicy,
   CFP,
+  CheckOut,
 };
