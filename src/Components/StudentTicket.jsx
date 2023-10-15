@@ -55,7 +55,8 @@ const StudentTicket = ({ link = Router.tickets }) => {
               {stock !== 0 && (
                 <div className="stock">
                   <h3>
-                    {stock} <span>Ticket's left</span>
+                    {/* {stock} <span>Ticket's left</span> */}
+                    <span>Launching Soon</span>
                   </h3>
                 </div>
               )}
