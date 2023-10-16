@@ -37,6 +37,7 @@ const ProfessionalTicket = ({ link = Router.tickets }) => {
             <div className="ProfessionalTicket-container-text-price">
               <h2>{price}</h2>
             </div>
+
           </div>
           <div className="ProfessionalTicket-container-benefits">
             <h4>Benefits</h4>
