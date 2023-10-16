@@ -2907,11 +2907,22 @@ select {
       h1 {
         font-size: var(--fs-47);
       }
-      div {
+      .BtnGroups {
+        display: flex;
+        gap: 3rem;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        .PrimaryBtn {
+          &:hover {
+            opacity: 0.8;
+          }
+        }
         font-size: var(--fs-18);
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        
         span {
           font-size: var(--fs-19);
         }

@@ -22,7 +22,7 @@ const Sponsorship = () => {
             <>
               <div className="BrochureSection">
                 <div className="BrochureSection-text">
-                  <h3>Download Brochure</h3>
+                  <h3>Download Sponsorship Brochure</h3>
                   <p>
                     Download the brochure to know more about the sponsorship
                     opportunities.

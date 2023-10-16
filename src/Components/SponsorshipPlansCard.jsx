@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { animateScroll } from "react-scroll";
+
 const SponsorshipPlansCard = ({ data, classNames }) => {
   return (
     <div className={`SponsorshipPlansCard ${classNames}`}>
@@ -5,23 +8,25 @@ const SponsorshipPlansCard = ({ data, classNames }) => {
         <div className="SponsorshipPlansCard-container-image"></div>
         <div className="heading">
           <h1>{data.text}</h1>
-          <h3>{data.price}</h3>
-          <div>
-            <h4> Contact Us :</h4>
-            <ul>
-              <li>
-                Suraj Harichandan
-                <a href="mailto:suraj.somu@gmail.com">
-                  ( suraj.somu@gmail.com )
-                </a>
-              </li>
-              <li>
-                Saswat Samal
-                <a href="mailto:samalsaswat0@gmail.com">
-                  ( samalsaswat0@gmail.com )
-                </a>
-              </li>
-            </ul>
+
+          <div className="BtnGroups">
+            <Link
+              className="PrimaryBtn"
+              to={"/contact"}
+              onClick={() => {
+                animateScroll.scrollToTop();
+              }}
+            >
+              Contact Us
+            </Link>
+            <a
+              href={"/assets/SponsorshipBrochureDevFest2023BBSR.pdf"}
+              target="_blank"
+              rel="noreferrer"
+              className="SecondaryBtn"
+            >
+              <span>Download Brochure</span>
+            </a>
           </div>
         </div>
         <div className="offerings">
