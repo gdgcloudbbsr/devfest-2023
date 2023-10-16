@@ -2861,6 +2861,167 @@ select {
 
 // Sponsorship
 
+.SponsorshipPlansCard {
+  background-color: var(--black);
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-bottom: 2px solid var(--red);
+  border-right: 2px solid var(--blue);
+  border-top: 2px solid var(--green);
+  border-left: 2px solid var(--yellow);
+  padding: 2rem 1.2rem;
+  background-image: url(/assets/overlayBG.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+
+  &-container {
+    padding-bottom: 1rem;
+    position: relative;
+    &-image {
+      width: 200px;
+      margin-inline: auto;
+      aspect-ratio: 1;
+
+      @include breakpoints(sm) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 120px;
+      }
+
+      @include breakpoints(lg) {
+        width: 140px;
+      }
+
+      @include breakpoints(xlg) {
+        width: 180px;
+      }
+    }
+    .heading {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      h1 {
+        font-size: var(--fs-47);
+      }
+      div {
+        font-size: var(--fs-18);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        span {
+          font-size: var(--fs-19);
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-top: 2rem;
+        }
+        li {
+          list-style-type: circle;
+          margin-left: 2rem;
+          font-size: var(--fs-16);
+          a {
+            color: var(--blue);
+            margin-inline: 4px;
+          }
+        }
+      }
+      h3 {
+        background-color: var(--blue);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        position: relative;
+        display: inline-block;
+        max-width: max-content;
+      }
+    }
+
+    h4,
+    .underLine {
+      position: relative;
+      margin-top: 1.5rem;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -0.8rem;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--yellow);
+        border-radius: 1rem;
+      }
+    }
+
+    .offerings {
+      ul {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        column-gap: 1rem;
+        @include breakpoints(smMax) {
+          grid-template-columns: 1fr;
+        }
+        li {
+          color: var(--gray);
+          list-style-type: circle;
+          margin-left: 2rem;
+          span {
+            line-height: 1.7;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+
+    .notes,
+    .addons {
+      ul {
+        margin-top: 2rem;
+        li {
+          color: var(--gray);
+          list-style-type: circle;
+          margin-left: 2rem;
+          span {
+            line-height: 1.7;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+}
+
+.SponsorshipTable {
+  width: 100%;
+  height: 100%;
+  margin-top: 2rem;
+
+  table {
+    border: 2px solid var(--border);
+    border-spacing: 0;
+    th,
+    td {
+      padding: 0.5rem;
+      font-weight: normal;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+    th {
+      &:first-child {
+        width: 30%;
+      }
+      width: calc(100% / 9);
+      text-align: center;
+    }
+  }
+}
+
 .BrochureSection {
   background-color: var(--black);
   border-radius: 1rem;
@@ -2907,8 +3068,123 @@ select {
 }
 
 #Sponsorship {
-  .BrochureSection {
-    margin-top: 4rem;
+  .BrochureSection,
+  .whyChoosePlan,
+  .pastSponsorships,
+  .SponsorshipPlansCardLists {
+    margin-top: 6rem !important;
+  }
+
+  &-container {
+    padding-bottom: 4rem;
+    .SectionHeadingText {
+      h2 {
+        font-size: var(--fs-32);
+      }
+    }
+  }
+
+  .whyChoosePlan {
+    p {
+      max-width: 1400px;
+      margin-top: 2rem;
+      line-height: 1.8;
+    }
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    place-items: center;
+
+    @include breakpoints(lgMax) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      &-image {
+        order: 1;
+      }
+    }
+
+    &-image {
+      border-radius: 1rem;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+
+  .pastSponsorships {
+    &-container {
+      margin-top: 4rem;
+      background-color: var(--white);
+      padding-bottom: 4rem;
+      border-radius: 1rem;
+      padding-inline: 2rem;
+    }
+    img {
+      max-width: 800px;
+      margin-inline: auto;
+    }
+  }
+
+  .SponsorshipPlansCardLists {
+    &-container {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      @include breakpoints(lgMax) {
+        grid-template-columns: 1fr;
+      }
+      .Platinum {
+        // background-color: #e5e4e2;
+        .SponsorshipPlansCard-container-image {
+          background-image: url(/assets/platinum.svg);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      .Diamond {
+        // background-color: #b9f2ff;
+        .SponsorshipPlansCard-container-image {
+          background-image: url(/assets/diamond.svg);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+      .Gold {
+        // background-color: #ffd700;
+        .SponsorshipPlansCard-container-image {
+          background-image: url(/assets/gold.svg);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+      .Silver {
+        // background-color: #c0c0c0;
+        .SponsorshipPlansCard-container-image {
+          background-image: url(/assets/silver.svg);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+      .Bronze {
+        // background-color: #cd7f32;
+        .SponsorshipPlansCard-container-image {
+          background-image: url(/assets/bronze.svg);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
   }
 }
 
@@ -3691,10 +3967,9 @@ li {
       flex-direction: column;
       gap: 3rem;
 
-      &-paymentOptions{
-        ul{
+      &-paymentOptions {
+        ul {
           margin-top: 2rem;
-          
         }
       }
 

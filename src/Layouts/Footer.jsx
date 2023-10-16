@@ -71,7 +71,7 @@ const Footer = () => {
                 <FaLinkedinIn />
               </div>
             </Link>
-            <Link className="socialItem twitter" to={data.socialLinks.twitte}>
+            <Link className="socialItem twitter" to={data.socialLinks.twitter}>
               <div>
                 <FaTwitter />
               </div>
