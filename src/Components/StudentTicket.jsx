@@ -46,19 +46,19 @@ const StudentTicket = ({ link = Router.tickets }) => {
                   dispatch(setOccupation("student"));
                 }}
               >
-                <PrimaryBtn
+                {/* <PrimaryBtn
                   link={!stock ? null : link}
                   text={!stock ? "Out of Stock" : button}
-                />
+                /> */}
               </div>
 
-              {stock !== 0 && (
+              {/* {stock !== 0 && (
                 <div className="stock">
                   <h3>
                     {stock} <span>Ticket's left</span>
                   </h3>
                 </div>
-              )}
+              )} */}
 
               {!stock && (
                 <p>
