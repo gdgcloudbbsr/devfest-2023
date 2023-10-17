@@ -29,7 +29,12 @@ const memberRegistrationSchema = new mongoose.Schema({
   howDoYouHear: {
     type: String,
   },
-  password: { type: String}
+  password: { type: String},
+  is_paid:{type:Boolean,default:false},
+  check_in:{type:Boolean,default:false},
+  lunch:{type:Boolean,default:false},
+  swag:{type:Boolean,default:false},
+  unique_id:{type:String}
 });
 
 memberRegistrationSchema.pre('save', async function(next) {

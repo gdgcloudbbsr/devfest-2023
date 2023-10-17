@@ -7,21 +7,43 @@ import HeadingMessage from "../Components/HeadingMessage";
 import { useSelector } from "react-redux";
 import DashboardTicket from "../Layouts/DashboardTicket";
 import Footer from "../Layouts/Footer";
+import { API_URL } from "../utils/constant";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Dashboard = () => {
   const main = useRef();
-
-  const userData = useSelector((state) => state.Main.userData);
-  const { name } = userData;
-
+  const navigate=useNavigate();
+  //const userData = useSelector((state) => state.Main.userData);
+  //const { name } = userData;
+  const [cookies, removeCookie] = useCookies([]);
+  var name=null;
   const paymentStatus = true;
   const stock = 250;
 
   useEffect(() => {
-    document.title = "Dashboard | DevFest Bhubaneswar 2023";
-  }, []);
+    const verifyCookie = async () => {
+      if (!cookies.token) {
+        ("/login");
+      }
+      const { status,data } = await axios.post(
+        `${API_URL}`,
+        {},
+        { withCredentials: true }
+      );
+      name=data.name;
+      //const { status, user } = data;
+      // setUsername(user);
+      // return status
+      //   ? toast(`Hello ${user}`, {
+      //       position: "top-right",
+      //     })
+      //   : (removeCookie("token"), navigate("/login"));
+    };
+    verifyCookie();
+  }, [cookies, navigate, removeCookie]);
 
   const msg = () => {
     if (!paymentStatus) {
