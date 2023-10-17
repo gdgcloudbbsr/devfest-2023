@@ -3,9 +3,13 @@ import { useMemo } from "react";
 import data from "../Data/data.json";
 import PrimaryBtn from "./PrimaryBtn";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import { setOccupation } from "../Store/Slices/MainSlice";
+import { useDispatch } from "react-redux";
+import { Router } from "../router/appRouter";
 
-const ProfessionalTicket = ({ link = "/register" }) => {
-  const stock = 350;
+const ProfessionalTicket = ({ link = Router.checkout }) => {
+  const dispatch = useDispatch();
+  const stock = 300;
   const ticketData = data.tickets.ticketSection.options[1];
 
   const { type, description, price, button, benefits, image } = ticketData;
@@ -38,10 +42,16 @@ const ProfessionalTicket = ({ link = "/register" }) => {
                 !stock ? "outOfStock" : ""
               }`}
             >
-              <PrimaryBtn
-                link={!stock ? null : link}
-                text={!stock ? "Out of Stock" : button}
-              />
+              <div
+                onClick={() => {
+                  dispatch(setOccupation("professional"));
+                }}
+              >
+                <PrimaryBtn
+                  link={!stock ? null : link}
+                  text={!stock ? "Out of Stock" : button}
+                />
+              </div>
 
               {stock !== 0 && (
                 <div className="stock">

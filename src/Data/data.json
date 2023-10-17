@@ -74,6 +74,22 @@
       {
         "text": "Community Guidelines",
         "link": "https://developers.google.com/community-guidelines"
+      },
+      {
+        "text": "Terms and condition",
+        "link": "/terms_and_condition"
+      },
+      {
+        "text": "Privacy Policy",
+        "link": "/privacy_policy"
+      },
+      {
+        "text": "Refund Policy",
+        "link": "/refund_policy"
+      },
+      {
+        "text": "Delivery Policy",
+        "link": "/delivery"
       }
     ]
   },
@@ -244,10 +260,6 @@
     "h1": "Schedule",
     "p": ""
   },
-  "sponsorship": {
-    "h1": "Sponsorships",
-    "p": ""
-  },
   "tickets": {
     "h1": "Book your seat",
     "p": "Secure your spot at DevFest 2023 in Bhubaneswar! Book your ticket now for a tech-filled experience and networking opportunities. Don't miss out!",
@@ -296,5 +308,164 @@
     "h1": "Meet the Team",
     "p": "",
     "members": {}
+  },
+  "contact": {
+    "address": "Bhubaneswar",
+    "email": "gdgcloudbbsr@gmail.com",
+    "mobileNumber": "+919861870811"
+  },
+  "sponsorship": {
+    "h1": "Sponsorships",
+    "p": "",
+    "WhySponsors": {
+      "h1": "Why should you sponsor us?",
+      "p": "Our goal is to have 600+ attendees, with a mix of talented crowd – start-up founders, tech industry experts, developers. So, it will be an excellent opportunity for our sponsors to reach various demographics. will surely open new prospects for your brand. Sponsoring us will benefit you in more ways than one, including an increase in brand exposure and the opportunity to get participant data for your purposes. Bringing fresh minds to your booths, handing out promotional materials to the attendees, and networking with individuals in and around Bhubaneswar"
+    },
+    "pastSponsors": "/assets/pastSponsor.svg",
+    "sponsorshipTable": {
+      "heading": ["Partner", "Bronze", "Silver", "Gold", "Diamond", "Platinum"],
+      "tableRow": [
+        {
+          "tableDataHeading": "Logo placement on event website.",
+          "tableRowData": [true, true, true, true, true, true]
+        },
+        {
+          "tableDataHeading": "Logo on event banners and posters.",
+          "tableRowData": [true, true, true, true, true, true]
+        },
+        {
+          "tableDataHeading": "Acknowledgment in event program.",
+          "tableRowData": [false, true, true, true, true, true]
+        },
+        {
+          "tableDataHeading": "Complimentary event pass.",
+          "tableRowData": [false, false, true, true, true, true]
+        },
+        {
+          "tableDataHeading": "Social media shout-outs.",
+          "tableRowData": [false, false, true, true, true, true]
+        },
+        {
+          "tableDataHeading": "Verbal recognition during event opening and closing",
+          "tableRowData": [false, false, false, true, true, true]
+        },
+        {
+          "tableDataHeading": "Booth space in the exhibition area.",
+          "tableRowData": [false, false, false, true, true, true]
+        },
+        {
+          "tableDataHeading": "Logo placement on event materials.",
+          "tableRowData": [false, false, false, true, true, true]
+        },
+        {
+          "tableDataHeading": "Logo on event t-shirts.",
+          "tableRowData": [false, false, false, false, true, true]
+        },
+        {
+          "tableDataHeading": "Dedicated social media posts highlighting sponsorship.",
+          "tableRowData": [false, false, false, false, true, true]
+        },
+        {
+          "tableDataHeading": "Opportunity to introduce a speaker or host a session.",
+          "tableRowData": [false, false, false, false, false, true]
+        },
+        {
+          "tableDataHeading": "Logo on attendee lanyards.",
+          "tableRowData": [false, false, false, false, false, true]
+        }
+      ]
+    },
+    "sponsorshipsPlans": {
+      "h1": "Our Sponsorship Plans",
+      "plans": [
+        {
+          "text": "Platinum",
+          "price": "₹ 2,00,000",
+          "offerings": [
+            "Exclusive logo placement on event banners.",
+            "Top-tier logo placement on event materials.",
+            "Logo on official event merchandise.",
+            "Seven complimentary event passes.",
+            "Prime booth space in the exhibition area.",
+            "Dedicated sponsor showcase session.",
+            "Mention in press releases and media coverage.",
+            "Exclusive sponsor spotlight in event newsletter.",
+            "Verbal recognition during event opening and closing.",
+            "Logo on Highlights Video [Post Event - DevFest 2023 Bhubaneswar Highlights Video]"
+          ],
+          "notes": [
+            "Place Standees might also be added at a specific cost",
+            "Include goodies in the giveaway kit by paying for extra."
+          ]
+        },
+        {
+          "text": "Diamond",
+          "price": "₹ 1,25,000",
+          "offerings": [
+            "Premium logo placement on all event materials",
+            "Logo on attendee lanyards.",
+            "Logo on event slides between sessions.",
+            "Five complimentary event passes.",
+            "Prominent booth space in the exhibition area.",
+            "Exclusive sponsor spotlight in event newsletter.",
+            "Acknowledgment in event program.",
+            "Social media shout-outs."
+          ],
+          "notes": [
+            "Excluding booth setup costs. The team must supply its own setup in the specified sizes",
+            "Place Standees might also be added at a specific cost."
+          ]
+        },
+        {
+          "text": "Gold",
+          "price": "₹ 75,000",
+          "offerings": [
+            "Larger logo placement on event materials.",
+            "Logo on event t-shirts.",
+            "Dedicated social media posts highlighting sponsorship.",
+            "Logo on Highlights Video [Post Event - DevFest 2022 Bhubaneswar Highlights Video]",
+            "Three complimentary event passes.",
+            "Priority booth space in the exhibition area.",
+            "Opportunity to introduce a speaker or host a session.",
+            "Social media shout-outs."
+          ],
+          "notes": [
+            "Place Standees might also be added at a specific cost",
+            "Include goodies in the giveaway kit by paying for extra."
+          ]
+        },
+        {
+          "text": "Silver",
+          "price": "₹ 50,000",
+          "offerings": [
+            "Logo on event banners and posters.",
+            "Verbal recognition during event opening and closing.",
+            "Two complimentary event passes.",
+            "Small booth space in the exhibition area."
+          ],
+          "notes": [
+            "Place Standees might also be added at a specific cost",
+            "Include goodies in the giveaway kit by paying for extra."
+          ]
+        },
+        {
+          "text": "Bronze",
+          "price": "₹ 30,000",
+          "offerings": [
+            "Acknowledgment in event program.",
+            "One complimentary event pass.",
+            "Social media shout-outs"
+          ],
+          "notes": [
+            "Place Standees might also be added at a specific cost",
+            "Include goodies in the giveaway kit by paying for extra."
+          ],
+          "addons": [
+            "Place standees by paying Rs. 6,000 extra per standee. The sponsor should provide us with the standees and manage all logistics related to this themselves",
+            "Include goodies in the giveaway kit by paying an extra Rs. 3,000. The sponsor should provide us with the goodies and manage all logistics related to this themselves."
+          ]
+        }
+      ]
+    }
   }
 }

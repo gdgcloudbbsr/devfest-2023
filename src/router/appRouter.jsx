@@ -11,9 +11,16 @@ import {
   Speakers,
   Dashboard,
   Team,
+  TermsAndCondition,
+  PrivacyPolicy,
+  RefundPolicy,
+  DeliveryPolicy,
+  CFP,
+  CheckOut,
 } from "../Pages/index";
 
 import PrivateRouter from "./PrivateRouter";
+import DashboardTicket from "../Layouts/DashboardTicket";
 
 const Router = {
   home: "/",
@@ -27,6 +34,13 @@ const Router = {
   dashboard: "/dashboard",
   error: "*",
   paymentLink: "#",
+  termsAndCondition: "/terms_and_condition",
+  privacyPolicy: "/privacy_policy",
+  refundPolicy: "/refund_policy",
+  delivery: "/delivery",
+  cfp: "/cfp",
+  myTickets: "/my_tickets",
+  checkout: "/ticket/checkout",
 };
 
 const appRouter = createBrowserRouter([
@@ -61,6 +75,38 @@ const appRouter = createBrowserRouter([
       {
         path: Router.team,
         element: <Team />,
+      },
+      {
+        path: Router.termsAndCondition,
+        element: <TermsAndCondition />,
+      },
+      {
+        path: Router.privacyPolicy,
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: Router.refundPolicy,
+        element: <RefundPolicy />,
+      },
+      {
+        path: Router.delivery,
+        element: <DeliveryPolicy />,
+      },
+      {
+        path: Router.cfp,
+        element: <CFP />,
+      },
+      {
+        path: Router.myTickets,
+        element: (
+          <PrivateRouter>
+            <Dashboard />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: Router.checkout,
+        element: <CheckOut />,
       },
     ],
   },

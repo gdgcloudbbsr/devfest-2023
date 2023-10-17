@@ -2,9 +2,13 @@ import { useMemo } from "react";
 import data from "../Data/data.json";
 import PrimaryBtn from "./PrimaryBtn";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import { Router } from "../router/appRouter";
+import { useDispatch } from "react-redux";
+import { setOccupation } from "../Store/Slices/MainSlice";
 
-const StudentTicket = ({ link = "/register" }) => {
-  const stock = 350;
+const StudentTicket = ({ link = Router.checkout }) => {
+  const dispatch = useDispatch();
+  const stock = 300;
   const ticketData = data.tickets.ticketSection.options[0];
 
   const { type, description, price, button, benefits, image } = ticketData;
@@ -37,10 +41,16 @@ const StudentTicket = ({ link = "/register" }) => {
                 !stock ? "outOfStock" : ""
               }`}
             >
-              <PrimaryBtn
-                link={!stock ? null : link}
-                text={!stock ? "Out of Stock" : button}
-              />
+              <div
+                onClick={() => {
+                  dispatch(setOccupation("student"));
+                }}
+              >
+                <PrimaryBtn
+                  link={!stock ? null : link}
+                  text={!stock ? "Out of Stock" : button}
+                />
+              </div>
 
               {stock !== 0 && (
                 <div className="stock">

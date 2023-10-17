@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Wrapper from "../Components/Wrapper";
 import data from "../Data/data.json";
 import {
@@ -7,13 +7,38 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { animateScroll } from "react-scroll";
+import { useEffect, useRef, useState } from "react";
+import { Router } from "../router/appRouter";
 
 const Footer = () => {
+  const location = useLocation();
+  const [showSocialMedia, setShowSocialMedia] = useState(false);
+
+  const refFooter = useRef(null);
+  const refSocial = useRef(null);
+
+  useEffect(() => {
+    if (
+      location.pathname === Router.myTickets ||
+      location.pathname === Router.checkout ||
+      location.pathname === Router.contact
+    ) {
+      refSocial.current.style.display = "none";
+      refFooter.current.style.paddingTop = "0rem";
+      setShowSocialMedia(false);
+    } else {
+      refSocial.current.style.display = "flex";
+      refFooter.current.style.paddingTop = "6rem";
+      setShowSocialMedia(true);
+    }
+  }, [location.pathname]);
+
   return (
-    <div id="Footer">
+    <div id="Footer" ref={refFooter}>
       <img src="/assets/overlayBG.webp" alt="footerBg" id="footerBg" />
       <Wrapper>
-        <div id="Footer-social-media">
+        <div id="Footer-social-media" ref={refSocial}>
           <div id="Footer-social-media-text">
             <h2>{data.Footer.socialMedia.h2}</h2>
             <div className="tag">
@@ -46,7 +71,7 @@ const Footer = () => {
                 <FaLinkedinIn />
               </div>
             </Link>
-            <Link className="socialItem twitter" to={data.socialLinks.twitte}>
+            <Link className="socialItem twitter" to={data.socialLinks.twitter}>
               <div>
                 <FaTwitter />
               </div>
@@ -61,7 +86,13 @@ const Footer = () => {
           </div>
           <div id="Footer-menu-links">
             {data.Footer.links.map((elem, index) => (
-              <Link key={index} to={elem.link}>
+              <Link
+                key={index}
+                to={elem.link}
+                onClick={() => {
+                  animateScroll.scrollToTop();
+                }}
+              >
                 {elem.text}
               </Link>
             ))}
