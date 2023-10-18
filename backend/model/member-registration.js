@@ -1,5 +1,5 @@
-const mongoose = require("mongoose")
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const memberRegistrationSchema = new mongoose.Schema({
   name: {
@@ -29,15 +29,16 @@ const memberRegistrationSchema = new mongoose.Schema({
   howDoYouHear: {
     type: String,
   },
-  password: { type: String},
-  is_paid:{type:Boolean,default:false},
-  check_in:{type:Boolean,default:false},
-  lunch:{type:Boolean,default:false},
-  swag:{type:Boolean,default:false},
-  unique_id:{type:String}
+  password: { type: String },
+  is_paid: { type: Boolean, default: false },
+  check_in: { type: Boolean, default: false },
+  lunch: { type: Boolean, default: false },
+  swag: { type: Boolean, default: false },
+  unique_id: { type: String },
+  transaction_id:{type:String},
 });
 
-memberRegistrationSchema.pre('save', async function(next) {
+memberRegistrationSchema.pre("save", async function (next) {
   try {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(this.password, salt);
@@ -48,4 +49,7 @@ memberRegistrationSchema.pre('save', async function(next) {
   }
 });
 
-module.exports = mongoose.model("member-registration", memberRegistrationSchema);
+module.exports = mongoose.model(
+  "member-registration",
+  memberRegistrationSchema
+);

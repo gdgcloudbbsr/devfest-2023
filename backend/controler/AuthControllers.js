@@ -25,23 +25,8 @@ module.exports.login = async (req, res) => {
     if (!isPasswordMatch) {
       return res.status(400).json({ error: "Invalid credentials" });
     }
-
-    // memberModel.name = user.name;
-    // memberModel.emailAddress = user.emailAddress;
-    // memberModel.workEmailAddress = user.workEmailAddress;
-    // memberModel.occupation = user.occupation;
-    // memberModel.designation = user.designation;
-    // memberModel.nameInstitute = user.nameInstitute;
-    // memberModel.city = user.city;
-
     const token = createSecretToken(user.emailAddress);
-     res.cookie("token", token, {
-       withCredentials: true,
-       httpOnly: false,
-     });
-    res.status(201).json({ message: "User logged in successfully", success: true });
-    //console.log("Login successful",token);
-    //return res.json(memberModel);
+    res.status(201).json({ message: "User logged in successfully", success: true,jwttoken:token });
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).json({ error: "Login failed" });

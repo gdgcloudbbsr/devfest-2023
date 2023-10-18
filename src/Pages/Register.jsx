@@ -99,8 +99,9 @@ const Register = () => {
     axios
       .post(`${API_URL}/save`, { registration: data })
       .then((res) => {
-        console.log(res.data);
-        dispatch(setUserData(res.data));
+        document.cookie = `jwtToken=${res.data.jwttoken}; path=/`;
+        //console.log(res.data);
+        //dispatch(setUserData(res.data));
         navigate(Router.home);
         toast.success("Registered successfully");
       })

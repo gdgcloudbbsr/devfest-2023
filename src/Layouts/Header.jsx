@@ -11,6 +11,10 @@ import { animateScroll } from "react-scroll";
 import { IoIosArrowDown } from "react-icons/io";
 import toast from "react-hot-toast";
 import { Router } from "../router/appRouter";
+import axios from 'axios';
+import { API_URL } from "../utils/constant";
+import { useCookies } from "react-cookie";
+
 
 const links = [
   {
@@ -44,9 +48,10 @@ const links = [
 ];
 
 const Header = () => {
+  const [cookies, removeCookie] = useCookies([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropDownOpen, setDropDownOpen] = useState(false);
-
+  
   const tl = useRef(
     gsap.timeline({ defaults: { ease: "power1.inOut" } }).reverse()
   );
@@ -81,7 +86,13 @@ const Header = () => {
 
   useEffect(() => {
     tl.current.reversed(!menuOpen);
-  }, [menuOpen]);
+    const verifyCookie = async () => {
+      alert('calling');
+      const response = await axios.post("http://localhost:5000/api",null,{ withCredentials: true});
+      console.log(response);
+    };
+    verifyCookie();
+  }, [cookies, removeCookie,menuOpen]);
 
   const loginPopModal = useSelector((state) => state.Main.loginModal);
 
@@ -141,7 +152,8 @@ const Header = () => {
             {authStatus && (
               <div id="header-profile">
                 <div id="header-profile-name">
-                  <h5>{userData?.name.split(" ")[0]}</h5>
+                  {/* <h5>{userData?.name.split(" ")[0]}</h5> */}
+                  <h5>chakit</h5>
                 </div>
                 <div
                   id="header-profile-col"
@@ -149,7 +161,8 @@ const Header = () => {
                     setDropDownOpen(!dropDownOpen);
                   }}
                 >
-                  <div id="header-profile-img">{userData?.name[0]}</div>
+                  {/* <div id="header-profile-img">{userData?.name[0]}</div> */}
+                  <div id="header-profile-img"></div>
                   <div className="ico">
                     <IoIosArrowDown />
                   </div>

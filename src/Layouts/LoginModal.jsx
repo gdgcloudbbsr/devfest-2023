@@ -78,8 +78,7 @@ const LoginModal = () => {
         email: Email,
         password: Password,
       });
-      console.log(response.data);
-
+      document.cookie = `jwtToken=${response.data.jwttoken}; path=/`;
       dispatch(setUserData(response.data));
       navigate(Router.home);
       dispatch(setLoginModal(!loginPopModal));
