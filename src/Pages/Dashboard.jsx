@@ -1,33 +1,32 @@
 import { useEffect, useRef } from "react";
 import Wrapper from "../Components/Wrapper";
-
 import DashboardTicket from "../Layouts/DashboardTicket";
-import Footer from "../Layouts/Footer";
-
-//gsap.registerPlugin(ScrollTrigger);
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Router } from "../router/appRouter";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const main = useRef();
+  const isMounted = useRef(true);
 
   const userData = useSelector((state) => state.Main.userData);
-  const { name } = userData;
+  const { is_paid } = userData;
 
-  //const paymentStatus = true;
+  const paymentStatus = is_paid;
   const navigate = useNavigate();
+
+  const error = () => {
+    if (!paymentStatus) {
+      navigate(Router.tickets);
+      toast.error("Please purchase a ticket to access your Ticket page.");
+    }
+  };
 
   useEffect(() => {
     document.title = "Dashboard | DevFest Bhubaneswar 2023";
+    return error;
   }, []);
-
-  // const msg = () => {
-  //   if (!paymentStatus) {
-  //     return `${
-  //       name.split(" ")[0]
-  //     }, Your payment is Incomplete. Please complete your payment to get your ticket.`;
-  //   } else {
-  //     navigate(Router.tickets);
-  //   }
-  // }, [paymentStatus]);
 
   return (
     <>

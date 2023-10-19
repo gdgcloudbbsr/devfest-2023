@@ -11,6 +11,7 @@ import LoginModal from "../Layouts/LoginModal";
 import { setLoginModal, setUserData } from "../Store/Slices/MainSlice";
 import { Router } from "../router/appRouter";
 import toast from "react-hot-toast";
+import { animateScroll } from "react-scroll";
 
 const Register = () => {
   const loginPopModal = useSelector((state) => state.Main.loginModal);
@@ -98,12 +99,22 @@ const Register = () => {
     // Send the form data to the server
     axios
       .post(`${API_URL}/save`, { registration: data })
-      .then((res) => {
+      .then(async (res) => {
         document.cookie = `jwtToken=${res.data.jwttoken}; path=/`;
-        //console.log(res.data);
-        //dispatch(setUserData(res.data));
+        await toast.promise(
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, 1000); // Adjust the duration as needed
+          }),
+          {
+            loading: "Registering...",
+            success: "Registered successful!",
+            error: "An error occurred during register.",
+          }
+        );
         navigate(Router.home);
-        toast.success("Registered successfully");
+        animateScroll.scrollToTop();
       })
       .catch((err) => {
         console.log(err);
@@ -127,7 +138,7 @@ const Register = () => {
 
   useEffect(() => {
     document.title = "Register | DevFest 2023 Bhubaneswar";
-  }, [data]);
+  }, []);
 
   return (
     <>
@@ -334,6 +345,9 @@ const Register = () => {
                     required="required"
                     value={data.password}
                     onChange={handleInputChange}
+                    style={{
+                      textTransform: "none",
+                    }}
                   />
                   <label className="label" htmlFor="password">
                     Password

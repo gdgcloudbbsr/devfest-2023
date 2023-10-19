@@ -5,8 +5,9 @@ import SectionHeadingText from "../Components/SectionHeadingText";
 import data from "../Data/data.json";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import LoginModal from "../Layouts/LoginModal";
-import { setPopModal } from "../Store/Slices/MainSlice";
+import { setLoginModal, setPopModal } from "../Store/Slices/MainSlice";
 import PopupModalOld from "../Components/PopupModalOld";
+import { Router } from "../router/appRouter";
 
 const CheckOut = () => {
   const loginPopModal = useSelector((state) => state.Main.loginModal);
@@ -21,7 +22,7 @@ const CheckOut = () => {
 
   useEffect(() => {
     document.title = "Checkout | DevFest Bhubaneswar 2023";
-  }, [checkoutTicket, userData?.occupation]);
+  }, []);
 
   const popModal = useSelector((state) => state.Main.popModal);
 
@@ -78,23 +79,23 @@ const CheckOut = () => {
               <div id="CheckOut-container-left-details">
                 <SectionHeadingText text={"Personal Info"} />
                 <div id="CheckOut-container-left-details-container">
-                  <div className="btn-groups">
-                    <div
-                      onClick={() => {
-                        dispatch(setPopModal(!popModal));
-                      }}
-                    >
-                      <PrimaryBtn text={"Sign in"} />
+                  {!authStatus && (
+                    <div className="btn-groups">
+                      <div
+                        onClick={() => {
+                          dispatch(setLoginModal(!popModal));
+                        }}
+                      >
+                        <PrimaryBtn text={"Sign in"} />
+                      </div>
+                      <div className="second">
+                        <PrimaryBtn
+                          text={"Register Now"}
+                          link={Router.register}
+                        />
+                      </div>
                     </div>
-                    <div
-                      onClick={() => {
-                        dispatch(setPopModal(!popModal));
-                      }}
-                      className="second"
-                    >
-                      <PrimaryBtn text={"Register Now"} />
-                    </div>
-                  </div>
+                  )}
                   <div className="txt">
                     Name: <span>{userData?.name || "Smruti Ranjan Nayak"}</span>
                   </div>
@@ -102,7 +103,12 @@ const CheckOut = () => {
                     Email Address:{" "}
                     <span>{userData?.emailAddress || "smruti@gmail.com"}</span>
                   </div>
-                  <div className="txt">
+                  <div
+                    className="txt"
+                    style={{
+                      textTransform: "capitalize",
+                    }}
+                  >
                     Occupation: <span>{userData?.occupation || "student"}</span>
                   </div>
                   <div className="txt">

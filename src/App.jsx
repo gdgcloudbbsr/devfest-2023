@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Footer from "./Layouts/Footer";
 // import HeaderOld from "./Layouts/HeaderOld";
 import { useEffect, useRef } from "react";
@@ -6,8 +6,13 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Header from "./Layouts/Header";
 import LoginModal from "./Layouts/LoginModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Lenis from "@studio-freight/lenis";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { setUserData } from "./Store/Slices/MainSlice";
+import toast from "react-hot-toast";
+import { Router } from "./router/appRouter";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +20,14 @@ const App = () => {
   const location = useLocation();
   const progressBar = useRef(null);
   const app = useRef(null);
+
+  const [cookies, removeCookie] = useCookies([]);
+
+  const userData = useSelector((state) => state.Main.userData);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const loginPopModal = useSelector((state) => state.Main.loginModal);
 
@@ -33,6 +46,20 @@ const App = () => {
     requestAnimationFrame(raf);
   }
 
+  const formatDocumentTitle = (pathname) => {
+    if (pathname === "/") {
+      return "Home | DevFest Bhubaneswar 2023";
+    } else {
+      const formattedPathname =
+        pathname.substring(1).charAt(0).toUpperCase() +
+        pathname.substring(1).slice(1);
+
+      return pathname.includes("_")
+        ? `${formattedPathname.replace(/_/g, " ")} | DevFest Bhubaneswar 2023`
+        : `${formattedPathname} | DevFest Bhubaneswar 2023`;
+    }
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.to(progressBar.current, {
@@ -47,22 +74,7 @@ const App = () => {
       });
 
       ScrollTrigger.refresh();
-
-      if (location.pathname === "/") {
-        document.title = "Home | DevFest Bhubaneswar 2023";
-      } else {
-        if (location.pathname.includes("_")) {
-          document.title = `${(
-            location.pathname.substring(1).charAt(0).toUpperCase() +
-            location.pathname.substring(1).slice(1)
-          ).replace(/_/g, " ")}  | DevFest Bhubaneswar 2023`;
-        } else {
-          document.title = `${
-            location.pathname.substring(1).charAt(0).toUpperCase() +
-            location.pathname.substring(1).slice(1)
-          }  | DevFest Bhubaneswar 2023`;
-        }
-      }
+      document.title = formatDocumentTitle(location.pathname);
     }, app.current);
 
     return () => ctx.revert();
@@ -71,6 +83,28 @@ const App = () => {
   useEffect(() => {
     requestAnimationFrame(raf);
   }, []);
+
+  const verifyCookie = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/api", null, {
+        withCredentials: true,
+      });
+
+      if (response.data.status === true) {
+        console.log(response.data.user);
+        dispatch(setUserData(response.data.user));
+        toast.success("Welcome " + response.data.user.name);
+      } else {
+        removeCookie("jwtToken");
+      }
+    } catch (error) {
+      console.error("Error verifying cookie:", error);
+    }
+  };
+
+  useEffect(() => {
+    return () => verifyCookie();
+  }, [cookies, removeCookie]);
 
   return (
     <div id="App" ref={app}>
