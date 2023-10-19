@@ -4,6 +4,8 @@ import toast from "react-hot-toast";
 import SectionHeadingText from "../Components/SectionHeadingText";
 import { MdLocationOn, MdEmail, MdPhone } from "react-icons/md";
 import info from "../Data/data.json";
+import axios from "axios";
+import { API_URL } from "../utils/constant";
 
 const Contact = () => {
   const [data, setData] = useState({
@@ -45,6 +47,14 @@ const Contact = () => {
     }
 
     alert(`${data.email} ${data.name} ${data.message}`);
+    axios.post(`${API_URL}/sendEmail`, data).then((res) => {
+    if(res.status === 200){
+      toast.success("Email sent successfully");
+    }
+    else{
+      toast.error("Email not sent");
+    }
+    });
 
     setData({
       name: "",

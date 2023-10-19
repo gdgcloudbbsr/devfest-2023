@@ -1,6 +1,7 @@
 const memberRegistrationModel = require("../model/member-registration");
 const ticketModel = require("../model/ticket");
 const { createSecretToken } = require("../utils/SecretToken");
+const transporter = require("../utils/email");
 
 module.exports.saveRegistration = async (req, res) => {
   console.log("Request received");
@@ -82,4 +83,28 @@ module.exports.bookTicket = async (req, res) => {
     }
   }
 
+};
+
+module.exports.sendEmail = async (req, res) => {
+  const { to, subject, text } = req.body;
+
+  const mailOptions = {
+    from: 'your_email@gmail.com',
+    to,
+    subject,
+    text,
+  };
+
+  console.log(to, subject, text);
+
+  // transporter.sendMail(mailOptions, (error, info) => {
+  //   if (error) {
+  //     console.log(error);
+  //     res.status(500).send('Email could not be sent');
+  //   } else {
+  //     console.log('Email sent: ' + info.response);
+  //     res.status(200).send('Email sent successfully');
+  //   }
+  // });
+  res.status(200).send('Email sent successfully');
 };
