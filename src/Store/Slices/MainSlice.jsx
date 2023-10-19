@@ -5,7 +5,7 @@ const MainSlice = createSlice({
   initialState: {
     popModal: false,
     loginModal: false,
-    occupationCheck: "student",
+    // occupationCheck: false,
     userData: {
       name: "",
       occupation: "student",
@@ -34,8 +34,8 @@ const MainSlice = createSlice({
       state.status = false;
       state.userData = {};
     },
-    setOccupation: (state, action) => () => {
-      state.occupationCheck = action.payload;
+    setOccupation: (state, action) => {
+      state.userData.occupation = action.payload;
     },
   },
 });

@@ -17,10 +17,11 @@ module.exports.saveRegistration = async (req, res) => {
       .then((data) => {
         console.log("Saved Successfully");
         const token = createSecretToken(data.emailAddress);
+        res.cookie("jwtToken", token);
         res.status(201).json({
-            message: "User signed in successfully",
-            success: true,
-            jwttoken:token
+          message: "User signed in successfully",
+          success: true,
+          jwttoken: token,
         });
       })
       .catch((err) => {
@@ -31,55 +32,60 @@ module.exports.saveRegistration = async (req, res) => {
 };
 
 module.exports.bookTicket = async (req, res) => {
-  console.log('bookticket request received');
-  const TicketType='STUDENT';
+  console.log("bookticket request received");
+  const TicketType = "STUDENT";
   //const TicketType='PROFFESSIONAL';
   const { user } = req.body;
-  const User=await memberRegistrationModel.findOne({emailAddress: user.emailAddress});
+  const User = await memberRegistrationModel.findOne({
+    emailAddress: user.emailAddress,
+  });
   console.log(User);
   const Tickets = await ticketModel.findOne({ year: 2023 });
   console.log(Tickets);
 
   //Student Ticket
-  if(TicketType=='STUDENT'){
+  if (TicketType == "STUDENT") {
     if (Tickets.StudentTicket > 0) {
       const ticketCount = Tickets.StudentTicket;
-      const ticketID = `DEVFEST2023S${(300 - ticketCount + 1).toString().padStart(3, '0')}`;
+      const ticketID = `DEVFEST2023S${(300 - ticketCount + 1)
+        .toString()
+        .padStart(3, "0")}`;
       Tickets.StudentTicket--;
-      User.is_paid=true;
-      User.unique_id=ticketID;
+      User.is_paid = true;
+      User.unique_id = ticketID;
       console.log(ticketID);
       // Use findByIdAndUpdate to update the document by its _id
       await ticketModel.findByIdAndUpdate(Tickets._id, { $set: Tickets });
-      await memberRegistrationModel.findByIdAndUpdate(User._id,{$set:User});
-  
-      console.log('Updated StudentTicket:', Tickets.StudentTicket);
-      res.send('Ticket booked successfully.');
+      await memberRegistrationModel.findByIdAndUpdate(User._id, { $set: User });
+
+      console.log("Updated StudentTicket:", Tickets.StudentTicket);
+      res.send("Ticket booked successfully.");
     } else {
-      console.log('No available tickets.');
-      res.status(400).send('No available tickets.');
+      console.log("No available tickets.");
+      res.status(400).send("No available tickets.");
     }
   }
   //Professional Ticket
-  else{
+  else {
     console.log(Tickets.ProfessionalTicket);
     if (Tickets.ProfessionalTicket > 0) {
       const ticketCount = Tickets.ProfessionalTicket;
-      const ticketID = `DEVFEST2023P${(300 - ticketCount + 1).toString().padStart(3, '0')}`;
+      const ticketID = `DEVFEST2023P${(300 - ticketCount + 1)
+        .toString()
+        .padStart(3, "0")}`;
       Tickets.ProfessionalTicket--;
-      User.is_paid=true;
-      User.unique_id=ticketID;
+      User.is_paid = true;
+      User.unique_id = ticketID;
       console.log(ticketID);
       // Use findByIdAndUpdate to update the document by its _id
       await ticketModel.findByIdAndUpdate(Tickets._id, { $set: Tickets });
-      await memberRegistrationModel.findByIdAndUpdate(User._id,{$set:User});
-  
-      console.log('Updated ProfessionalTicket:', Tickets.ProfessionalTicket);
-      res.send('Ticket booked successfully.');
+      await memberRegistrationModel.findByIdAndUpdate(User._id, { $set: User });
+
+      console.log("Updated ProfessionalTicket:", Tickets.ProfessionalTicket);
+      res.send("Ticket booked successfully.");
     } else {
-      console.log('No available tickets.');
-      res.status(400).send('No available tickets.');
+      console.log("No available tickets.");
+      res.status(400).send("No available tickets.");
     }
   }
-
 };

@@ -4023,6 +4023,9 @@ li {
           .txt {
             font-size: var(--fs-15);
             color: var(--gray);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
             span {
               font-size: var(--fs-19);
               color: var(--white);

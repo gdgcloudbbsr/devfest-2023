@@ -3,18 +3,15 @@ import Wrapper from "../Components/Wrapper";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import SecondaryBtn from "../Components/SecondaryBtn";
 import data from "../Data/data.json";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginModal, setLogout } from "../Store/Slices/MainSlice";
 import { animateScroll } from "react-scroll";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import toast from "react-hot-toast";
 import { Router } from "../router/appRouter";
-import axios from 'axios';
-import { API_URL } from "../utils/constant";
 import { useCookies } from "react-cookie";
-
 
 const links = [
   {
@@ -51,7 +48,17 @@ const Header = () => {
   const [cookies, removeCookie] = useCookies([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropDownOpen, setDropDownOpen] = useState(false);
-  
+
+  const loginPopModal = useSelector((state) => state.Main.loginModal);
+
+  const authStatus = useSelector((state) => state.Main.status);
+
+  const userData = useSelector((state) => state.Main.userData);
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const tl = useRef(
     gsap.timeline({ defaults: { ease: "power1.inOut" } }).reverse()
   );
@@ -86,21 +93,15 @@ const Header = () => {
 
   useEffect(() => {
     tl.current.reversed(!menuOpen);
-    const verifyCookie = async () => {
-      alert('calling');
-      const response = await axios.post("http://localhost:5000/api",null,{ withCredentials: true});
-      console.log(response);
-    };
-    verifyCookie();
-  }, [cookies, removeCookie,menuOpen]);
+  }, [menuOpen]);
 
-  const loginPopModal = useSelector((state) => state.Main.loginModal);
-
-  const authStatus = useSelector((state) => state.Main.status);
-
-  const userData = useSelector((state) => state.Main.userData);
-
-  const dispatch = useDispatch();
+  const Logout = () => {
+    removeCookie("jwtToken");
+    navigate(Router.home);
+    toast.success("Logout successful");
+    document.cookie =
+      "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  };
 
   return (
     <header id="header">
@@ -152,8 +153,7 @@ const Header = () => {
             {authStatus && (
               <div id="header-profile">
                 <div id="header-profile-name">
-                  {/* <h5>{userData?.name.split(" ")[0]}</h5> */}
-                  <h5>chakit</h5>
+                  <h5>{userData?.name.split(" ")[0]}</h5>
                 </div>
                 <div
                   id="header-profile-col"
@@ -161,10 +161,9 @@ const Header = () => {
                     setDropDownOpen(!dropDownOpen);
                   }}
                 >
-                  {/* <div id="header-profile-img">{userData?.name[0]}</div> */}
-                  <div id="header-profile-img"></div>
+                  <div id="header-profile-img">{userData?.name[0]}</div>
                   <div className="ico">
-                    <IoIosArrowDown />
+                    {dropDownOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
                   </div>
                 </div>
                 {dropDownOpen ? (
@@ -184,10 +183,7 @@ const Header = () => {
                         className="dropdown-item"
                         onClick={() => {
                           dispatch(setLogout());
-                          animateScroll.scrollToTop();
-
-                          toast.success("Logged out successfully");
-                          setDropDownOpen(false);
+                          Logout();
                         }}
                       >
                         Logout

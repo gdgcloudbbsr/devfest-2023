@@ -59,6 +59,25 @@ const LoginModal = () => {
     }
   };
 
+  const verifyCookie = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/api", null, {
+        withCredentials: true,
+      });
+
+      if (response.data.status === true) {
+        dispatch(setUserData(response.data.user));
+      } else {
+        removeCookie("jwtToken");
+        navigate(Router.home);
+        document.cookie =
+          "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      }
+    } catch (error) {
+      console.error("Error verifying cookie:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -79,13 +98,26 @@ const LoginModal = () => {
         password: Password,
       });
       document.cookie = `jwtToken=${response.data.jwttoken}; path=/`;
-      dispatch(setUserData(response.data));
-      navigate(Router.home);
       dispatch(setLoginModal(!loginPopModal));
-      toast.success("Welcome " + response.data.name);
+      await toast.promise(
+        new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, 1000); // Adjust the duration as needed
+        }),
+        {
+          loading: "Logging in...",
+          success: "Login successful!",
+          error: "An error occurred during login.",
+        }
+      );
+      // window.location.reload();
+      navigate(Router.home);
       tempEmail = null;
+      return verifyCookie();
     } catch (error) {
-      // toast.error("Login failed : " + error.response.data.error);
+      console.log(error);
+      toast.error("Login failed : " + error.response.data.error);
       if (error.response.data.error === "User not found") {
         toast.error("Please register first");
         setData({
@@ -167,6 +199,9 @@ const LoginModal = () => {
                   required="required"
                   value={data.password}
                   onChange={handleInputChange}
+                  style={{
+                    textTransform: "none",
+                  }}
                 />
                 <label className="label" htmlFor="password">
                   Password
