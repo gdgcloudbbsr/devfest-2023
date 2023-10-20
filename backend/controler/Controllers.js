@@ -1,6 +1,7 @@
 const memberRegistrationModel = require("../model/member-registration");
 const ticketModel = require("../model/ticket");
 const { createSecretToken } = require("../utils/SecretToken");
+const transporter = require("../utils/email");
 
 module.exports.saveRegistration = async (req, res) => {
   console.log("Request received");
@@ -88,4 +89,30 @@ module.exports.bookTicket = async (req, res) => {
       res.status(400).send("No available tickets.");
     }
   }
+};
+
+module.exports.sendEmail = async (req, res) => {
+  console.log("sendEmail request received");
+  console.log(req.body);
+  const { name, message,email } = req.body;
+
+  const mailOptions = {
+    from: 'Devfest Queries',
+    to:'contact@gdgbbsr.in',
+    subject:'Contact From GDG Bhubaneswar Website',
+    text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+  };
+
+  console.log(mailOptions);
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Email could not be sent');
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.status(200).send('Email sent successfully');
+    }
+  });
+  res.status(200).send('Email sent successfully');
 };
