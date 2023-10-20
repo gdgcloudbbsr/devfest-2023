@@ -92,25 +92,27 @@ module.exports.bookTicket = async (req, res) => {
 };
 
 module.exports.sendEmail = async (req, res) => {
-  const { to, subject, text } = req.body;
+  console.log("sendEmail request received");
+  console.log(req.body);
+  const { name, message,email } = req.body;
 
   const mailOptions = {
-    from: 'your_email@gmail.com',
-    to,
-    subject,
-    text,
+    from: 'Devfest Queries',
+    to:'contact@gdgbbsr.in',
+    subject:'Contact From GDG Bhubaneswar Website',
+    text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
   };
 
-  console.log(to, subject, text);
+  console.log(mailOptions);
 
-  // transporter.sendMail(mailOptions, (error, info) => {
-  //   if (error) {
-  //     console.log(error);
-  //     res.status(500).send('Email could not be sent');
-  //   } else {
-  //     console.log('Email sent: ' + info.response);
-  //     res.status(200).send('Email sent successfully');
-  //   }
-  // });
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Email could not be sent');
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.status(200).send('Email sent successfully');
+    }
+  });
   res.status(200).send('Email sent successfully');
 };

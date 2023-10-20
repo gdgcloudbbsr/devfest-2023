@@ -16,13 +16,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-<<<<<<< HEAD
     "mongoose": "^7.5.3",
     "nodemailer": "^6.9.6",
-    "razorpay": "^2.9.2"
-=======
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^7.5.3"
->>>>>>> 5ca5d9c7c9ee6751692dec7ed7f349ac4e91c413
+    "razorpay": "^2.9.2",
+    "jsonwebtoken": "^9.0.2"
   }
 }
