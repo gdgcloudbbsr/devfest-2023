@@ -90,13 +90,18 @@ const PasswordReset = () => {
   const OtpSubmitHandle = (e) => {
     e.preventDefault();
     const otp = otpInputs.join("");
-    alert(otp);
-    setOTPInputs(["", "", "", ""]);
-    setForWardPath({
-      ...forWardPath,
-      otpInput: false,
-      newPasswordInput: true,
-    });
+
+    if (data.newPassword !== data.confirmPassword) {
+      toast.error("Password not matched");
+      setShowPassword(true);
+      return;
+    } else {
+      toast.success("Password changed successfully");
+      alert(otp);
+      setOTPInputs(["", "", "", ""]);
+      dispatch(setPasswordResetModal(!passwordResetModal));
+      dispatch(setLoginModal(!loginPopModal));
+    }
   };
 
   const NewPasswordValueHandle = ({ target: { name, value } }) => {
@@ -106,19 +111,20 @@ const PasswordReset = () => {
     });
   };
 
-  const NewPasswordSubmit = (e) => {
-    e.preventDefault();
+  // const NewPasswordSubmit = (e) => {
+  //   // new password
+  //   e.preventDefault();
 
-    if (data.newPassword !== data.confirmPassword) {
-      toast.error("Password not matched");
-      return;
-    } else {
-      alert(data.newPassword);
-      toast.success("Password changed successfully");
-      dispatch(setPasswordResetModal(!passwordResetModal));
-      dispatch(setLoginModal(!loginPopModal));
-    }
-  };
+  //   if (data.newPassword !== data.confirmPassword) {
+  //     toast.error("Password not matched");
+  //     return;
+  //   } else {
+  //     alert(data.newPassword);
+  //     toast.success("Password changed successfully");
+  //     dispatch(setPasswordResetModal(!passwordResetModal));
+  //     dispatch(setLoginModal(!loginPopModal));
+  //   }
+  // };
 
   useEffect(() => {
     console.log(otpInputs);
@@ -173,7 +179,17 @@ const PasswordReset = () => {
                 </div>
 
                 <div className="btn-groups">
-                  <button type="submit">Send OTP</button>
+                  <button
+                    type="submit"
+                    className={
+                      !data.email || error.email
+                        ? "cursor-disabled"
+                        : "cursor-pointer"
+                    }
+                    disabled={!data.email || error.email}
+                  >
+                    Send OTP
+                  </button>
                   <div
                     className="back"
                     onClick={() => {
@@ -217,19 +233,58 @@ const PasswordReset = () => {
                   ))}
                 </div>
 
-                <div className="btn-groups">
-                  <button type="submit">Verify</button>
+                <div className="inputBox">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="newPassword"
+                    id="password"
+                    required="required"
+                    value={data.newPassword}
+                    onChange={NewPasswordValueHandle}
+                    style={{
+                      textTransform: "none",
+                    }}
+                    autoComplete="off"
+                  />
+                  <label className="label" htmlFor="password">
+                    New Password
+                  </label>
                   <div
-                    className="back"
+                    className="ico"
                     onClick={() => {
-                      dispatch(setPasswordResetModal(!passwordResetModal));
-                      dispatch(setLoginModal(!loginPopModal));
+                      setShowPassword(!showPassword);
                     }}
                   >
-                    <BsArrowLeft />
-                    <span>Back to Login</span>
+                    {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                   </div>
                 </div>
+                <div className="inputBox">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    id="password"
+                    required="required"
+                    value={data.confirmPassword}
+                    onChange={NewPasswordValueHandle}
+                    style={{
+                      textTransform: "none",
+                    }}
+                    autoComplete="off"
+                  />
+                  <label className="label" htmlFor="password">
+                    Confirm Password
+                  </label>
+                  <div
+                    className="ico"
+                    onClick={() => {
+                      setShowPassword(!showPassword);
+                    }}
+                  >
+                    {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                  </div>
+                </div>
+
+                <button type="submit">Change Password</button>
               </form>
             </div>
           </div>
@@ -239,7 +294,7 @@ const PasswordReset = () => {
 
         {/* new password input  */}
 
-        {forWardPath.newPasswordInput && (
+        {/* {forWardPath.newPasswordInput && (
           <div id="newInputField">
             <SectionHeadingText text={"Change Password"} />
             <p>
@@ -301,7 +356,7 @@ const PasswordReset = () => {
               </form>
             </div>
           </div>
-        )}
+        )} */}
 
         {/* ---------------- */}
       </div>

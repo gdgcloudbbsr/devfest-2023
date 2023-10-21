@@ -30,8 +30,8 @@ router.post('/order',RazorPayOrder);
 
 router.post('/sendEmail',sendEmail);
 
-router.post('/forgotPassword',user_forgotPassword);
+router.post('/forgotPassword',user_forgotPassword); // otp generation
 
-router.post('/resetPassword',user_resetPassword);
+router.post('/resetPassword',user_resetPassword); // password reset
 
 module.exports = router;

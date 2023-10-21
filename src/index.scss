@@ -1849,6 +1849,22 @@ button {
 }
 
 .PasswordReset {
+  &-container {
+    padding: 3rem 3rem;
+    padding-bottom: 1rem;
+    padding-top: 6rem;
+
+    @include breakpoints(mdMax) {
+      padding: 3rem 2rem;
+      padding-top: 6rem !important;
+    }
+
+    @include breakpoints(smMax) {
+      padding: 2rem 2rem;
+      padding-top: 6rem !important;
+    }
+  }
+
   .btn-groups {
     display: flex;
     align-items: center;
@@ -2050,10 +2066,10 @@ button {
         background-color: var(--black);
         outline: none;
         border: 2px solid #cddffd6b;
-        padding: 1rem .5rem;
+        padding: 0.5rem;
         border-radius: 0.5rem;
         text-align: center;
-        font-size: var(--fs-19);
+        font-size: var(--fs-18);
 
         &:focus {
           border: 1px solid var(--blue);

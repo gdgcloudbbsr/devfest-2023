@@ -36,7 +36,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
             <div className="StudentTicket-container-text-price">
               <h2>{price}</h2>
             </div>
-            <div
+            {/* <div
               className={`StudentTicket-container-text-btn ${
                 !stock ? "outOfStock" : ""
               }`}
@@ -65,7 +65,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
                   {`Tickets for ${type} are currently out of stock. Please stay tuned for updates.`}
                 </p>
               )}
-            </div>
+            </div> */}
           </div>
           <div className="StudentTicket-container-benefits">
             <h4>Benefits</h4>

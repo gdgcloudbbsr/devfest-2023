@@ -159,14 +159,15 @@ const CheckOut = () => {
                       <span>{data.tickets.ticketSection.options[0].price}</span>
                     </li>
                     <li>
-                      <div
+                      {/* <div
                         className="btn"
                         onClick={() => {
                           dispatch(setPopModal(!popModal));
                         }}
                       >
                         <PrimaryBtn text={"Pay Now"} />
-                      </div>
+                      </div> */}
+                      Stay Tuned
                     </li>
                   </ul>
                 </div>
