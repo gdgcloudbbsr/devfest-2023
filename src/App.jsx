@@ -13,6 +13,7 @@ import axios from "axios";
 import { setUserData } from "./Store/Slices/MainSlice";
 import toast from "react-hot-toast";
 import { Router } from "./router/appRouter";
+import { API_URL } from "./utils/constant";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -86,7 +87,7 @@ const App = () => {
 
   const verifyCookie = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api", null, {
+      const response = await axios.post(`${API_URL}`, null, {
         withCredentials: true,
       });
 
