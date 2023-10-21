@@ -36,6 +36,8 @@ const memberRegistrationSchema = new mongoose.Schema({
   swag: { type: Boolean, default: false },
   unique_id: { type: String },
   transaction_id:{type:String},
+  otp: { type: String },
+  otp_expiry: { type: Date },
 });
 
 memberRegistrationSchema.pre("save", async function (next) {
