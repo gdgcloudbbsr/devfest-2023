@@ -12,6 +12,10 @@ const {RazorPayOrder}= require('../Payment');
 
 const {sendEmail} = require('../controler/Controllers');
 
+const {user_forgotPassword}= require('../controler/Controllers');
+
+const {user_resetPassword}= require('../controler/Controllers');
+
 const router = Router();
 
 router.post('/login', login);
@@ -25,5 +29,9 @@ router.post('/book',bookTicket);
 router.post('/order',RazorPayOrder);
 
 router.post('/sendEmail',sendEmail);
+
+router.post('/forgotPassword',user_forgotPassword);
+
+router.post('/resetPassword',user_resetPassword);
 
 module.exports = router;
