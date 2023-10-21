@@ -1,7 +1,6 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Layouts/Footer";
-// import HeaderOld from "./Layouts/HeaderOld";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Header from "./Layouts/Header";
@@ -12,7 +11,9 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { setUserData } from "./Store/Slices/MainSlice";
 import toast from "react-hot-toast";
-import { Router } from "./router/appRouter";
+import Loader from "./Components/Loader";
+import PopupModalOld from "./Components/PopupModalOld";
+import PasswordReset from "./Layouts/PasswordReset";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,13 +24,15 @@ const App = () => {
 
   const [cookies, removeCookie] = useCookies([]);
 
-  const userData = useSelector((state) => state.Main.userData);
-
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   const loginPopModal = useSelector((state) => state.Main.loginModal);
+  const comingModal = useSelector((state) => state.Main.popModal);
+  const passwordResetModal = useSelector(
+    (state) => state.Main.passwordResetModal
+  );
+
+  const [loading, setLoading] = useState(true);
 
   const lenis = new Lenis({
     duration: 1.2,
@@ -82,6 +85,21 @@ const App = () => {
 
   useEffect(() => {
     requestAnimationFrame(raf);
+
+    const handleLoad = () => {
+      setLoading(false);
+    };
+
+    // window.addEventListener("load", handleLoad);
+
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 2600);
+
+    return () => {
+      // window.removeEventListener("load", handleLoad);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const verifyCookie = async () => {
@@ -107,13 +125,22 @@ const App = () => {
   }, [cookies, removeCookie]);
 
   return (
-    <div id="App" ref={app}>
-      {loginPopModal && <LoginModal />}
-      <div className="progress" ref={progressBar}></div>
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div id="App" ref={app}>
+          {loginPopModal && <LoginModal />}
+          {comingModal && <PopupModalOld />}
+          {passwordResetModal && <PasswordReset />}
+
+          <div className="progress" ref={progressBar}></div>
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 

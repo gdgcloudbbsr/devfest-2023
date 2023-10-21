@@ -101,6 +101,7 @@ const Register = () => {
       .post(`${API_URL}/save`, { registration: data })
       .then(async (res) => {
         document.cookie = `jwtToken=${res.data.jwttoken}; path=/`;
+
         await toast.promise(
           new Promise((resolve) => {
             setTimeout(() => {
@@ -117,7 +118,7 @@ const Register = () => {
         animateScroll.scrollToTop();
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.response.data.message);
       });
 
     setData({
@@ -348,6 +349,7 @@ const Register = () => {
                     style={{
                       textTransform: "none",
                     }}
+                    autoComplete="off"
                   />
                   <label className="label" htmlFor="password">
                     Password
@@ -447,7 +449,13 @@ const Register = () => {
                   )}
                 </div>
                 {/* ---- */}
-                <button type="submit" className="SecondaryBtn">
+                <button
+                  type="submit"
+                  className="SecondaryBtn"
+                  onClick={() => {
+                    animateScroll.scrollToTop();
+                  }}
+                >
                   <span>Register</span>
                 </button>
               </form>

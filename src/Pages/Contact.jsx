@@ -46,14 +46,23 @@ const Contact = () => {
       return;
     }
 
-    alert(`${data.email} ${data.name} ${data.message}`);
-    axios.post(`${API_URL}/sendEmail`, data).then((res) => {
-    if(res.status === 200){
-      toast.success("Email sent successfully");
-    }
-    else{
-      toast.error("Email not sent");
-    }
+    axios.post(`${API_URL}/sendEmail`, data).then(async (res) => {
+      if (res.status === 200) {
+        await toast.promise(
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, 1000); // Adjust the duration as needed
+          }),
+          {
+            loading: "Message sending...",
+            success: "Message sent successful!",
+            error: "An error occurred during Message.",
+          }
+        );
+      } else {
+        toast.error("Email not sent");
+      }
     });
 
     setData({

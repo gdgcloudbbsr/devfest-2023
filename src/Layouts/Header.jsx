@@ -6,7 +6,11 @@ import data from "../Data/data.json";
 import { NavLink, useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoginModal, setLogout } from "../Store/Slices/MainSlice";
+import {
+  setLoginModal,
+  setLogout,
+  setPopModal,
+} from "../Store/Slices/MainSlice";
 import { animateScroll } from "react-scroll";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import toast from "react-hot-toast";
@@ -50,6 +54,7 @@ const Header = () => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
 
   const loginPopModal = useSelector((state) => state.Main.loginModal);
+  const comingModal = useSelector((state) => state.Main.popModal);
 
   const authStatus = useSelector((state) => state.Main.status);
 
@@ -127,7 +132,15 @@ const Header = () => {
                 ))}
               </div>
               <div className="btn-groups">
-                <SecondaryBtn text={"Get profile badge"} />
+                <div
+                  onClick={() => {
+                    setMenuOpen(false);
+                    dispatch(setPopModal(!comingModal));
+                  }}
+                  className="div1"
+                >
+                  <SecondaryBtn text={"Get profile badge"} />
+                </div>
                 {!authStatus && (
                   <div
                     onClick={() => {
@@ -182,6 +195,7 @@ const Header = () => {
                       <div
                         className="dropdown-item"
                         onClick={() => {
+                          setDropDownOpen(false);
                           dispatch(setLogout());
                           Logout();
                         }}

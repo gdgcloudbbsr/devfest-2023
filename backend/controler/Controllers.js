@@ -11,7 +11,8 @@ module.exports.saveRegistration = async (req, res) => {
     emailAddress: registration.emailAddress,
   });
   if (user) {
-    res.status(409).send({ message: "User Already Exists" });
+    res.status(409).send({ message: "Email Address already exists" });
+    console.log("User Exist");
   } else {
     memberRegistrationModel
       .create(registration)
@@ -94,12 +95,12 @@ module.exports.bookTicket = async (req, res) => {
 module.exports.sendEmail = async (req, res) => {
   console.log("sendEmail request received");
   console.log(req.body);
-  const { name, message,email } = req.body;
+  const { name, message, email } = req.body;
 
   const mailOptions = {
-    from: 'Devfest Queries',
-    to:'contact@gdgbbsr.in',
-    subject:'Contact From GDG Bhubaneswar Website',
+    from: "Devfest Queries",
+    to: "contact@gdgbbsr.in",
+    subject: "Contact From GDG Bhubaneswar Website",
     text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
   };
 
@@ -108,11 +109,11 @@ module.exports.sendEmail = async (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error);
-      res.status(500).send('Email could not be sent');
+      res.status(500).send("Email could not be sent");
     } else {
-      console.log('Email sent: ' + info.response);
-      res.status(200).send('Email sent successfully');
+      console.log("Email sent: " + info.response);
+      res.status(200).send("Email sent successfully");
     }
   });
-  res.status(200).send('Email sent successfully');
+  res.status(200).send("Email sent successfully");
 };
