@@ -66,18 +66,11 @@ const LoginModal = () => {
     }
   };
 
-  const verifyCookie = async (token) => {
-    alert(token);
+  const verifyCookie = async () => {
     try {
-      const response = await axios.post(`${API_URL}`,
-        {
-          jwtToken: token,
-        },
-        null,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post(`${API_URL}`, null, {
+        withCredentials: true,
+      });
 
       if (response.data.status === true) {
         dispatch(setUserData(response.data.user));

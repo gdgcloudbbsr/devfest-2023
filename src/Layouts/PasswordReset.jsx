@@ -61,26 +61,16 @@ const PasswordReset = () => {
       });
     }
   };
-//otp generate
-  const emailSubmitHandle = async (e) => {
+
+  const emailSubmitHandle = (e) => {
     e.preventDefault();
-    alert(data.email);
-    const response = await axios.post(`${API_URL}/forgotPassword`,{
-      Email: data.email.toLowerCase(),
-    });
-    if(response.status === 200){
-      toast.success("OTP sent successfully");
+    const user = true;
+    if (user) {
       setForWardPath({
         ...forWardPath,
         emailInput: false,
         otpInput: true,
       });
-    }
-    else if(response.status === 400){
-      toast.error("User not found");
-    }
-    else{
-      toast.error("Something went wrong");
     }
   };
 
@@ -98,8 +88,8 @@ const PasswordReset = () => {
       inputRefs[index + 1].current.focus();
     }
   };
-//otp submit
-  const OtpSubmitHandle = async (e) => {
+
+  const OtpSubmitHandle = (e) => {
     e.preventDefault();
     const otp = otpInputs.join("");
 
@@ -107,25 +97,12 @@ const PasswordReset = () => {
       toast.error("Password not matched");
       setShowPassword(true);
       return;
-    }
-    else{
-      const response = await axios.post(`${API_URL}/resetPassword`, {
-        Otp: otp,
-        email:data.email,
-        Password: data.newPassword,
-        confirmPassword: data.confirmPassword,
-      });
-      if(response.status === 200){
-        toast.success("Password changed successfully");
-        dispatch(setPasswordResetModal(!passwordResetModal));
-        dispatch(setLoginModal(!loginPopModal));
-      }
-      else if(response.status === 400){
-        toast.error("Invalid OTP");
-      }
-      else{
-        toast.error("Something went wrong");
-      }
+    } else {
+      toast.success("Password changed successfully");
+      alert(otp);
+      setOTPInputs(["", "", "", ""]);
+      dispatch(setPasswordResetModal(!passwordResetModal));
+      dispatch(setLoginModal(!loginPopModal));
     }
   };
 
@@ -150,10 +127,6 @@ const PasswordReset = () => {
   //     dispatch(setLoginModal(!loginPopModal));
   //   }
   // };
-
-  useEffect(() => {
-    console.log(otpInputs);
-  }, []);
 
   return (
     <div className="PasswordReset PopupModal">

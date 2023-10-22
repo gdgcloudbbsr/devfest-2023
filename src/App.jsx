@@ -103,18 +103,27 @@ const App = () => {
     };
   }, []);
 
-  const verifyCookie = async () => {
+  const verifyCookie = async (token) => {
     try {
-      const response = await axios.post(`${API_URL}`, null, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        `${API_URL}`,
+        {
+          jwtToken: token,
+        },
+        null,
+        {
+          withCredentials: true,
+        }
+      );
 
       if (response.data.status === true) {
-        console.log(response.data.user);
+        // console.log(response);
         dispatch(setUserData(response.data.user));
-        toast.success("Welcome " + response.data.user.name);
+        toast.success(`Welcome, ${response.data.user.name}!`);
       } else {
         removeCookie("jwtToken");
+        document.cookie =
+          "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       }
     } catch (error) {
       console.error("Error verifying cookie:", error);
@@ -122,7 +131,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    return () => verifyCookie();
+    console.log(cookies.jwtToken);
+    verifyCookie(cookies.jwtToken);
   }, [cookies, removeCookie]);
 
   return (

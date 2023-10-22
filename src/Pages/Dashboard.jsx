@@ -13,11 +13,10 @@ const Dashboard = () => {
   const userData = useSelector((state) => state.Main.userData);
   const { is_paid } = userData;
 
-  const paymentStatus = true;
   const navigate = useNavigate();
 
   const error = () => {
-    if (!paymentStatus) {
+    if (!is_paid) {
       navigate(Router.tickets);
       toast.error("Please purchase a ticket to access your Ticket page.");
     }
@@ -25,7 +24,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     document.title = "Dashboard | DevFest Bhubaneswar 2023";
-    return error;
+    if (!is_paid) {
+      navigate(Router.tickets);
+      toast.error("Please purchase a ticket to access your Ticket page.");
+    }
   }, []);
 
   return (
@@ -33,7 +35,7 @@ const Dashboard = () => {
       <div id="Dashboard" ref={main}>
         <Wrapper>
           <div id="Dashboard-container">
-            <DashboardTicket paymentStatus={paymentStatus} />
+            <DashboardTicket paymentStatus={is_paid} />
           </div>
         </Wrapper>
       </div>
