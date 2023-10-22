@@ -13,7 +13,7 @@ const Dashboard = () => {
   const userData = useSelector((state) => state.Main.userData);
   const { is_paid } = userData;
 
-  const paymentStatus = is_paid;
+  const paymentStatus = true;
   const navigate = useNavigate();
 
   const error = () => {
