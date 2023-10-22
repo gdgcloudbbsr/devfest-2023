@@ -271,7 +271,7 @@ const PasswordReset = () => {
                     <input
                       key={index}
                       ref={inputRefs[index]}
-                      type="text"
+                      type="number"
                       maxLength="1"
                       value={value}
                       onChange={(e) => OtpHandleChange(index, e.target.value)}

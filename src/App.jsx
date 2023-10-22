@@ -95,7 +95,7 @@ const App = () => {
 
     const timeoutId = setTimeout(() => {
       setLoading(false);
-    }, 2600);
+    }, 3000);
 
     return () => {
       // window.removeEventListener("load", handleLoad);
