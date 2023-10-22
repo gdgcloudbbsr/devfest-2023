@@ -1,18 +1,16 @@
 // ProfessionalTicket
 import { useMemo } from "react";
 import data from "../Data/data.json";
-import PrimaryBtn from "./PrimaryBtn";
 import { BsFillCheckCircleFill } from "react-icons/bs";
-import { setOccupation } from "../Store/Slices/MainSlice";
-import { useDispatch } from "react-redux";
 import { Router } from "../router/appRouter";
+import { useSelector } from "react-redux";
 
 const ProfessionalTicket = ({ link = Router.checkout }) => {
-  const dispatch = useDispatch();
-  const stock = 300;
   const ticketData = data.tickets.ticketSection.options[1];
 
-  const { type, description, price, button, benefits, image } = ticketData;
+  const authStatus = useSelector((state) => state.Main.status);
+
+  const { type, description, benefits, image } = ticketData;
 
   const renderBenefits = useMemo(() => {
     return benefits.map((benefit, index) => (
@@ -33,9 +31,6 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
             <div className="ProfessionalTicket-container-text-heading">
               <h3>{type}</h3>
               <p>{description}</p>
-            </div>
-            <div className="ProfessionalTicket-container-text-price">
-              <h2>{price}</h2>
             </div>
             {/* <div
               className={`ProfessionalTicket-container-text-btn ${
@@ -67,6 +62,19 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
                 </p>
               )}
             </div> */}
+            <div>
+              {!authStatus ? (
+                <p
+                  style={{
+                    color: "var(--yellow)",
+                  }}
+                >
+                  Please login to buy tickets!
+                </p>
+              ) : (
+                <p>You have been added to the waiting list! 🎉</p>
+              )}
+            </div>
           </div>
           <div className="ProfessionalTicket-container-benefits">
             <h4>Benefits</h4>

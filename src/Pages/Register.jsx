@@ -444,7 +444,7 @@ const Register = () => {
 
                 <div className="inputBox">
                   <input
-                    type="url"
+                    type="text"
                     name="linkedinUrl"
                     id="linkedin"
                     required="required"
