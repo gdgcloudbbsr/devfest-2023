@@ -8,6 +8,9 @@ import LoginModal from "../Layouts/LoginModal";
 import { setLoginModal, setPopModal } from "../Store/Slices/MainSlice";
 import PopupModalOld from "../Components/PopupModalOld";
 import { Router } from "../router/appRouter";
+import axios from "axios";
+import { API_URL } from "../utils/constant";
+import toast from "react-hot-toast";
 
 const CheckOut = () => {
   const loginPopModal = useSelector((state) => state.Main.loginModal);
@@ -27,6 +30,87 @@ const CheckOut = () => {
   const popModal = useSelector((state) => state.Main.popModal);
 
   const dispatch = useDispatch();
+
+  function loadScript(src) {
+    alert("load script call");
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+
+  async function displayRazorpay() {
+    alert("display call");
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!res) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+
+    //creating a new order
+    const order = await axios.post(`${API_URL}/order`, { user: userData }).catch((err) => toast.error("No Ticket Left"));
+
+    if (order.status == 200) {
+      // Getting the order details back
+      const { amount, id: id, currency, receipt } = order.data;
+      console.log(order);
+
+      var options = {
+        //"key": 'rzp_test_KkQShTvtQCSvgx', // Enter the Key ID generated from the Dashboard
+        amount: amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: currency,
+        name: "GDG BBSR", //your business name
+        description: "Test Transaction",
+        image: "http://localhost:5173/assets/logo.svg",
+        order_id: id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url": "http://localhost:5173/my_tickets",
+        handler: async function (response) {
+          const data = {
+            orderCreationId: receipt,
+            razorpayPaymentId: response.razorpay_payment_id,
+            razorpayOrderId: response.razorpay_order_id,
+            razorpaySignature: response.razorpay_signature,
+          };
+          const result = await axios.post(`${API_URL}/book`, {
+            user: userData,txnid:data.razorpayOrderId
+          });
+
+          if (result.status == 200) {
+            toast.success("Ticked Booked Successfully");
+          } else if (result.status == 400) {
+            toast.error("No ticked available");
+          } else {
+            toast.error("Server error. Are you online?");
+          }
+        },
+        prefill: {
+          //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+          name: "Gaurav Kumar", //your customer's name
+          email: "gaurav.kumar@example.com",
+          contact: "9000090000", //Provide the customer's phone number for better conversion rates
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    }
+  }
 
   return (
     <>
@@ -159,15 +243,16 @@ const CheckOut = () => {
                       <span>{data.tickets.ticketSection.options[0].price}</span>
                     </li>
                     <li>
-                      {/* <div
+                      <div
                         className="btn"
                         onClick={() => {
-                          dispatch(setPopModal(!popModal));
+                          // dispatch(setPopModal(!popModal));
+                          displayRazorpay();
                         }}
                       >
                         <PrimaryBtn text={"Pay Now"} />
-                      </div> */}
-                      Stay Tuned
+                      </div>
+                      {/* Stay Tuned */}
                     </li>
                   </ul>
                 </div>
