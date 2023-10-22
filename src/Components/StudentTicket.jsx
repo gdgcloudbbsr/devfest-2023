@@ -1,17 +1,14 @@
 import { useMemo } from "react";
 import data from "../Data/data.json";
-import PrimaryBtn from "./PrimaryBtn";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Router } from "../router/appRouter";
-import { useDispatch } from "react-redux";
-import { setOccupation } from "../Store/Slices/MainSlice";
+import { useSelector } from "react-redux";
 
 const StudentTicket = ({ link = Router.checkout }) => {
-  const dispatch = useDispatch();
-  const stock = 300;
   const ticketData = data.tickets.ticketSection.options[0];
+  const authStatus = useSelector((state) => state.Main.status);
 
-  const { type, description, price, button, benefits, image } = ticketData;
+  const { type, description, benefits, image } = ticketData;
 
   const renderBenefits = useMemo(() => {
     return benefits.map((benefit, index) => (
@@ -33,10 +30,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
               <h3>{type}</h3>
               <p>{description}</p>
             </div>
-            <div className="StudentTicket-container-text-price">
-              <h2>{price}</h2>
-            </div>
-            <div
+            {/* <div
               className={`StudentTicket-container-text-btn ${
                 !stock ? "outOfStock" : ""
               }`}
@@ -64,6 +58,19 @@ const StudentTicket = ({ link = Router.checkout }) => {
                 <p>
                   {`Tickets for ${type} are currently out of stock. Please stay tuned for updates.`}
                 </p>
+              )}
+            </div> */}
+            <div>
+              {!authStatus ? (
+                <p
+                  style={{
+                    color: "var(--yellow)",
+                  }}
+                >
+                  Please login to buy tickets!
+                </p>
+              ) : (
+                <p>You have been added to the waiting list! 🎉</p>
               )}
             </div>
           </div>

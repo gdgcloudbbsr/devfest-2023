@@ -34,6 +34,7 @@ const Register = () => {
     city: "",
     howDoYouHear: "nAn",
     password: "",
+    linkedinUrl: "",
   });
 
   const [error, setError] = useState({
@@ -41,6 +42,7 @@ const Register = () => {
     workEmail: false,
     howDoYouHear: false,
     gender: false,
+    linkedinUrl: false,
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -50,6 +52,13 @@ const Register = () => {
 
     return pattern.test(email);
   }
+
+  const isLinkedInProfile = (url) => {
+    const linkedinPattern =
+      /^https?:\/\/(?:www\.)?linkedin\.com\/(?:in|pub)\/([a-zA-Z0-9_-]+)(?:\/.*)?$/;
+    return linkedinPattern.test(url);
+    // true or false
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -82,6 +91,14 @@ const Register = () => {
     if (name === "howDoYouHear") {
       if (value != "nAn") {
         setError({ ...error, howDoYouHear: false });
+      }
+    }
+
+    if (name === "linkedinUrl") {
+      if (isLinkedInProfile(value)) {
+        setError({ ...error, linkedinUrl: false });
+      } else {
+        setError({ ...error, linkedinUrl: true });
       }
     }
   };
@@ -136,6 +153,7 @@ const Register = () => {
       city: "",
       howDoYouHear: "nAn",
       password: "",
+      linkedinUrl: "",
     });
 
     setShowPassword(false);
@@ -421,6 +439,32 @@ const Register = () => {
                   </label>
                 </div>
                 {/* ---- */}
+
+                {/* linkedin url  */}
+
+                <div className="inputBox">
+                  <input
+                    type="text"
+                    name="linkedinUrl"
+                    id="linkedin"
+                    required="required"
+                    value={data.linkedinUrl}
+                    onChange={handleInputChange}
+                    style={{
+                      textTransform: "lowercase",
+                    }}
+                  />
+                  <label className="label" htmlFor="linkedin">
+                    Linkedin Profile URL
+                  </label>
+                  {error.linkedinUrl === true && (
+                    <div className={`info red`}>
+                      <span>
+                        Oops! This doesn't look like a LinkedIn profile.
+                      </span>
+                    </div>
+                  )}
+                </div>
 
                 {/* How did you hear about DevFest'23? */}
 
