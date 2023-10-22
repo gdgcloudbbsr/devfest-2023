@@ -12,9 +12,13 @@ import { setLoginModal, setUserData } from "../Store/Slices/MainSlice";
 import { Router } from "../router/appRouter";
 import toast from "react-hot-toast";
 import { animateScroll } from "react-scroll";
+import PasswordReset from "../Layouts/PasswordReset";
 
 const Register = () => {
   const loginPopModal = useSelector((state) => state.Main.loginModal);
+  const passwordResetModal = useSelector(
+    (state) => state.Main.passwordResetModal
+  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -144,6 +148,7 @@ const Register = () => {
   return (
     <>
       {loginPopModal && <LoginModal />}
+      {passwordResetModal && <PasswordReset />}
 
       <div className="Register">
         <div id="bgImage">

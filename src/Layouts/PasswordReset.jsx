@@ -9,6 +9,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { API_URL } from "../utils/constant";
 
 const PasswordReset = () => {
   const dispatch = useDispatch();
@@ -59,17 +61,46 @@ const PasswordReset = () => {
       });
     }
   };
-
-  const emailSubmitHandle = (e) => {
+  //otp generate
+  const emailSubmitHandle = async (e) => {
     e.preventDefault();
-    const user = true;
-    if (user) {
-      setForWardPath({
-        ...forWardPath,
-        emailInput: false,
-        otpInput: true,
-      });
+    const response = await axios.post(`${API_URL}/forgotPassword`, {
+      Email: data.email.toLowerCase(),
+    });
+    console.log(response);
+    try {
+      if (response.status === 200) {
+        await toast.promise(
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, 1000); // Adjust the duration as needed
+          }),
+          {
+            loading: "OTP Sending...",
+            success: "OTP Sent Successful!",
+            error: "An error occurred during Otp Sending.",
+          }
+        );
+        setForWardPath({
+          ...forWardPath,
+          emailInput: false,
+          otpInput: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      console.log(error.response);
+      console.log(error.response.data);
+      toast.error(error.response.data.message);
     }
+    //  else if (response.status === 400) {
+    //       toast.error("User not found");
+    //       console.log("User not found");
+    //     } else {
+    //       console.log("Something Went Wrong");
+    //       toast.error("Something went wrong");
+    //     }
   };
 
   const OtpHandleChange = (index, value) => {
@@ -86,8 +117,8 @@ const PasswordReset = () => {
       inputRefs[index + 1].current.focus();
     }
   };
-
-  const OtpSubmitHandle = (e) => {
+  //otp submit
+  const OtpSubmitHandle = async (e) => {
     e.preventDefault();
     const otp = otpInputs.join("");
 
@@ -96,11 +127,32 @@ const PasswordReset = () => {
       setShowPassword(true);
       return;
     } else {
-      toast.success("Password changed successfully");
-      alert(otp);
-      setOTPInputs(["", "", "", ""]);
-      dispatch(setPasswordResetModal(!passwordResetModal));
-      dispatch(setLoginModal(!loginPopModal));
+      const response = await axios.post(`${API_URL}/resetPassword`, {
+        Otp: otp,
+        email: data.email,
+        Password: data.newPassword,
+        confirmPassword: data.confirmPassword,
+      });
+      if (response.status === 200) {
+        await toast.promise(
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, 1000); // Adjust the duration as needed
+          }),
+          {
+            loading: "Password updating...",
+            success: "Password Changed!",
+            error: "An error occurred during Password Changing.",
+          }
+        );
+        dispatch(setPasswordResetModal(!passwordResetModal));
+        dispatch(setLoginModal(!loginPopModal));
+      } else if (response.status === 400) {
+        toast.error("Invalid OTP");
+      } else {
+        toast.error("Something went wrong");
+      }
     }
   };
 
@@ -125,10 +177,6 @@ const PasswordReset = () => {
   //     dispatch(setLoginModal(!loginPopModal));
   //   }
   // };
-
-  useEffect(() => {
-    console.log(otpInputs);
-  }, []);
 
   return (
     <div className="PasswordReset PopupModal">

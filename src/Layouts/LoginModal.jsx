@@ -66,11 +66,19 @@ const LoginModal = () => {
     }
   };
 
-  const verifyCookie = async () => {
+  const verifyCookie = async (token) => {
+    // alert(token);
     try {
-      const response = await axios.post(`${API_URL}`, null, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        `${API_URL}`,
+        {
+          jwtToken: token,
+        },
+        null,
+        {
+          withCredentials: true,
+        }
+      );
 
       if (response.data.status === true) {
         dispatch(setUserData(response.data.user));
@@ -121,7 +129,7 @@ const LoginModal = () => {
       // window.location.reload();
       navigate(Router.home);
       tempEmail = null;
-      return verifyCookie();
+      return verifyCookie(response.data.jwttoken);
     } catch (error) {
       console.log(error);
       toast.error("Login failed : " + error.response.data.error);
