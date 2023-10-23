@@ -13,6 +13,7 @@ import { Router } from "../router/appRouter";
 import toast from "react-hot-toast";
 import { animateScroll } from "react-scroll";
 import PasswordReset from "../Layouts/PasswordReset";
+import bannedLists from "../Data/bannedMail.json";
 
 const Register = () => {
   const loginPopModal = useSelector((state) => state.Main.loginModal);
@@ -58,6 +59,24 @@ const Register = () => {
       /^https?:\/\/(?:www\.)?linkedin\.com\/(?:in|pub)\/([a-zA-Z0-9_-]+)(?:\/.*)?$/;
     return linkedinPattern.test(url);
     // true or false
+  };
+
+  const isBannedEmailValid = (email) => {
+    const bannedDomains = bannedLists.lists;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      return false;
+    }
+
+    const [, domain] = email.split("@");
+
+    if (bannedDomains.includes(domain)) {
+      return false; // Email is from a banned domain
+    }
+
+    return true; // Email is valid and not from a banned domain
   };
 
   const handleInputChange = (e) => {
@@ -116,8 +135,21 @@ const Register = () => {
       return;
     }
 
+    if (!isBannedEmailValid(data.workEmailAddress)) {
+      toast.error("Please enter a valid work email address");
+      setData({ ...data, workEmailAddress: "" });
+      return;
+    }
+
+    if (!isLinkedInProfile(data.linkedinUrl)) {
+      toast.error("Please enter a valid linkedin profile url");
+      setData({ ...data, linkedinUrl: "" });
+      return;
+    }
+
     data.emailAddress = data.emailAddress.toLowerCase();
     // Send the form data to the server
+
     axios
       .post(`${API_URL}/save`, { registration: data })
       .then(async (res) => {
