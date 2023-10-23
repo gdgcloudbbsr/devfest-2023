@@ -122,7 +122,10 @@ const DashboardTicket = ({ paymentStatus, stock }) => {
               </div>
               <div className="DashboardTicket-container-details-item">
                 <span>Event Venue</span>
-                <h4>{data.venueData.text}</h4>
+                <h4>{data.venueData.text}</h4>-{" "}
+                <a href={data.venueData.link} target="_blank">
+                  Map Link
+                </a>
               </div>
             </div>
           </div>

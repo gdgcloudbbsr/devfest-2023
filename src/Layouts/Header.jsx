@@ -3,7 +3,7 @@ import Wrapper from "../Components/Wrapper";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import SecondaryBtn from "../Components/SecondaryBtn";
 import data from "../Data/data.json";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -112,9 +112,9 @@ const Header = () => {
     <header id="header">
       <Wrapper>
         <div id="header-container">
-          <div className="logo">
+          <Link to={Router.home} className="logo">
             <img src={data.Header.logo} alt="DevFest Bhubaneswar 2023 logo" />
-          </div>
+          </Link>
           <div id="navmenu">
             <div id="navmenu-container">
               <div id="navlinks">

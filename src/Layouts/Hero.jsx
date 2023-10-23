@@ -6,13 +6,9 @@ import data from "../Data/data.json";
 import { Link } from "react-router-dom";
 import AfterMovie from "./AfterMovie";
 import OverlayBg from "../Components/OverlayBg";
-import { useDispatch, useSelector } from "react-redux";
-import { setPopModal } from "../Store/Slices/MainSlice";
 import { Router } from "../router/appRouter";
 
 const Hero = () => {
-  const popModal = useSelector((state) => state.Main.popModal);
-  const dispatch = useDispatch();
   return (
     <div id="hero">
       <OverlayBg />
@@ -40,7 +36,9 @@ const Hero = () => {
                 <div className="ico">
                   <FaMap />
                 </div>
-                <Link to={data.venueData.link}>{data.venueData.text}</Link>
+                <a href={data.venueData.link} target="_blank">
+                  {data.venueData.text}
+                </a>
               </div>
               <div className="date">
                 <div className="ico">

@@ -5,9 +5,9 @@
   "venueData": {
     "h1": "Venue Location",
     "p": "Join us at DevFest 2023 Bhubaneswar, hosted at a modern, centrally located venue equipped for tech talks, networking, and innovation.",
-    "text": "Coming Soon",
-    "link": "#",
-    "MapData": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6822.878635924956!2d85.82268916828282!3d20.293935529176753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909d2d5170aa5%3A0xfc580e2b68b33fa8!2sBhubaneswar%2C%20Odisha!5e0!3m2!1sen!2sin!4v1694245605987!5m2!1sen!2sin"
+    "text": "Hotel Hindusthan International, Bhubaneswar",
+    "link": "https://maps.app.goo.gl/wtWVkDQf8cA59yTHA",
+    "MapData": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.6422236778644!2d85.8455814!3d20.2736676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a753b1c03955%3A0x1c65618f9a20f529!2sHotel%20Hindusthan%20International%20Bhubaneswar!5e0!3m2!1sen!2sin!4v1698058457797!5m2!1sen!2sin"
   },
   "Header": {
     "logo": "/assets/logo.svg",
@@ -241,7 +241,7 @@
       },
       {
         "name": "Nitin Prakash",
-        "designation": "Senior Software Engineer, Upswing Financial Technologie",
+        "designation": "Senior Software Engineer, Upswing Financial Technologies",
         "topicName": "Google Developers Expert - Android",
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/nitin-prakash9911/"
@@ -251,7 +251,7 @@
       {
         "name": "Biswajit Giri",
         "designation": "Google Cloud Principal Architect, LTIMindtree",
-        "topicName": "Google Developers Expert - Cloud",
+        "topicName": "Cloud",
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/biswanathgiri/"
         },
