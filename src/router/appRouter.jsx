@@ -117,9 +117,7 @@ const appRouter = createBrowserRouter([
   {
     path: Router.register,
     element: (
-      <PrivateRouter>
         <Register />
-      </PrivateRouter>
     ),
   },
   {
