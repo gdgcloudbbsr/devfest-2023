@@ -70,7 +70,16 @@ const StudentTicket = ({ link = Router.checkout }) => {
                   Please login to buy tickets!
                 </p>
               ) : (
-                <p>You have been added to the waiting list! 🎉</p>
+                <p
+                  style={{
+                    color: "var(--white)",
+                    backgroundColor: "var(--blue)",
+                    padding: "1rem",
+                    borderRadius: "0.5rem",
+                  }}
+                >
+                  You have been added to the waiting list! 🎉
+                </p>
               )}
             </div>
           </div>

@@ -49,48 +49,51 @@ const SpeakerCard = ({ data }) => {
           />
           <div className="name">
             <h4>{data.name}</h4>
-            <span>{data.technology}</span>
+            <span>{data.designation}</span>
           </div>
           <div className="topicName">
-            <span className="tag">Topic Name</span>
+            <span className="tag">Track</span>
             <h5>{data.topicName}</h5>
           </div>
           <div className="socialLinks">
             {data.socialLinks.instagram && (
-              <Link
+              <a
                 className="facebook social-item"
-                to={data.socialLinks.instagram}
+                href={data.socialLinks.instagram}
+                target="_blank"
               >
                 <div className="ico">
                   <span>
                     <FaFacebookF />
                   </span>
                 </div>
-              </Link>
+              </a>
             )}
             {data.socialLinks.linkedin && (
-              <Link
+              <a
                 className="linkedin social-item"
-                to={data.socialLinks.linkedin}
+                href={data.socialLinks.linkedin}
+                target="_blank"
               >
                 <div className="ico">
                   <span>
                     <FaLinkedinIn />
                   </span>
                 </div>
-              </Link>
+              </a>
             )}
             {data.socialLinks.twitter && (
-              <Link
+              <a
                 className="twitter social-item"
-                to={data.socialLinks.twitter}
+                href={data.socialLinks.twitter}
+                target="_blank"
               >
                 <div className="ico">
                   <span>
                     <FaTwitter />
                   </span>
                 </div>
-              </Link>
+              </a>
             )}
           </div>
         </div>
