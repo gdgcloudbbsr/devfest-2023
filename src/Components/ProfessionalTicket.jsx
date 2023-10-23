@@ -5,6 +5,7 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Router } from "../router/appRouter";
 import { useSelector } from "react-redux";
 
+
 const ProfessionalTicket = ({ link = Router.checkout }) => {
   const ticketData = data.tickets.ticketSection.options[1];
 
@@ -32,6 +33,7 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
               <h3>{type}</h3>
               <p>{description}</p>
             </div>
+
             {/* <div
               className={`ProfessionalTicket-container-text-btn ${
                 !stock ? "outOfStock" : ""

@@ -23,6 +23,7 @@ const App = () => {
   const progressBar = useRef(null);
   const app = useRef(null);
 
+
   const [cookies, removeCookie] = useCookies([]);
 
   const dispatch = useDispatch();
