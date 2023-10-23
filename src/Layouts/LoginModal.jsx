@@ -1,11 +1,15 @@
 import { RxCross2 } from "react-icons/rx";
 import SectionHeadingText from "../Components/SectionHeadingText";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Router } from "../router/appRouter";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoginModal, setUserData } from "../Store/Slices/MainSlice";
+import {
+  setLoginModal,
+  setPasswordResetModal,
+  setUserData,
+} from "../Store/Slices/MainSlice";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { animateScroll } from "react-scroll";
 import axios from "axios";
@@ -13,6 +17,9 @@ import { API_URL } from "../utils/constant";
 
 const LoginModal = () => {
   const loginPopModal = useSelector((state) => state.Main.loginModal);
+  const passwordResetModal = useSelector(
+    (state) => state.Main.passwordResetModal
+  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -59,6 +66,33 @@ const LoginModal = () => {
     }
   };
 
+  const verifyCookie = async (token) => {
+    // alert(token);
+    try {
+      const response = await axios.post(
+        `${API_URL}`,
+        {
+          jwtToken: token,
+        },
+        null,
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (response.data.status === true) {
+        dispatch(setUserData(response.data.user));
+      } else {
+        removeCookie("jwtToken");
+        navigate(Router.home);
+        document.cookie =
+          "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      }
+    } catch (error) {
+      console.error("Error verifying cookie:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -78,15 +112,27 @@ const LoginModal = () => {
         email: Email,
         password: Password,
       });
-      console.log(response.data);
-
-      dispatch(setUserData(response.data));
-      navigate(Router.home);
+      document.cookie = `jwtToken=${response.data.jwttoken}; path=/`;
       dispatch(setLoginModal(!loginPopModal));
-      toast.success("Welcome " + response.data.name);
+      await toast.promise(
+        new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, 1000); // Adjust the duration as needed
+        }),
+        {
+          loading: "Logging in...",
+          success: "Login successful!",
+          error: "An error occurred during login.",
+        }
+      );
+      // window.location.reload();
+      navigate(Router.home);
       tempEmail = null;
+      return verifyCookie(response.data.jwttoken);
     } catch (error) {
-      // toast.error("Login failed : " + error.response.data.error);
+      console.log(error);
+      toast.error("Login failed : " + error.response.data.error);
       if (error.response.data.error === "User not found") {
         toast.error("Please register first");
         setData({
@@ -168,6 +214,10 @@ const LoginModal = () => {
                   required="required"
                   value={data.password}
                   onChange={handleInputChange}
+                  style={{
+                    textTransform: "none",
+                  }}
+                  autoComplete="off"
                 />
                 <label className="label" htmlFor="password">
                   Password
@@ -181,7 +231,15 @@ const LoginModal = () => {
                   {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </div>
               </div>
-              <Link className="forgot">Forgot Password</Link>
+              <div
+                className="forgot"
+                onClick={() => {
+                  dispatch(setLoginModal(!loginPopModal));
+                  dispatch(setPasswordResetModal(!passwordResetModal));
+                }}
+              >
+                Forgot Password?
+              </div>
             </div>
             {/* -- */}
             <button

@@ -1,11 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SectionHeadingText from "../Components/SectionHeadingText";
 import data from "../Data/data.json";
 import PrimaryBtn from "../Components/PrimaryBtn";
-import { Router } from "../router/appRouter";
 import { FaShareAlt } from "react-icons/fa";
-import toast from "react-hot-toast";
-import { useEffect } from "react";
 
 const DashboardTicket = ({ paymentStatus, stock }) => {
   const userData = useSelector((state) => state.Main.userData);

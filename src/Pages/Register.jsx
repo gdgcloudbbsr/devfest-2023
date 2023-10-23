@@ -11,9 +11,14 @@ import LoginModal from "../Layouts/LoginModal";
 import { setLoginModal, setUserData } from "../Store/Slices/MainSlice";
 import { Router } from "../router/appRouter";
 import toast from "react-hot-toast";
+import { animateScroll } from "react-scroll";
+import PasswordReset from "../Layouts/PasswordReset";
 
 const Register = () => {
   const loginPopModal = useSelector((state) => state.Main.loginModal);
+  const passwordResetModal = useSelector(
+    (state) => state.Main.passwordResetModal
+  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,6 +34,7 @@ const Register = () => {
     city: "",
     howDoYouHear: "nAn",
     password: "",
+    linkedinUrl: "",
   });
 
   const [error, setError] = useState({
@@ -36,6 +42,7 @@ const Register = () => {
     workEmail: false,
     howDoYouHear: false,
     gender: false,
+    linkedinUrl: false,
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -45,6 +52,13 @@ const Register = () => {
 
     return pattern.test(email);
   }
+
+  const isLinkedInProfile = (url) => {
+    const linkedinPattern =
+      /^https?:\/\/(?:www\.)?linkedin\.com\/(?:in|pub)\/([a-zA-Z0-9_-]+)(?:\/.*)?$/;
+    return linkedinPattern.test(url);
+    // true or false
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -79,6 +93,14 @@ const Register = () => {
         setError({ ...error, howDoYouHear: false });
       }
     }
+
+    if (name === "linkedinUrl") {
+      if (isLinkedInProfile(value)) {
+        setError({ ...error, linkedinUrl: false });
+      } else {
+        setError({ ...error, linkedinUrl: true });
+      }
+    }
   };
 
   const handleSubmit = (e) => {
@@ -98,14 +120,26 @@ const Register = () => {
     // Send the form data to the server
     axios
       .post(`${API_URL}/save`, { registration: data })
-      .then((res) => {
-        console.log(res.data);
-        dispatch(setUserData(res.data));
+      .then(async (res) => {
+        document.cookie = `jwtToken=${res.data.jwttoken}; path=/`;
+
+        await toast.promise(
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, 1000); // Adjust the duration as needed
+          }),
+          {
+            loading: "Registering...",
+            success: "Registered successful!",
+            error: "An error occurred during register.",
+          }
+        );
         navigate(Router.home);
-        toast.success("Registered successfully");
+        animateScroll.scrollToTop();
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.response.data.message);
       });
 
     setData({
@@ -119,6 +153,7 @@ const Register = () => {
       city: "",
       howDoYouHear: "nAn",
       password: "",
+      linkedinUrl: "",
     });
 
     setShowPassword(false);
@@ -126,11 +161,12 @@ const Register = () => {
 
   useEffect(() => {
     document.title = "Register | DevFest 2023 Bhubaneswar";
-  }, [data]);
+  }, []);
 
   return (
     <>
       {loginPopModal && <LoginModal />}
+      {passwordResetModal && <PasswordReset />}
 
       <div className="Register">
         <div id="bgImage">
@@ -333,6 +369,10 @@ const Register = () => {
                     required="required"
                     value={data.password}
                     onChange={handleInputChange}
+                    style={{
+                      textTransform: "none",
+                    }}
+                    autoComplete="off"
                   />
                   <label className="label" htmlFor="password">
                     Password
@@ -400,6 +440,32 @@ const Register = () => {
                 </div>
                 {/* ---- */}
 
+                {/* linkedin url  */}
+
+                <div className="inputBox">
+                  <input
+                    type="text"
+                    name="linkedinUrl"
+                    id="linkedin"
+                    required="required"
+                    value={data.linkedinUrl}
+                    onChange={handleInputChange}
+                    style={{
+                      textTransform: "lowercase",
+                    }}
+                  />
+                  <label className="label" htmlFor="linkedin">
+                    Linkedin Profile URL
+                  </label>
+                  {error.linkedinUrl === true && (
+                    <div className={`info red`}>
+                      <span>
+                        Oops! This doesn't look like a LinkedIn profile.
+                      </span>
+                    </div>
+                  )}
+                </div>
+
                 {/* How did you hear about DevFest'23? */}
 
                 <div className="inputBoxSelect">
@@ -432,7 +498,13 @@ const Register = () => {
                   )}
                 </div>
                 {/* ---- */}
-                <button type="submit" className="SecondaryBtn">
+                <button
+                  type="submit"
+                  className="SecondaryBtn"
+                  onClick={() => {
+                    animateScroll.scrollToTop();
+                  }}
+                >
                   <span>Register</span>
                 </button>
               </form>

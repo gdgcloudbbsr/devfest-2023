@@ -1,14 +1,20 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Layouts/Footer";
-// import HeaderOld from "./Layouts/HeaderOld";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import Header from "./Layouts/Header";
+import LoginModal from "./Layouts/LoginModal";
+import { useDispatch, useSelector } from "react-redux";
 import Lenis from "@studio-freight/lenis";
-// import Header from "./Layouts/Header";
-// import LoginModal from "./Layouts/LoginModal";
-import { useSelector } from "react-redux";
-import HeaderOld from "./Layouts/HeaderOld";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { setUserData } from "./Store/Slices/MainSlice";
+import toast from "react-hot-toast";
+import Loader from "./Components/Loader";
+import PopupModalOld from "./Components/PopupModalOld";
+import PasswordReset from "./Layouts/PasswordReset";
+import { API_URL } from "./utils/constant";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,8 +23,18 @@ const App = () => {
   const progressBar = useRef(null);
   const app = useRef(null);
 
-  // const loginPopModal = useSelector((state) => state.Main.loginModal);
-  const popModal = useSelector((state) => state.Main.popModal);
+
+  const [cookies, removeCookie] = useCookies([]);
+
+  const dispatch = useDispatch();
+
+  const loginPopModal = useSelector((state) => state.Main.loginModal);
+  const comingModal = useSelector((state) => state.Main.popModal);
+  const passwordResetModal = useSelector(
+    (state) => state.Main.passwordResetModal
+  );
+
+  const [loading, setLoading] = useState(true);
 
   const lenis = new Lenis({
     duration: 1.2,
@@ -35,6 +51,20 @@ const App = () => {
     requestAnimationFrame(raf);
   }
 
+  const formatDocumentTitle = (pathname) => {
+    if (pathname === "/") {
+      return "Home | DevFest Bhubaneswar 2023";
+    } else {
+      const formattedPathname =
+        pathname.substring(1).charAt(0).toUpperCase() +
+        pathname.substring(1).slice(1);
+
+      return pathname.includes("_")
+        ? `${formattedPathname.replace(/_/g, " ")} | DevFest Bhubaneswar 2023`
+        : `${formattedPathname} | DevFest Bhubaneswar 2023`;
+    }
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.to(progressBar.current, {
@@ -49,22 +79,7 @@ const App = () => {
       });
 
       ScrollTrigger.refresh();
-
-      if (location.pathname === "/") {
-        document.title = "Home | DevFest Bhubaneswar 2023";
-      } else {
-        if (location.pathname.includes("_")) {
-          document.title = `${(
-            location.pathname.substring(1).charAt(0).toUpperCase() +
-            location.pathname.substring(1).slice(1)
-          ).replace(/_/g, " ")}  | DevFest Bhubaneswar 2023`;
-        } else {
-          document.title = `${
-            location.pathname.substring(1).charAt(0).toUpperCase() +
-            location.pathname.substring(1).slice(1)
-          }  | DevFest Bhubaneswar 2023`;
-        }
-      }
+      document.title = formatDocumentTitle(location.pathname);
     }, app.current);
 
     return () => ctx.revert();
@@ -72,17 +87,72 @@ const App = () => {
 
   useEffect(() => {
     requestAnimationFrame(raf);
+
+    const handleLoad = () => {
+      setLoading(false);
+    };
+
+    // window.addEventListener("load", handleLoad);
+
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => {
+      // window.removeEventListener("load", handleLoad);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
+  const verifyCookie = async (token) => {
+    try {
+      const response = await axios.post(
+        `${API_URL}`,
+        {
+          jwtToken: token,
+        },
+        null,
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (response.data.status === true) {
+        // console.log(response);
+        dispatch(setUserData(response.data.user));
+        toast.success(`Welcome, ${response.data.user.name}!`);
+      } else {
+        removeCookie("jwtToken");
+        document.cookie =
+          "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      }
+    } catch (error) {
+      console.error("Error verifying cookie:", error);
+    }
+  };
+
+  useEffect(() => {
+    console.log(cookies.jwtToken);
+    verifyCookie(cookies.jwtToken);
+  }, [cookies, removeCookie]);
+
   return (
-    <div id="App" ref={app}>
-      {/* {loginPopModal && <LoginModal />} */}
-      <div className="progress" ref={progressBar}></div>
-      {/* <Header /> */}
-      <HeaderOld />
-      <Outlet />
-      <Footer />
-    </div>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div id="App" ref={app}>
+          {loginPopModal && <LoginModal />}
+          {comingModal && <PopupModalOld />}
+          {passwordResetModal && <PasswordReset />}
+
+          <div className="progress" ref={progressBar}></div>
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 

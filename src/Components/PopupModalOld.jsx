@@ -3,7 +3,7 @@ import SecondaryBtn from "./SecondaryBtn";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopModal } from "../Store/Slices/MainSlice";
 
-const PopupModalOld = () => {
+const PopupModalOld = ({ text = "Coming Soon, Stay tuned" }) => {
   const popModal = useSelector((state) => state.Main.popModal);
   const dispatch = useDispatch();
 
@@ -21,7 +21,13 @@ const PopupModalOld = () => {
           </div>
         </button>
         <div className="PopupModal-container-text">
-          <h3>Registration Coming Soon</h3>
+          <h3
+            style={{
+              marginBottom: "1rem",
+            }}
+          >
+            {text}
+          </h3>
           <div
             onClick={() => {
               dispatch(setPopModal(!popModal));
