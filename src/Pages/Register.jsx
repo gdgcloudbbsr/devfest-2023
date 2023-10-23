@@ -61,23 +61,16 @@ const Register = () => {
     // true or false
   };
 
-  const isBannedEmailValid = (email) => {
-    const bannedDomains = bannedLists.lists;
+  function isNotWorkValidEmail(email) {
+    const gmailPattern = /@gmail\.com$/;
+    const yahooPattern = /@yahoo\.com$/;
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(email)) {
+    if (gmailPattern.test(email) || yahooPattern.test(email)) {
       return false;
+    } else {
+      return true;
     }
-
-    const [, domain] = email.split("@");
-
-    if (bannedDomains.includes(domain)) {
-      return false; // Email is from a banned domain
-    }
-
-    return true; // Email is valid and not from a banned domain
-  };
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -135,15 +128,15 @@ const Register = () => {
       return;
     }
 
-    if (!isBannedEmailValid(data.workEmailAddress)) {
-      toast.error("Please enter a valid work email address");
-      setData({ ...data, workEmailAddress: "" });
-      return;
-    }
-
     if (!isLinkedInProfile(data.linkedinUrl)) {
       toast.error("Please enter a valid linkedin profile url");
       setData({ ...data, linkedinUrl: "" });
+      return;
+    }
+
+    if (!isNotWorkValidEmail(data.workEmailAddress)) {
+      toast.error("Please enter a valid work email address");
+      setData({ ...data, workEmailAddress: "" });
       return;
     }
 
