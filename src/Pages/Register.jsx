@@ -25,7 +25,7 @@ const Register = () => {
 
   const [data, setData] = useState({
     name: "",
-    occupation: "student",
+    occupation: "professional",
     emailAddress: "",
     workEmailAddress: "",
     designation: "",
@@ -144,7 +144,7 @@ const Register = () => {
 
     setData({
       name: "",
-      occupation: "student",
+      occupation: "professional",
       emailAddress: "",
       workEmailAddress: "",
       designation: "",

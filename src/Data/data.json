@@ -196,63 +196,66 @@
     "speakerlists": [
       {
         "name": "Suraj Harichandan",
-        "technology": "AI/ML",
-        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "designation": "MTE Salesforce, Google Cloud Certified Professional Cloud Architect",
+        "topicName": "Keynote Speaker",
         "socialLinks": {
-          "instagram": "#",
-          "linkedin": "#"
+          "linkedin": "https://www.linkedin.com/in/suraj-harichandan/"
         },
-        "img": "/assets/images/Speaker/1.png"
+        "img": "/assets/images/Speaker/suraj.webp"
       },
       {
-        "name": "Suraj Harichandan",
-        "technology": "AI/ML",
-        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "name": "Basanta Moharana",
+        "designation": "Lead Designer, OpenLM",
+        "topicName": "Ceremonial Speaker",
         "socialLinks": {
-          "linkedin": "#",
-          "twitter": "#"
+          "linkedin": "https://www.linkedin.com/in/basanntakumar/"
         },
-        "img": "/assets/images/Speaker/1.png"
+        "img": "/assets/images/Speaker/basanta.webp"
       },
       {
-        "name": "Suraj Harichandan",
-        "technology": "AI/ML",
-        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "name": "Sanjib Parida",
+        "designation": "Co-Founder & CTO, IServeU Technologies",
+        "topicName": "Cloud",
         "socialLinks": {
-          "linkedin": "#",
-          "twitter": "#"
+          "linkedin": "https://www.linkedin.com/in/sanjibparida/"
         },
-        "img": "/assets/images/Speaker/1.png"
+        "img": "/assets/images/Speaker/sanjib.webp"
       },
       {
-        "name": "Suraj Harichandan",
-        "technology": "AI/ML",
-        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "name": "Tarun R Jain",
+        "designation": "Developer Relations Manager at AI Planet and GDE in ML",
+        "topicName": "Google Developers Expert - ML",
         "socialLinks": {
-          "instagram": "#",
-          "twitter": "#"
+          "linkedin": "https://www.linkedin.com/in/jaintarun75/"
         },
-        "img": "/assets/images/Speaker/1.png"
+        "img": "/assets/images/Speaker/tarun.webp"
       },
       {
-        "name": "Suraj Harichandan",
-        "technology": "AI/ML",
-        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "name": "Shrutirupa Banerjee",
+        "designation": "Senior Security Researcher, Quick Heal",
+        "topicName": "Google Developers Expert - Web Technologies",
         "socialLinks": {
-          "instagram": "#",
-          "linkedin": "#"
+          "linkedin": "https://www.linkedin.com/in/shrutirupa-banerjiee/"
         },
-        "img": "/assets/images/Speaker/1.png"
+        "img": "/assets/images/Speaker/shruti.webp"
       },
       {
-        "name": "Suraj Harichandan",
-        "technology": "AI/ML",
-        "topicName": "Apps that Scale - “How to Build a Scalebale APP?",
+        "name": "Nitin Prakash",
+        "designation": "Senior Software Engineer, Upswing Financial Technologie",
+        "topicName": "Google Developers Expert - Android",
         "socialLinks": {
-          "instagram": "#",
-          "linkedin": "#"
+          "linkedin": "https://www.linkedin.com/in/nitin-prakash9911/"
         },
-        "img": "/assets/images/Speaker/1.png"
+        "img": "/assets/images/Speaker/nitin.webp"
+      },
+      {
+        "name": "Biswajit Giri",
+        "designation": "Google Cloud Principal Architect, LTIMindtree",
+        "topicName": "Google Developers Expert - Cloud",
+        "socialLinks": {
+          "linkedin": "https://www.linkedin.com/in/biswanathgiri/"
+        },
+        "img": "/assets/images/Speaker/biswa.webp"
       }
     ]
   },

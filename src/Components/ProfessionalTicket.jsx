@@ -5,7 +5,6 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Router } from "../router/appRouter";
 import { useSelector } from "react-redux";
 
-
 const ProfessionalTicket = ({ link = Router.checkout }) => {
   const ticketData = data.tickets.ticketSection.options[1];
 
@@ -74,7 +73,16 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
                   Please login to buy tickets!
                 </p>
               ) : (
-                <p>You have been added to the waiting list! 🎉</p>
+                <p
+                  style={{
+                    color: "var(--white)",
+                    backgroundColor: "var(--green)",
+                    padding: "1rem",
+                    borderRadius: "0.5rem",
+                  }}
+                >
+                  You have been added to the waiting list! 🎉
+                </p>
               )}
             </div>
           </div>

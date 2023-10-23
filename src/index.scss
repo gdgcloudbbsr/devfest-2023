@@ -1534,7 +1534,8 @@ button {
         flex-direction: column;
         gap: 0.2rem;
         span {
-          font-weight: 500;
+          font-weight: 400;
+          font-size: var(--fs-15);
         }
       }
 
@@ -3093,6 +3094,7 @@ select {
     }
 
     &-heading {
+      margin-top: 6rem;
       display: flex;
       flex-direction: column;
       gap: 1rem;
