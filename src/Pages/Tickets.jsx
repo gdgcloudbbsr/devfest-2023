@@ -16,7 +16,7 @@ const Tickets = () => {
 
   const { occupation } = userData || "";
 
-  const paymentStatus = false;
+  const paymentStatus = userData.is_paid;
   const navigate = useNavigate();
 
   useEffect(() => {

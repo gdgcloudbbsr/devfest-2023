@@ -123,3 +123,69 @@ module.exports.sendEmail = async (req, res) => {
   });
   res.status(200).send('Email sent successfully');
 };
+
+module.exports.user_forgotPassword = async (req, res) => {
+  const { Email } = req.body;
+  try {
+    const user = await memberRegistrationModel.findOne({
+      emailAddress: Email,
+    });
+
+    if (!user) {
+      res.status(400).send("User not found");
+    }
+
+    const otp = Math.floor(1000 + Math.random() * 9000);
+    const otpExpire = new Date();
+    otpExpire.setMinutes(otpExpire.getMinutes() + 5);
+
+    user.otp = otp;
+    user.otp_expiry = otpExpire;
+
+    await user.save();
+    const userupdated = await memberRegistrationModel.findOne({
+      emailAddress: "chakitsharma444@gmail.com",
+    });
+    console.log(userupdated);
+
+    const mailOptions = {
+      from: "gdgcloudbbsr@gmail.com",
+      to: "chakitsharma444@gmail.com",
+      subject: "Password reset OTP",
+      text: `Your OTP (It expires after 5 min): ${otp}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return next(new AppError(error, 500));
+      } else {
+        res.status(200).send("OTP sent successfully");
+      }
+    });
+  } catch (err) {
+    res.status(500).send("Something went wrong");
+  }
+};
+
+module.exports.user_resetPassword = async (req, res) => {
+  try {
+    const user = await memberRegistrationModel.findOne({
+      Otp: req.body.otp,
+      otpExpire: { $gt: new Date() },
+    });
+    console.log(user);
+    if (!user) {
+      res.status(400).send("Invalid OTP");
+    } else {
+      user.password = "chakit";
+      user.otp = null;
+      user.otpExpire = null;
+
+      await user.save();
+      res.status(200).send("Password updated successfully");
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Something went wrong");
+  }
+};
