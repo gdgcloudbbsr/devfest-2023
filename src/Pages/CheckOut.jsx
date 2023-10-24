@@ -11,6 +11,8 @@ import { Router } from "../router/appRouter";
 import axios from "axios";
 import { API_URL } from "../utils/constant";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
 
 const CheckOut = () => {
   const loginPopModal = useSelector((state) => state.Main.loginModal);
@@ -27,12 +29,20 @@ const CheckOut = () => {
     document.title = "Checkout | DevFest Bhubaneswar 2023";
   }, []);
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userData.is_verified) {
+      navigate(Router.tickets);
+    }
+  }, [userData.is_verified]);
+
   const popModal = useSelector((state) => state.Main.popModal);
 
   const dispatch = useDispatch();
 
   function loadScript(src) {
-    alert("load script call");
+    // alert("load script call");
     return new Promise((resolve) => {
       const script = document.createElement("script");
       script.src = src;
@@ -47,7 +57,7 @@ const CheckOut = () => {
   }
 
   async function displayRazorpay() {
-    alert("display call");
+    // alert("display call");
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -59,7 +69,6 @@ const CheckOut = () => {
 
     //creating a new order
     const order = await axios.post(`${API_URL}/order`, { user: userData }).catch((err) => toast.error("No Ticket Left"));
-
     if (order.status == 200) {
       // Getting the order details back
       const { amount, id: id, currency, receipt } = order.data;
@@ -71,10 +80,11 @@ const CheckOut = () => {
         currency: currency,
         name: "GDG BBSR", //your business name
         description: "Test Transaction",
-        image: "http://localhost:5173/assets/logo.svg",
+        image: "http://localhost:5173/assets/devfest.svg",
         order_id: id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        "callback_url": "http://localhost:5173/my_tickets",
+        //callback_url: "http://localhost:5173/my_tickets",
         handler: async function (response) {
+          console.log(response);
           const data = {
             orderCreationId: receipt,
             razorpayPaymentId: response.razorpay_payment_id,
@@ -82,11 +92,12 @@ const CheckOut = () => {
             razorpaySignature: response.razorpay_signature,
           };
           const result = await axios.post(`${API_URL}/book`, {
-            user: userData,txnid:data.razorpayOrderId
+            user: userData,txnid:data.razorpayPaymentId
           });
 
           if (result.status == 200) {
             toast.success("Ticked Booked Successfully");
+            location.href="/my_tickets";
           } else if (result.status == 400) {
             toast.error("No ticked available");
           } else {
@@ -95,15 +106,17 @@ const CheckOut = () => {
         },
         prefill: {
           //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-          name: "Gaurav Kumar", //your customer's name
-          email: "gaurav.kumar@example.com",
-          contact: "9000090000", //Provide the customer's phone number for better conversion rates
+          name: userData.name, //your customer's name
+          email: userData.emailAddress, //your customer's email
+          //contact: "9000090000", //Provide the customer's phone number for better conversion rates
         },
         notes: {
-          address: "Razorpay Corporate Office",
+          address: "Google Developers Group, Bhubaneswar",
         },
         theme: {
-          color: "#3399cc",
+          color: '#38a852',
+          headerColor: '#ffbb01',
+          bodyColor: '#ff5145'
         },
       };
 
