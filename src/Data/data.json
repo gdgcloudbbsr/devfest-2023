@@ -103,7 +103,7 @@
   "stats": [
     {
       "text": "Attendees",
-      "num": "650"
+      "num": "350"
     },
     {
       "text": "Days",
@@ -254,7 +254,7 @@
       {
         "name": "Biswajit Giri",
         "designation": "Google Cloud Principal Architect, LTIMindtree",
-        "topicName": "Cloud",
+        "topicName": "Duet AI for Google Cloud",
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/biswanathgiri/"
         },
@@ -263,7 +263,7 @@
       {
         "name": "Hrijul Bhatnagar",
         "designation": "SDE @ Upswing",
-        "topicName": "Web Technologies",
+        "topicName": "Securing Bytes: Encryption Essentials",
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/hrijulbhatnagar/"
         },
