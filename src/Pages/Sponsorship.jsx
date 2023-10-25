@@ -28,7 +28,7 @@ const Sponsorship = () => {
                     opportunities.
                   </p>
                   <a
-                    href={"/assets/SponsorshipBrochureDevFest2023BBSR.pdf"}
+                    href={"https://drive.google.com/file/d/1MMTOfnylYuVmxkA9uwRj_SQHlq-7d1qV/view?usp=sharing"}
                     target="_blank"
                     rel="noreferrer"
                     className="SecondaryBtn"
