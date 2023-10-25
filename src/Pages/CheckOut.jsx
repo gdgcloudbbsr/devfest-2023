@@ -13,7 +13,6 @@ import { API_URL } from "../utils/constant";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-
 const CheckOut = () => {
   const loginPopModal = useSelector((state) => state.Main.loginModal);
 
@@ -35,7 +34,7 @@ const CheckOut = () => {
     if (!userData.is_verified) {
       navigate(Router.tickets);
     }
-  }, [userData.is_verified]);
+  }, [userData.is_verified]);
 
   const popModal = useSelector((state) => state.Main.popModal);
 
@@ -68,7 +67,9 @@ const CheckOut = () => {
     }
 
     //creating a new order
-    const order = await axios.post(`${API_URL}/order`, { user: userData }).catch((err) => toast.error("No Ticket Left"));
+    const order = await axios
+      .post(`${API_URL}/order`, { user: userData })
+      .catch((err) => toast.error("No Ticket Left"));
     if (order.status == 200) {
       // Getting the order details back
       const { amount, id: id, currency, receipt } = order.data;
@@ -92,12 +93,13 @@ const CheckOut = () => {
             razorpaySignature: response.razorpay_signature,
           };
           const result = await axios.post(`${API_URL}/book`, {
-            user: userData,txnid:data.razorpayPaymentId
+            user: userData,
+            txnid: data.razorpayPaymentId,
           });
 
           if (result.status == 200) {
             toast.success("Ticked Booked Successfully");
-            location.href="/my_tickets";
+            location.href = "/my_tickets";
           } else if (result.status == 400) {
             toast.error("No ticked available");
           } else {
@@ -114,13 +116,16 @@ const CheckOut = () => {
           address: "Google Developers Group, Bhubaneswar",
         },
         theme: {
-          color: '#38a852',
-          headerColor: '#ffbb01',
-          bodyColor: '#ff5145'
+          color: "#38a852",
+          headerColor: "#ffbb01",
+          bodyColor: "#ff5145",
         },
       };
 
       const paymentObject = new window.Razorpay(options);
+      paymentObject.on("payment.failed", function (response) {
+        toast.error('Payment Failed');
+      });
       paymentObject.open();
     }
   }

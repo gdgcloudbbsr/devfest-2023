@@ -4,14 +4,16 @@ import QRCode from "react-qr-code";
 import toast from "react-hot-toast";
 import jsPDF from "jspdf";
 import PrimaryBtn from "./PrimaryBtn";
+import { useSelector } from "react-redux";
 
 const TicketTemplatePdf = () => {
   const ticket = useRef(null);
+  const userData = useSelector((state) => state.Main.userData);
 
   const data = {
-    name: "Rashmi Ranjan Nayak",
-    orderNo: "bxsxsx15155",
-    id: "GOOGLEjcs2021",
+    name: userData.name,
+    orderNo: userData.transaction_id,
+    id:userData.unique_id,
   };
 
   const exportAsImageAndPDF = async (el, name) => {
@@ -50,7 +52,7 @@ const TicketTemplatePdf = () => {
 
   return (
     <>
-      <div style={{ minHeight: "300px" }}></div>
+      <div style={{ minHeight: "32px" }}></div>
       <div
         id="tickettemplateMain"
         style={{
