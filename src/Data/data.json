@@ -103,7 +103,7 @@
   "stats": [
     {
       "text": "Attendees",
-      "num": "650"
+      "num": "350"
     },
     {
       "text": "Days",
@@ -228,7 +228,8 @@
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/jaintarun75/"
         },
-        "img": "/assets/images/Speaker/tarun.webp"
+        "img": "/assets/images/Speaker/tarun.webp",
+        "talk": "Parameter Efficient Fine tuning of Large Language Models"
       },
       {
         "name": "Shrutirupa Banerjee",
@@ -237,7 +238,8 @@
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/shrutirupa-banerjiee/"
         },
-        "img": "/assets/images/Speaker/shruti.webp"
+        "img": "/assets/images/Speaker/shruti.webp",
+        "talk": "Malicious JavaScript: Code that Conceals"
       },
       {
         "name": "Nitin Prakash",
@@ -246,12 +248,13 @@
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/nitin-prakash9911/"
         },
-        "img": "/assets/images/Speaker/nitin.webp"
+        "img": "/assets/images/Speaker/nitin.webp",
+        "talk": "Biometric Auth API with Clean Code"
       },
       {
         "name": "Biswajit Giri",
         "designation": "Google Cloud Principal Architect, LTIMindtree",
-        "topicName": "Cloud",
+        "topicName": "Duet AI for Google Cloud",
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/biswanathgiri/"
         },
@@ -260,7 +263,7 @@
       {
         "name": "Hrijul Bhatnagar",
         "designation": "SDE @ Upswing",
-        "topicName": "Web Technologies",
+        "topicName": "Securing Bytes: Encryption Essentials",
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/hrijulbhatnagar/"
         },
