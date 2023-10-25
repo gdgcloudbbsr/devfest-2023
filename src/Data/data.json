@@ -219,7 +219,9 @@
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/sanjibparida/"
         },
-        "img": "/assets/images/Speaker/sanjib.webp"
+        "img": "/assets/images/Speaker/sanjib.webp",
+        "Category": "Cloud",
+        "color": "#428eff"
       },
       {
         "name": "Tarun R Jain",
@@ -229,7 +231,9 @@
           "linkedin": "https://www.linkedin.com/in/jaintarun75/"
         },
         "img": "/assets/images/Speaker/tarun.webp",
-        "talk": "Parameter Efficient Fine tuning of Large Language Models"
+        "talk": "Parameter Efficient Fine tuning of Large Language Models",
+        "Category": "ML",
+        "color": "#ff5145"
       },
       {
         "name": "Shrutirupa Banerjee",
@@ -239,7 +243,9 @@
           "linkedin": "https://www.linkedin.com/in/shrutirupa-banerjiee/"
         },
         "img": "/assets/images/Speaker/shruti.webp",
-        "talk": "Malicious JavaScript: Code that Conceals"
+        "talk": "Malicious JavaScript: Code that Conceals",
+        "Category": "Web Technologies",
+        "color": "#38a852"
       },
       {
         "name": "Nitin Prakash",
@@ -249,7 +255,9 @@
           "linkedin": "https://www.linkedin.com/in/nitin-prakash9911/"
         },
         "img": "/assets/images/Speaker/nitin.webp",
-        "talk": "Biometric Auth API with Clean Code"
+        "talk": "Biometric Auth API with Clean Code",
+        "Category": "Android",
+        "color": "#38a852"
       },
       {
         "name": "Biswajit Giri",
@@ -258,7 +266,10 @@
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/biswanathgiri/"
         },
-        "img": "/assets/images/Speaker/biswa.webp"
+        "img": "/assets/images/Speaker/biswa.webp",
+        "talk": "Duet AI for Google Cloud",
+        "Category": "Cloud",
+        "color": "#428eff"
       },
       {
         "name": "Hrijul Bhatnagar",
@@ -267,7 +278,10 @@
         "socialLinks": {
           "linkedin": "https://www.linkedin.com/in/hrijulbhatnagar/"
         },
-        "img": "/assets/images/Speaker/hrijul.webp"
+        "img": "/assets/images/Speaker/hrijul.webp",
+        "talk": "Securing Bytes: Encryption Essentials",
+        "Category": "Web Technologies",
+        "color": "#38a852"
       }
     ]
   },
