@@ -21,6 +21,7 @@ import {
 
 import PrivateRouter from "./PrivateRouter";
 import DashboardTicket from "../Layouts/DashboardTicket";
+import TicketTemplatePdf from "../Components/TicketTemplatePdf";
 
 const Router = {
   home: "/",
@@ -108,6 +109,10 @@ const appRouter = createBrowserRouter([
         path: Router.checkout,
         element: <CheckOut />,
       },
+      {
+        path: "/demo",
+        element: <TicketTemplatePdf />,
+      },
     ],
   },
   {
@@ -116,9 +121,7 @@ const appRouter = createBrowserRouter([
   },
   {
     path: Router.register,
-    element: (
-        <Register />
-    ),
+    element: <Register />,
   },
   {
     path: Router.dashboard,
