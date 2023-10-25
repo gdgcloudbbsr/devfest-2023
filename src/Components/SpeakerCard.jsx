@@ -47,13 +47,20 @@ const SpeakerCard = ({ data }) => {
             alt="vector"
             className="BlueDevFest"
           />
-          <div className="name">
+          <div
+            className="name"
+            style={{
+              marginTop: "1rem",
+            }}
+          >
             <h4>{data.name}</h4>
             <span>{data.designation}</span>
           </div>
           <div className="topicName">
-            <span className="tag">Track</span>
-            <h5>{data.topicName}</h5>
+            <span className="tag">
+              {data.talk === undefined ? "Track" : "Talk"}
+            </span>
+            <h5>{data.talk === undefined ? data.topicName : data.talk}</h5>
           </div>
           <div className="socialLinks">
             {data.socialLinks.instagram && (
