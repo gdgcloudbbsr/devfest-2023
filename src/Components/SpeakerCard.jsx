@@ -57,9 +57,29 @@ const SpeakerCard = ({ data }) => {
             <span>{data.designation}</span>
           </div>
           <div className="topicName">
-            <span className="tag">
-              {data.talk === undefined ? "Track" : "Talk"}
-            </span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                flexWrap: "wrap",
+              }}
+            >
+              <span className="tag">
+                {data.talk === undefined ? "Track" : "Talk"}
+              </span>
+              {data.Category && (
+                <span
+                  className="tag"
+                  style={{
+                    backgroundColor: `${data.color}`,
+                    color: "var(--white)",
+                  }}
+                >
+                  {data.Category}
+                </span>
+              )}
+            </div>
             <h5>{data.talk === undefined ? data.topicName : data.talk}</h5>
           </div>
           <div className="socialLinks">
