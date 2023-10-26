@@ -1,7 +1,16 @@
 const App = () => {
   return (
     <div className={"Main"}>
-      <img src="/assets/img3.webp" alt="" className="main-bg" />
+      {/* <img src="/assets/img3.webp" alt="" className="main-bg" />
+       */}
+      <video
+        src="/assets/video.webm"
+        loop
+        muted
+        autoplay={"autoplay"}
+        preload="auto"
+        className="main-bg"
+      ></video>
       <div className="content">
         <h1>Sorry!</h1>
         <h3
