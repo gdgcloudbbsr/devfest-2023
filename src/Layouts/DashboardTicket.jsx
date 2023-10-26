@@ -45,7 +45,8 @@ const DashboardTicket = ({ paymentStatus, stock }) => {
               />
             )}
           </div> */}
-          <TicketTemplatePdf/>
+          { userData.is_paid && <TicketTemplatePdf/> }
+          
           <div id="DashboardTicket-container-ticketDetails">
             {/* <div id={`btn-group`}>
               <PrimaryBtn text={"Download Ticket"} link={downloadLink} />
