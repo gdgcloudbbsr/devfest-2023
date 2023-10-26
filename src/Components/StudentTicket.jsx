@@ -14,7 +14,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
 
   const { type, description, benefits, image } = ticketData;
 
-  const [ticketCount, setTicketCount] = useState(0);
+  const [ticketCount, setTicketCount] = useState([]);
 
   const renderBenefits = useMemo(() => {
     return benefits.map((benefit, index) => (
@@ -32,7 +32,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
       .get(`${API_URL}/getTicketCount`)
       .then((res) => {
         console.log(res.data);
-        setTicketCount(res);
+        setTicketCount(res.data.StudentTicket);
       })
       .catch((error) => {
         console.log(error);

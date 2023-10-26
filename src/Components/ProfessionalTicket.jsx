@@ -1,10 +1,12 @@
 // ProfessionalTicket
-import { useMemo } from "react";
+import { useMemo,useState,useEffect } from "react";
 import data from "../Data/data.json";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Router } from "../router/appRouter";
 import { useSelector } from "react-redux";
 import PrimaryBtn from "./PrimaryBtn";
+import axios from "axios";
+import { API_URL } from "../utils/constant";
 
 const ProfessionalTicket = ({ link = Router.checkout }) => {
   const ticketData = data.tickets.ticketSection.options[1];
@@ -16,6 +18,8 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
 
   const { type, description, benefits, image } = ticketData;
 
+  const [ticketCount, setTicketCount] = useState([]);
+
   const renderBenefits = useMemo(() => {
     return benefits.map((benefit, index) => (
       <li key={index}>
@@ -26,6 +30,18 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
       </li>
     ));
   }, [benefits]);
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/getTicketCount`)
+      .then((res) => {
+        console.log(res.data);
+         setTicketCount(res.data.ProfessionalTicket-150);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div className="ProfessionalTicket">
@@ -48,6 +64,15 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
               ) : userData.is_verified ? (
                 <div>
                   <PrimaryBtn link={link} text={"Grab Now"} />
+                  <div>
+                    <span
+                      style={{
+                        color: "var(--yellow)",
+                      }}
+                    >
+                      {ticketCount} Ticket's Left
+                    </span>
+                  </div>
                 </div>
               ) : (
                 <p
