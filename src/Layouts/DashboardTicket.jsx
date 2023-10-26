@@ -3,6 +3,7 @@ import SectionHeadingText from "../Components/SectionHeadingText";
 import data from "../Data/data.json";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import { FaShareAlt } from "react-icons/fa";
+import TicketTemplatePdf from "../Components/TicketTemplatePdf";
 
 const DashboardTicket = ({ paymentStatus, stock }) => {
   const userData = useSelector((state) => state.Main.userData);
@@ -31,7 +32,7 @@ const DashboardTicket = ({ paymentStatus, stock }) => {
               }
             />
           </div>
-          <div id="DashboardTicket-container-image">
+          {/* <div id="DashboardTicket-container-image">
             {occupation === "student" ? (
               <img
                 src="/assets/studentTicket.webp"
@@ -43,15 +44,16 @@ const DashboardTicket = ({ paymentStatus, stock }) => {
                 alt="professionalTicket Devfest bhubaneswar 2023"
               />
             )}
-          </div>
+          </div> */}
+          <TicketTemplatePdf/>
           <div id="DashboardTicket-container-ticketDetails">
-            <div id={`btn-group`}>
+            {/* <div id={`btn-group`}>
               <PrimaryBtn text={"Download Ticket"} link={downloadLink} />
               <button>
                 <FaShareAlt />
                 <span>Share</span>
               </button>
-            </div>
+            </div> */}
           </div>
           <div id="DashboardTicket-container-details-container">
             <div id="DashboardTicket-container-details">

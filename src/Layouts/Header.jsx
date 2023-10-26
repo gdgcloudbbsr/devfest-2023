@@ -38,10 +38,10 @@ const links = [
     text: "sponsorships",
     link: "/sponsorship",
   },
-  {
-    text: "Team",
-    link: "/team",
-  },
+  // {
+  //   text: "Team",
+  //   link: "/team",
+  // },
   {
     text: "contact",
     link: "/contact",

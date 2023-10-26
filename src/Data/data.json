@@ -300,7 +300,7 @@
         {
           "type": "Student Ticket",
           "description": "Perfect for students eager to learn and connect.",
-          "price": "Coming soon",
+          "price": "₹249",
           "benefits": [
             "Access to hands-on workshops and sessions",
             "Community interaction and networking opportunities",
@@ -317,7 +317,7 @@
         {
           "type": "Professional Ticket",
           "description": "Designed for professionals aiming to elevate their skills.",
-          "price": "Coming soon",
+          "price": "₹249",
           "benefits": [
             "Access to hands-on workshops and advanced sessions",
             "Network with industry experts and fellow professionals",

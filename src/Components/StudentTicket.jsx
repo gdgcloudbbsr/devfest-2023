@@ -1,14 +1,20 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import data from "../Data/data.json";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Router } from "../router/appRouter";
 import { useSelector } from "react-redux";
+import PrimaryBtn from "./PrimaryBtn";
+import axios from "axios";
+import { API_URL } from "../utils/constant";
 
 const StudentTicket = ({ link = Router.checkout }) => {
   const ticketData = data.tickets.ticketSection.options[0];
   const authStatus = useSelector((state) => state.Main.status);
+  const userData = useSelector((state) => state.Main.userData);
 
   const { type, description, benefits, image } = ticketData;
+
+  const [ticketCount, setTicketCount] = useState([]);
 
   const renderBenefits = useMemo(() => {
     return benefits.map((benefit, index) => (
@@ -21,6 +27,18 @@ const StudentTicket = ({ link = Router.checkout }) => {
     ));
   }, [benefits]);
 
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/getTicketCount`)
+      .then((res) => {
+        // console.log(res.data);
+        setTicketCount(res.data.StudentTicket);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div className="StudentTicket">
       <div className="StudentTicket-container">
@@ -30,36 +48,6 @@ const StudentTicket = ({ link = Router.checkout }) => {
               <h3>{type}</h3>
               <p>{description}</p>
             </div>
-            {/* <div
-              className={`StudentTicket-container-text-btn ${
-                !stock ? "outOfStock" : ""
-              }`}
-            >
-              <div
-                onClick={() => {
-                  dispatch(setOccupation("student"));
-                }}
-              >
-                <PrimaryBtn
-                  link={!stock ? null : link}
-                  text={!stock ? "Out of Stock" : button}
-                />
-              </div>
-
-              {stock !== 0 && (
-                <div className="stock">
-                  <h3>
-                    {stock} <span>Ticket's left</span>
-                  </h3>
-                </div>
-              )}
-
-              {!stock && (
-                <p>
-                  {`Tickets for ${type} are currently out of stock. Please stay tuned for updates.`}
-                </p>
-              )}
-            </div> */}
             <div>
               {!authStatus ? (
                 <p
@@ -69,6 +57,19 @@ const StudentTicket = ({ link = Router.checkout }) => {
                 >
                   Please login to buy tickets!
                 </p>
+              ) : userData.is_verified ? (
+                <div>
+                  <PrimaryBtn link={link} text={"Grab Now"} />
+                  <div>
+                    <span
+                      style={{
+                        color: "var(--yellow)",
+                      }}
+                    >
+                      {ticketCount} Ticket's Left
+                    </span>
+                  </div>
+                </div>
               ) : (
                 <p
                   style={{
