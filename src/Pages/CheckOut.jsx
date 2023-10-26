@@ -246,14 +246,14 @@ const CheckOut = () => {
                       <span>Quantity</span>
                       <span>x1</span>
                     </li>
-                    <li>
+                    {/* <li>
                       <span>Tax ( GST )</span>
                       <span>{"5%"}</span>
                     </li>
                     <li>
                       <span>Shipping</span>
                       <span>Free</span>
-                    </li>
+                    </li> */}
                   </ul>
                   <ul>
                     <li>
