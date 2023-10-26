@@ -81,7 +81,7 @@ const CheckOut = () => {
         currency: currency,
         name: "GDG BBSR", //your business name
         description: "Test Transaction",
-        image: "http://localhost:5173/assets/devfest.svg",
+        image: "https://devfest.gdgbbsr.in/assets/devfest.svg",
         order_id: id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         //callback_url: "http://localhost:5173/my_tickets",
         handler: async function (response) {
