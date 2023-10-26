@@ -1,16 +1,20 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import data from "../Data/data.json";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Router } from "../router/appRouter";
 import { useSelector } from "react-redux";
 import PrimaryBtn from "./PrimaryBtn";
+import axios from "axios";
+import { API_URL } from "../utils/constant";
 
 const StudentTicket = ({ link = Router.checkout }) => {
   const ticketData = data.tickets.ticketSection.options[0];
   const authStatus = useSelector((state) => state.Main.status);
-  const userData=useSelector((state)=>state.Main.userData);
+  const userData = useSelector((state) => state.Main.userData);
 
   const { type, description, benefits, image } = ticketData;
+
+  const [ticketCount, setTicketCount] = useState(0);
 
   const renderBenefits = useMemo(() => {
     return benefits.map((benefit, index) => (
@@ -23,6 +27,18 @@ const StudentTicket = ({ link = Router.checkout }) => {
     ));
   }, [benefits]);
 
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/getTicketCount`)
+      .then((res) => {
+        console.log(res.data);
+        setTicketCount(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div className="StudentTicket">
       <div className="StudentTicket-container">
@@ -33,7 +49,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
               <p>{description}</p>
             </div>
             <div>
-            {!authStatus ? (
+              {!authStatus ? (
                 <p
                   style={{
                     color: "var(--yellow)",
@@ -44,6 +60,15 @@ const StudentTicket = ({ link = Router.checkout }) => {
               ) : userData.is_verified ? (
                 <div>
                   <PrimaryBtn link={link} text={"Grab Now"} />
+                  <div>
+                    <span
+                      style={{
+                        color: "var(--yellow)",
+                      }}
+                    >
+                      {ticketCount} Ticket's Left
+                    </span>
+                  </div>
                 </div>
               ) : (
                 <p
