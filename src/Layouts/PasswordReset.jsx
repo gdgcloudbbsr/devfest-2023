@@ -67,7 +67,7 @@ const PasswordReset = () => {
     const response = await axios.post(`${API_URL}/forgotPassword`, {
       Email: data.email.toLowerCase(),
     });
-    console.log(response);
+    // console.log(response);
     try {
       if (response.status === 200) {
         await toast.promise(

@@ -35,7 +35,7 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
     axios
       .get(`${API_URL}/getTicketCount`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
          setTicketCount(res.data.ProfessionalTicket-150);
       })
       .catch((error) => {

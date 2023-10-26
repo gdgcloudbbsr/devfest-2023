@@ -23,7 +23,6 @@ const App = () => {
   const progressBar = useRef(null);
   const app = useRef(null);
 
-
   const [cookies, removeCookie] = useCookies([]);
 
   const dispatch = useDispatch();
@@ -118,7 +117,6 @@ const App = () => {
       );
 
       if (response.data.status === true) {
-        // console.log(response);
         dispatch(setUserData(response.data.user));
         toast.success(`Welcome, ${response.data.user.name}!`);
       } else {
@@ -132,7 +130,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log(cookies.jwtToken);
     verifyCookie(cookies.jwtToken);
   }, [cookies, removeCookie]);
 

@@ -73,7 +73,7 @@ const CheckOut = () => {
     if (order.status == 200) {
       // Getting the order details back
       const { amount, id: id, currency, receipt } = order.data;
-      console.log(order);
+      // console.log(order);
 
       var options = {
         //"key": 'rzp_test_KkQShTvtQCSvgx', // Enter the Key ID generated from the Dashboard
@@ -124,7 +124,7 @@ const CheckOut = () => {
 
       const paymentObject = new window.Razorpay(options);
       paymentObject.on("payment.failed", function (response) {
-        toast.error('Payment Failed');
+        toast.error("Payment Failed");
       });
       paymentObject.open();
     }
