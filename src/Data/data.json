@@ -282,7 +282,20 @@
         "talk": "Securing Bytes: Encryption Essentials",
         "Category": "Web Technologies",
         "color": "#38a852"
+      },
+      {
+        "name": "Vaibhav Malpani",
+        "designation": "Senior Software Engineer, Incedo Inc.",
+        "topicName": "Google Developers Expert - Google Cloud",
+        "socialLinks": {
+          "linkedin": "https://www.linkedin.com/in/ivaibhavmalpani/"
+        },
+        "img": "/assets/images/Speaker/vaibhav.webp",
+        "talk": "Where Should I Run My Stuff? Choosing Compute Options",
+        "Category": "Cloud",
+        "color": "#428eff"
       }
+      
     ]
   },
   "schedule": {
