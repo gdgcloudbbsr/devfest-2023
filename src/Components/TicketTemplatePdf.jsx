@@ -13,8 +13,9 @@ const TicketTemplatePdf = () => {
   const data = {
     name: userData.name,
     orderNo: userData.transaction_id,
-    id:userData.unique_id,
+    id: userData.unique_id,
   };
+
 
   const exportAsImageAndPDF = async (el, name) => {
     // Convert HTML to PNG
@@ -169,7 +170,7 @@ const TicketTemplatePdf = () => {
             onClick={() =>
               exportAsImageAndPDF(
                 ticket.current,
-                `${data.name}.${data.orderNo}-ticket`
+                `${data.name}-${data.orderNo}-ticket`
               )
             }
           />
