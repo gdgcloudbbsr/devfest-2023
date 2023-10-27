@@ -89,7 +89,7 @@ const LoginModal = () => {
           "jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       }
     } catch (error) {
-      console.error("Error verifying cookie:", error);
+      // console.error("Error verifying cookie:", error);
     }
   };
 
@@ -131,7 +131,7 @@ const LoginModal = () => {
       tempEmail = null;
       return verifyCookie(response.data.jwttoken);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error("Login failed : " + error.response.data.error);
       if (error.response.data.error === "User not found") {
         toast.error("Please register first");
