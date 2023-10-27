@@ -925,7 +925,7 @@ button {
     padding-top: 9rem;
 
     @include breakpoints(md) {
-      padding-top: 8rem;
+      padding-top: 6rem;
       padding-bottom: 4rem !important;
     }
 
@@ -976,8 +976,10 @@ button {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-around;
+        max-width: 500px;
         .location,
-        .date {
+        .date,
+        .time {
           display: flex;
           align-items: center;
           flex-direction: row;
@@ -997,6 +999,9 @@ button {
         }
         .date .ico {
           background-color: var(--red);
+        }
+        .time .ico {
+          background-color: var(--yellow);
         }
       }
 
@@ -1037,7 +1042,8 @@ button {
         }
 
         .location,
-        .date {
+        .date,
+        .time {
           flex-direction: row !important;
           span,
           a {

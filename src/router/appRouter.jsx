@@ -20,8 +20,7 @@ import {
 } from "../Pages/index";
 
 import PrivateRouter from "./PrivateRouter";
-import DashboardTicket from "../Layouts/DashboardTicket";
-import TicketTemplatePdf from "../Components/TicketTemplatePdf";
+// import TicketTemplatePdf from "../Components/TicketTemplatePdf";
 
 const Router = {
   home: "/",
@@ -109,10 +108,10 @@ const appRouter = createBrowserRouter([
         path: Router.checkout,
         element: <CheckOut />,
       },
-      {
-        path: "/demo",
-        element: <TicketTemplatePdf />,
-      },
+      // {
+      //   path: "/demo",
+      //   element: <TicketTemplatePdf />,
+      // },
     ],
   },
   {

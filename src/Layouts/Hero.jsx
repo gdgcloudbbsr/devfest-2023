@@ -1,9 +1,9 @@
 import Wrapper from "../Components/Wrapper";
 import { BsFillCalendarFill } from "react-icons/bs";
 import { FaMap } from "react-icons/fa";
+import { BiSolidTimeFive } from "react-icons/bi";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import data from "../Data/data.json";
-import { Link } from "react-router-dom";
 import AfterMovie from "./AfterMovie";
 import OverlayBg from "../Components/OverlayBg";
 import { Router } from "../router/appRouter";
@@ -46,6 +46,12 @@ const Hero = () => {
                 </div>
                 <span>{data.date}</span>
               </div>
+              <div className="time">
+                <div className="ico">
+                  <BiSolidTimeFive />
+                </div>
+                <span>{data.time}</span>
+              </div>
             </div>
             <div className="btn-groups">
               <PrimaryBtn
@@ -54,7 +60,9 @@ const Hero = () => {
               />
 
               <a
-                href={"/assets/InformationBrochureDevFest23BBSR.pdf"}
+                href={
+                  "https://drive.google.com/file/d/19M372U9nNsryDFtmpdiU-sdDJr85v3Jp/view?usp=sharing"
+                }
                 target="_blank"
                 rel="noreferrer"
                 className="SecondaryBtn"
