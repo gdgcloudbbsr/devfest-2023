@@ -235,7 +235,7 @@ const CheckOut = () => {
             </div>
             <div id="CheckOut-container-right">
               <div id="CheckOut-container-right-container">
-                <SectionHeadingText text={"Order Summery"} />
+                <SectionHeadingText text={"Order Summary"} />
                 <div id="CheckOut-container-right-container-price">
                   <ul>
                     <li>
