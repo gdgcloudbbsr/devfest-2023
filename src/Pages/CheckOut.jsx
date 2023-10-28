@@ -73,7 +73,7 @@ const CheckOut = () => {
     if (order.status == 200) {
       // Getting the order details back
       const { amount, id: id, currency, receipt } = order.data;
-      // console.log(order);
+      // //console.log(order);
 
       var options = {
         //"key": 'rzp_test_KkQShTvtQCSvgx', // Enter the Key ID generated from the Dashboard
@@ -85,7 +85,7 @@ const CheckOut = () => {
         order_id: id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         //callback_url: "http://localhost:5173/my_tickets",
         handler: async function (response) {
-          console.log(response);
+          //console.log(response);
           const data = {
             orderCreationId: receipt,
             razorpayPaymentId: response.razorpay_payment_id,
