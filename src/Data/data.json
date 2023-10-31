@@ -294,6 +294,18 @@
         "talk": "Where Should I Run My Stuff? Choosing Compute Options",
         "Category": "Cloud",
         "color": "#428eff"
+      },
+      {
+        "name": "Sangram Rath",
+        "designation": "OD10 Ventures Founder, Cloud Architect & Technology Advisor",
+        "topicName": "Google Developers Expert - Google Cloud",
+        "socialLinks": {
+          "linkedin": "https://www.linkedin.com/in/sangramrath/"
+        },
+        "img": "/assets/images/Speaker/sangram.webp",
+        "talk": "Google Cloud Architecture Framework for Developers",
+        "Category": "Cloud",
+        "color": "#428eff"
       }
     ]
   },
