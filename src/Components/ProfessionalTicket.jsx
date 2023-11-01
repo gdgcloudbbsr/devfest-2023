@@ -36,7 +36,7 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
       .get(`${API_URL}/getTicketCount`)
       .then((res) => {
         // console.log(res.data);
-         setTicketCount(res.data.ProfessionalTicket-10);
+         setTicketCount(res.data.ProfessionalTicket-20);
       })
       .catch((error) => {
         // console.log(error);
