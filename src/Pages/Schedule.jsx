@@ -1,4 +1,5 @@
 import LineBanner from "../Components/LineBanner";
+import ScheduleTimeline from "../Components/ScheduleTimeline";
 import SectionHeader from "../Components/SectionHeader";
 import Wrapper from "../Components/Wrapper";
 import data from "../Data/data.json";
@@ -15,16 +16,8 @@ const Schedule = () => {
         />
       </div>
       <Wrapper>
-        <div
-          id="Schedule-container"
-          style={{
-            minHeight: "80vh",
-            display: "grid",
-            placeItems: "center",
-            textAlign: "center",
-          }}
-        >
-          <h1>Coming Soon</h1>
+        <div id="Schedule-container">
+          <ScheduleTimeline />
         </div>
       </Wrapper>
       <LineBanner color={"#428eff"} classN={"banner-5"} />

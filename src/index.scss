@@ -4463,3 +4463,31 @@ li {
     }
   }
 }
+
+.ScheduleTimeline {
+  &-container {
+    &-item {
+      margin-bottom: 4rem !important;
+      h4 {
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--black);
+      }
+
+      .Speaker {
+        display: flex;
+        flex-direction: row;
+        gap: 0.2rem;
+        align-items: center;
+        margin-top: 0.5rem;
+        color: var(--blue);
+        .ico {
+          margin-top: 0.3rem;
+        }
+        span {
+          font-size: var(--fs-18);
+        }
+      }
+    }
+  }
+}

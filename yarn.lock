@@ -2268,6 +2268,11 @@
   "resolved" "https://registry.npmjs.org/ci-info/-/ci-info-3.9.0.tgz"
   "version" "3.9.0"
 
+"classnames@^2.2.6":
+  "integrity" "sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw=="
+  "resolved" "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz"
+  "version" "2.3.2"
+
 "cli-cursor@^3.1.0":
   "integrity" "sha512-I/zHAwsKf9FqGoXM4WWRACob9+SNukZTd94DWF57E4toouRulbCxcUh6RKUEOQlYTHJnzkPMySvPNaaSLNfLZw=="
   "resolved" "https://registry.npmjs.org/cli-cursor/-/cli-cursor-3.1.0.tgz"
@@ -4990,6 +4995,11 @@
   "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.11.0.tgz"
   "version" "4.11.0"
 
+"react-intersection-observer@^8.26.2":
+  "integrity" "sha512-TYKh52Zc0Uptp5/b4N91XydfSGKubEhgZRtcg1rhTKABXijc4Sdr1uTp5lJ8TN27jwUsdXxjHXtHa0kPj704sw=="
+  "resolved" "https://registry.npmjs.org/react-intersection-observer/-/react-intersection-observer-8.34.0.tgz"
+  "version" "8.34.0"
+
 "react-is@^16.12.0 || ^17.0.0 || ^18.0.0", "react-is@^16.13.1", "react-is@^16.7.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -5129,7 +5139,16 @@
     "html2canvas" "^1.4.1"
     "jspdf" "^2.5.1"
 
-"react@*", "react@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^16.x || ^17.x || ^18.x", "react@^18.2.0", "react@>= 16.3.0", "react@>=16", "react@>=16.8", "react@16 - 18", "react@18.2.0":
+"react-vertical-timeline-component@^3.6.0":
+  "integrity" "sha512-l9zulqjIGlRuaQeplGzV4r/tG2RYBpYt84Il8w4IxnJze2cDIGI04MKo3F7f1sHT0Sih1ohEFts8UV23AJS15Q=="
+  "resolved" "https://registry.npmjs.org/react-vertical-timeline-component/-/react-vertical-timeline-component-3.6.0.tgz"
+  "version" "3.6.0"
+  dependencies:
+    "classnames" "^2.2.6"
+    "prop-types" "^15.7.2"
+    "react-intersection-observer" "^8.26.2"
+
+"react@*", "react@^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0", "react@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^16.x || ^17.x || ^18.x", "react@^18.2.0", "react@>= 16.3.0", "react@>=16", "react@>=16.8", "react@16 - 18", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
