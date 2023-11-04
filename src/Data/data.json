@@ -521,5 +521,12 @@
         }
       ]
     }
+  },
+  "studentPopmodalText": {
+    "pop1": "Are you sure ?",
+    "pop2": "Pakka na? Knowledge level up ho jaega",
+    "pop3": "Nhi sudhroge? Ticket leke hi manoge nhi ??",
+    "pop4": "Aage khatra hai dekh ke",
+    "pop5": "Ab to tumhe upar waala bhi nhi rok sakta"
   }
 }
