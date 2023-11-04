@@ -63,9 +63,12 @@ const StudentTicket = ({ link = Router.checkout }) => {
                   </p>
                 ) : userData.is_verified ? (
                   <div>
-                    <div onClick={() => setShowMenu(!setShowMenu)}>
-                      <PrimaryBtn link={link} text={"Grab Now"} />
-                    </div>
+                    <button
+                      onClick={() => setShowMenu(true)}
+                      className="SecondaryBtn"
+                    >
+                      Grab Now
+                    </button>
                     <div>
                       <span
                         style={{
