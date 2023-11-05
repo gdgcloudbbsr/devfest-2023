@@ -53,7 +53,17 @@ const StudentTicket = ({ link = Router.checkout }) => {
                 <p>{description}</p>
               </div>
               <div>
-                {!authStatus ? (
+                <span
+                  style={{
+                    color: "var(--white)",
+                    backgroundColor: "var(--blue)",
+                    padding: "1rem",
+                    borderRadius: "0.5rem",
+                  }}
+                >
+                  Out of Stock
+                </span>
+                {/* {!authStatus ? (
                   <p
                     style={{
                       color: "var(--yellow)",
@@ -63,21 +73,36 @@ const StudentTicket = ({ link = Router.checkout }) => {
                   </p>
                 ) : userData.is_verified ? (
                   <div>
-                    <button
-                      onClick={() => setShowMenu(true)}
-                      className="SecondaryBtn"
-                    >
-                      Grab Now
-                    </button>
-                    <div>
+                    {ticketCount === 0 ? (
                       <span
                         style={{
-                          color: "var(--yellow)",
+                          color: "var(--white)",
+                          backgroundColor: "var(--blue)",
+                          padding: "1rem",
+                          borderRadius: "0.5rem",
                         }}
                       >
-                        {ticketCount} Ticket's Left
+                        Out of Stock
                       </span>
-                    </div>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => setShowMenu(true)}
+                          className="SecondaryBtn"
+                        >
+                          Grab Now
+                        </button>
+                        <div>
+                          <span
+                            style={{
+                              color: "var(--yellow)",
+                            }}
+                          >
+                            {ticketCount} Ticket's Left
+                          </span>
+                        </div>
+                      </>
+                    )}
                   </div>
                 ) : (
                   <p
@@ -90,7 +115,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
                   >
                     You have been added to the waiting list! 🎉
                   </p>
-                )}
+                )} */}
               </div>
             </div>
             <div className="StudentTicket-container-benefits">
