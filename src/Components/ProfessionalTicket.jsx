@@ -1,5 +1,5 @@
 // ProfessionalTicket
-import { useMemo,useState,useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 import data from "../Data/data.json";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Router } from "../router/appRouter";
@@ -36,7 +36,7 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
       .get(`${API_URL}/getTicketCount`)
       .then((res) => {
         // console.log(res.data);
-         setTicketCount(res.data.ProfessionalTicket-0);
+        setTicketCount(res.data.ProfessionalTicket);
       })
       .catch((error) => {
         // console.log(error);

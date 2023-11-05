@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import PrimaryBtn from "./PrimaryBtn";
 import axios from "axios";
 import { API_URL } from "../utils/constant";
+import PopupModal from "./PopupModal";
 
 const StudentTicket = ({ link = Router.checkout }) => {
   const ticketData = data.tickets.ticketSection.options[0];
@@ -15,6 +16,8 @@ const StudentTicket = ({ link = Router.checkout }) => {
   const { type, description, benefits, image } = ticketData;
 
   const [ticketCount, setTicketCount] = useState([]);
+
+  const [showMenu, setShowMenu] = useState(false);
 
   const renderBenefits = useMemo(() => {
     return benefits.map((benefit, index) => (
@@ -31,8 +34,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
     axios
       .get(`${API_URL}/getTicketCount`)
       .then((res) => {
-        // console.log(res.data);
-        setTicketCount(res.data.StudentTicket);
+        setTicketCount(res.data.StudentTicket*2-5);
       })
       .catch((error) => {
         console.log(error);
@@ -40,62 +42,70 @@ const StudentTicket = ({ link = Router.checkout }) => {
   }, []);
 
   return (
-    <div className="StudentTicket">
-      <div className="StudentTicket-container">
-        <div className="StudentTicket-container-info">
-          <div className="StudentTicket-container-text">
-            <div className="StudentTicket-container-text-heading">
-              <h3>{type}</h3>
-              <p>{description}</p>
-            </div>
-            <div>
-              {!authStatus ? (
-                <p
-                  style={{
-                    color: "var(--yellow)",
-                  }}
-                >
-                  Please login to buy tickets!
-                </p>
-              ) : userData.is_verified ? (
-                <div>
-                  <PrimaryBtn link={link} text={"Grab Now"} />
+    <>
+      {showMenu && <PopupModal showMenu={showMenu} setShowMenu={setShowMenu} />}
+      <div className="StudentTicket">
+        <div className="StudentTicket-container">
+          <div className="StudentTicket-container-info">
+            <div className="StudentTicket-container-text">
+              <div className="StudentTicket-container-text-heading">
+                <h3>{type}</h3>
+                <p>{description}</p>
+              </div>
+              <div>
+                {!authStatus ? (
+                  <p
+                    style={{
+                      color: "var(--yellow)",
+                    }}
+                  >
+                    Please login to buy tickets!
+                  </p>
+                ) : userData.is_verified ? (
                   <div>
-                    <span
-                      style={{
-                        color: "var(--yellow)",
-                      }}
+                    <button
+                      onClick={() => setShowMenu(true)}
+                      className="SecondaryBtn"
                     >
-                      {ticketCount} Ticket's Left
-                    </span>
+                      Grab Now
+                    </button>
+                    <div>
+                      <span
+                        style={{
+                          color: "var(--yellow)",
+                        }}
+                      >
+                        {ticketCount} Ticket's Left
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <p
-                  style={{
-                    color: "var(--white)",
-                    backgroundColor: "var(--blue)",
-                    padding: "1rem",
-                    borderRadius: "0.5rem",
-                  }}
-                >
-                  You have been added to the waiting list! 🎉
-                </p>
-              )}
+                ) : (
+                  <p
+                    style={{
+                      color: "var(--white)",
+                      backgroundColor: "var(--blue)",
+                      padding: "1rem",
+                      borderRadius: "0.5rem",
+                    }}
+                  >
+                    You have been added to the waiting list! 🎉
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="StudentTicket-container-benefits">
+              <h4>Benefits</h4>
+              <div className="StudentTicket-container-benefits-list">
+                <ul>{renderBenefits}</ul>
+              </div>
             </div>
           </div>
-          <div className="StudentTicket-container-benefits">
-            <h4>Benefits</h4>
-            <div className="StudentTicket-container-benefits-list">
-              <ul>{renderBenefits}</ul>
-            </div>
+          <div className="StudentTicket-container-image">
+            <img src={image} alt={`${type} image`} />
           </div>
-        </div>
-        <div className="StudentTicket-container-image">
-          <img src={image} alt={`${type} image`} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

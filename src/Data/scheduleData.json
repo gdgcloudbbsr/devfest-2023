@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "name": "Registration and Check-in",
+    "time": "8:00 AM - 8:45 AM"
+  },
+  {
+    "id": 2,
+    "name": "Keynote with Opening Video",
+    "time": "9:00 AM - 9:15 AM"
+  },
+  {
+    "id": 3,
+    "name": "Malicious JavaScript: Code that conceals",
+    "time": "9:15 AM - 10:00 AM",
+    "speaker": "Shrutirupa Banerjee"
+  },
+  {
+    "id": 4,
+    "name": "Engagement Session by GDG Bhubaneswar",
+    "time": "10:00 AM - 10:05 AM"
+  },
+  {
+    "id": 5,
+    "name": "Parameter Efficient fine tuning of Large Language Models",
+    "time": "10:05 AM - 10:50 AM",
+    "speaker": "Tarun R Jain"
+  },
+  {
+    "id": 6,
+    "name": "Networking and Tea Break",
+    "time": "10:50 AM - 11:00 AM"
+  },
+  {
+    "id": 7,
+    "name": "Biometric Auth API with clean code",
+    "time": "11:00 AM - 11:45 AM",
+    "speaker": "Nitin Prakash"
+  },
+  {
+    "id": 8,
+    "name": "Google Cloud Architecture Framework for Developers",
+    "time": "11:45 AM - 12:15 PM",
+    "speaker": "Sangram Rath"
+  },
+  {
+    "id": 9,
+    "name": "Lunch Break",
+    "time": "12:15 PM - 1:15 PM"
+  },
+  {
+    "id": 10,
+    "name": "Engagement Session",
+    "time": "1:15 PM - 1:30 PM"
+  },
+  {
+    "id": 11,
+    "name": "ML Track 2",
+    "time": " 1:30 PM - 2:15 PM",
+    "speaker": "Niladri"
+  },
+  {
+    "id": 12,
+    "name": "Engagement Session by TFUG Bhubaneswar",
+    "time": "2:15 PM - 2:30 PM"
+  },
+  {
+    "id": 13,
+    "name": "Securing Bytes: Encryption Essentials",
+    "time": "2:30 PM - 3:15 PM",
+    "speaker": "Hrijul Bhatnagar"
+  },
+  {
+    "id": 14,
+    "name": "Where should I run my stuff? Choosing compute options",
+    "time": "3:15 PM - 4:00 PM",
+    "speaker": "Vaibhav Malpani"
+  },
+  {
+    "id": 15,
+    "name": "Engagement Session by GDG Cloud Bhubaneswar",
+    "time": "4:00 PM - 4:15 PM"
+  },
+  {
+    "id": 16,
+    "name": "Creating SDKs in Kotlin Multiplatform",
+    "time": "4:15 PM - 5:00 PM",
+    "speaker": "Rivu Chakraborty"
+  },
+  {
+    "id": 17,
+    "name": "Panel Discussion by WTM",
+    "time": "5:05 PM - 5:30 PM"
+  },
+  {
+    "id": 18,
+    "name": "Closing Ceremony, Swag Distribution and High-Tea with Networking",
+    "time": "5:30 PM onwards"
+  }
+]
