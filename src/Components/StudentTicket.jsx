@@ -34,7 +34,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
     axios
       .get(`${API_URL}/getTicketCount`)
       .then((res) => {
-        setTicketCount(res.data.StudentTicket*2-5);
+        setTicketCount(res.data.StudentTicket * 2 - 5);
       })
       .catch((error) => {
         console.log(error);
@@ -53,6 +53,16 @@ const StudentTicket = ({ link = Router.checkout }) => {
                 <p>{description}</p>
               </div>
               <div>
+                {/* <span
+                  style={{
+                    color: "var(--white)",
+                    backgroundColor: "var(--blue)",
+                    padding: "1rem",
+                    borderRadius: "0.5rem",
+                  }}
+                >
+                  Out of Stock
+                </span> */}
                 {!authStatus ? (
                   <p
                     style={{
@@ -78,18 +88,61 @@ const StudentTicket = ({ link = Router.checkout }) => {
                         {ticketCount} Ticket's Left
                       </span>
                     </div>
+                    {/* {ticketCount === 0 ? (
+                      <span
+                        style={{
+                          color: "var(--white)",
+                          backgroundColor: "var(--blue)",
+                          padding: "1rem",
+                          borderRadius: "0.5rem",
+                        }}
+                      >
+                        Out of Stock
+                      </span>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => setShowMenu(true)}
+                          className="SecondaryBtn"
+                        >
+                          Grab Now
+                        </button>
+                        <div>
+                          <span
+                            style={{
+                              color: "var(--yellow)",
+                            }}
+                          >
+                            {ticketCount} Ticket's Left
+                          </span>
+                        </div>
+                      </>
+                    )} */}
                   </div>
                 ) : (
-                  <p
-                    style={{
-                      color: "var(--white)",
-                      backgroundColor: "var(--blue)",
-                      padding: "1rem",
-                      borderRadius: "0.5rem",
-                    }}
-                  >
-                    You have been added to the waiting list! 🎉
-                  </p>
+                  <>
+                    {/* <p
+                      style={{
+                        color: "var(--white)",
+                        backgroundColor: "var(--blue)",
+                        padding: "1rem",
+                        borderRadius: "0.5rem",
+                      }}
+                    >
+                      You have been added to the waiting list! 🎉
+                    </p> */}
+                    <span
+                      style={{
+                        color: "var(--white)",
+                        backgroundColor: "var(--blue)",
+                        padding: "1rem",
+                        borderRadius: "0.5rem",
+                        marginTop: "1rem",
+                      }}
+                    >
+                      Out of Stock
+                    </span>
+                  </>
                 )}
               </div>
             </div>

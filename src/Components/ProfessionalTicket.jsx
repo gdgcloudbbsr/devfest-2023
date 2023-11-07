@@ -53,6 +53,16 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
               <p>{description}</p>
             </div>
             <div>
+              {/* <span
+                style={{
+                  color: "var(--white)",
+                  backgroundColor: "var(--green)",
+                  padding: "1rem",
+                  borderRadius: "0.5rem",
+                }}
+              >
+                Out of Stock
+              </span> */}
               {!authStatus ? (
                 <p
                   style={{
@@ -64,15 +74,36 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
               ) : userData.is_verified ? (
                 <div>
                   <PrimaryBtn link={link} text={"Grab Now"} />
-                  <div>
+                  <span
+                    style={{
+                      color: "var(--yellow)",
+                    }}
+                  >
+                    {ticketCount} Ticket's Left
+                  </span>
+                  {/* {ticketCount === 0 ? (
                     <span
                       style={{
-                        color: "var(--yellow)",
+                        color: "var(--white)",
+                        backgroundColor: "var(--green)",
+                        padding: "1rem",
+                        borderRadius: "0.5rem",
                       }}
                     >
-                      {ticketCount} Ticket's Left
+                      Out of Stock
                     </span>
-                  </div>
+                  ) : (
+                    <>
+                      <PrimaryBtn link={link} text={"Grab Now"} />
+                      <span
+                        style={{
+                          color: "var(--yellow)",
+                        }}
+                      >
+                        {ticketCount} Ticket's Left
+                      </span>
+                    </>
+                  )} */}
                 </div>
               ) : (
                 <p

@@ -260,16 +260,16 @@
         "color": "#38a852"
       },
       {
-        "name": "Biswanath Giri",
-        "designation": "Google Cloud Principal Architect, LTIMindtree",
-        "topicName": "Duet AI for Google Cloud",
+        "name": "Priya Ranjan",
+        "designation": "Creative Director, Visual Brand Strategist",
+        "topicName": "Design",
         "socialLinks": {
-          "linkedin": "https://www.linkedin.com/in/biswanathgiri/"
+          "linkedin": ""
         },
-        "img": "/assets/images/Speaker/biswa.webp",
-        "talk": "Duet AI for Google Cloud",
-        "Category": "Cloud",
-        "color": "#428eff"
+        "img": "/assets/images/Speaker/priya.webp",
+        "talk": "Stop making things good looking",
+        "Category": "Design",
+        "color": "#ff5145"
       },
       {
         "name": "Hrijul Bhatnagar",
