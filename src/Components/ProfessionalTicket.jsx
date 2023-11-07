@@ -53,7 +53,7 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
               <p>{description}</p>
             </div>
             <div>
-              <span
+              {/* <span
                 style={{
                   color: "var(--white)",
                   backgroundColor: "var(--green)",
@@ -62,8 +62,8 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
                 }}
               >
                 Out of Stock
-              </span>
-              {/* {!authStatus ? (
+              </span> */}
+              {!authStatus ? (
                 <p
                   style={{
                     color: "var(--yellow)",
@@ -73,7 +73,15 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
                 </p>
               ) : userData.is_verified ? (
                 <div>
-                  {ticketCount === 0 ? (
+                  <PrimaryBtn link={link} text={"Grab Now"} />
+                  <span
+                    style={{
+                      color: "var(--yellow)",
+                    }}
+                  >
+                    {ticketCount} Ticket's Left
+                  </span>
+                  {/* {ticketCount === 0 ? (
                     <span
                       style={{
                         color: "var(--white)",
@@ -95,7 +103,7 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
                         {ticketCount} Ticket's Left
                       </span>
                     </>
-                  )}
+                  )} */}
                 </div>
               ) : (
                 <p
@@ -108,7 +116,7 @@ const ProfessionalTicket = ({ link = Router.checkout }) => {
                 >
                   You have been added to the waiting list! 🎉
                 </p>
-              )} */}
+              )}
             </div>
           </div>
           <div className="ProfessionalTicket-container-benefits">
