@@ -109,6 +109,13 @@ const SpeakerCard = ({ data }) => {
                 </div>
               </a>
             )}
+            {!data.socialLinks.linkedin && (
+                <div>
+                  <span>
+                    <br></br>
+                  </span>
+                </div>
+            )}
             {data.socialLinks.twitter && (
               <a
                 className="twitter social-item"
