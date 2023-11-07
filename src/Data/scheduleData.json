@@ -11,7 +11,7 @@
   },
   {
     "id": 3,
-    "name": "Web Track 1",
+    "name": "Malicious JavaScript: Code that conceals",
     "time": "9:15 AM - 10:00 AM",
     "speaker": "Shrutirupa Banerjee"
   },
@@ -22,7 +22,7 @@
   },
   {
     "id": 5,
-    "name": "ML Track 1",
+    "name": "Parameter Efficient fine tuning of Large Language Models",
     "time": "10:05 AM - 10:50 AM",
     "speaker": "Tarun R Jain"
   },
@@ -33,13 +33,13 @@
   },
   {
     "id": 7,
-    "name": "Android Track 1",
+    "name": "Biometric Auth API with clean code",
     "time": "11:00 AM - 11:45 AM",
     "speaker": "Nitin Prakash"
   },
   {
     "id": 8,
-    "name": "Cloud Track 1",
+    "name": "Google Cloud Architecture Framework for Developers",
     "time": "11:45 AM - 12:15 PM",
     "speaker": "Sangram Rath"
   },
@@ -66,13 +66,13 @@
   },
   {
     "id": 13,
-    "name": "Web Track 2",
+    "name": "Securing Bytes: Encryption Essentials",
     "time": "2:30 PM - 3:15 PM",
     "speaker": "Hrijul Bhatnagar"
   },
   {
     "id": 14,
-    "name": "Cloud Track 2",
+    "name": "Where should I run my stuff? Choosing compute options",
     "time": "3:15 PM - 4:00 PM",
     "speaker": "Vaibhav Malpani"
   },
@@ -83,7 +83,7 @@
   },
   {
     "id": 16,
-    "name": "Android Track 2",
+    "name": "Creating SDKs in Kotlin Multiplatform",
     "time": "4:15 PM - 5:00 PM",
     "speaker": "Rivu Chakraborty"
   },
