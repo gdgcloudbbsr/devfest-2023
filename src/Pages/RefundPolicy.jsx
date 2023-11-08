@@ -30,12 +30,7 @@ const RefundPolicy = () => {
           <div className="policy-container-row">
             <h4>Transferring Tickets:</h4>
             <p>
-              If you are unable to attend DevFest, you may transfer your ticket
-              to another person. However, it is your responsibility to arrange
-              the transfer and to inform us of the change in attendee
-              information. Please contact our team at
-              <a href="mailto:gdgcloudbbsr@gmail.com">gdgcloudbbsr@gmail.com</a>
-              to facilitate the transfer process.
+              The tickets for DevFest are non-transferrable. Unfortunately, they cannot be transferred to another individual. We appreciate your understanding and cooperation in this matter. If you have any questions or concerns related to your ticket, please don't hesitate to reach out to our team at <a href="mailto:gdgcloudbbsr@gmail.com">gdgcloudbbsr@gmail.com</a> for further assistance.
             </p>
           </div>
           <div className="policy-container-row">
