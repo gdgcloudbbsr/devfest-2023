@@ -34,7 +34,7 @@ const StudentTicket = ({ link = Router.checkout }) => {
     axios
       .get(`${API_URL}/getTicketCount`)
       .then((res) => {
-        setTicketCount(res.data.StudentTicket * 2 - 5);
+        setTicketCount(res.data.StudentTicket);
       })
       .catch((error) => {
         console.log(error);
