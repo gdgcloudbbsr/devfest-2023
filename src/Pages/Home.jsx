@@ -6,6 +6,7 @@ import PopupModalOld from "../Components/PopupModalOld";
 import { useSelector } from "react-redux";
 import Highlights from "../Layouts/Highlights";
 import Venue from "../Layouts/Venue";
+import SpeakerSection from "../Layouts/SpeakerSection";
 
 const Home = () => {
   const popModal = useSelector((state) => state.Main.popModal);
@@ -16,6 +17,7 @@ const Home = () => {
       <Hero />
       <LineBanner color={"var(--blue)"} classN={"banner-1"} />
       <About />
+      <SpeakerSection />
       <LineBanner color={"var(--yellow)"} classN={"banner-2"} />
       <Ticket />
       <LineBanner color={"var(--green)"} classN={"banner-3"} />

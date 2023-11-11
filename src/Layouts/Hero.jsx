@@ -7,6 +7,7 @@ import data from "../Data/data.json";
 import AfterMovie from "./AfterMovie";
 import OverlayBg from "../Components/OverlayBg";
 import { Router } from "../router/appRouter";
+import EventCounter from "../Components/EventCounter";
 
 const Hero = () => {
   return (
@@ -72,6 +73,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        <EventCounter />
         <AfterMovie />
       </Wrapper>
     </div>

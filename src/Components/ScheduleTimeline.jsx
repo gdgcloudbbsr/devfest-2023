@@ -58,12 +58,18 @@ const ScheduleTimeline = () => {
                 <h4 className="ScheduleTimeline-container-item-date">
                   {item.name}
                 </h4>
+
                 {item.speaker && (
                   <div className="Speaker">
                     <div className="ico">
                       <BiSolidUserCircle />
                     </div>
                     <span>{item.speaker}</span>
+                  </div>
+                )}
+                {item.track && (
+                  <div className="Track">
+                    <span>{item.track}</span>
                   </div>
                 )}
               </VerticalTimelineElement>
