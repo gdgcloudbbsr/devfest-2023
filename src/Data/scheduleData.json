@@ -13,7 +13,8 @@
     "id": 3,
     "name": "Malicious JavaScript: Code that conceals",
     "time": "9:15 AM - 10:00 AM",
-    "speaker": "Shrutirupa Banerjee"
+    "speaker": "Shrutirupa Banerjee",
+    "track": "Web Track 1"
   },
   {
     "id": 4,
@@ -24,7 +25,8 @@
     "id": 5,
     "name": "Parameter Efficient fine tuning of Large Language Models",
     "time": "10:05 AM - 10:50 AM",
-    "speaker": "Tarun R Jain"
+    "speaker": "Tarun R Jain",
+    "track": "ML Track 1"
   },
   {
     "id": 6,
@@ -35,13 +37,15 @@
     "id": 7,
     "name": "Biometric Auth API with clean code",
     "time": "11:00 AM - 11:45 AM",
-    "speaker": "Nitin Prakash"
+    "speaker": "Nitin Prakash",
+    "track": "Android Track 1"
   },
   {
     "id": 8,
     "name": "Google Cloud Architecture Framework for Developers",
     "time": "11:45 AM - 12:15 PM",
-    "speaker": "Sangram Rath"
+    "speaker": "Sangram Rath",
+    "track": "Cloud Track 1"
   },
   {
     "id": 9,
@@ -50,14 +54,15 @@
   },
   {
     "id": 10,
-    "name": "Engagement Session",
+    "name": "Engagement Session - Tech Stand Up by Ashish",
     "time": "1:15 PM - 1:30 PM"
   },
   {
     "id": 11,
-    "name": "ML Track 2",
+    "name": "Artificial Intelligence and Machine Learning in Space Technology",
     "time": " 1:30 PM - 2:15 PM",
-    "speaker": "Niladri"
+    "speaker": "Niladri Mohanty",
+    "track": "ML Track 2"
   },
   {
     "id": 12,
@@ -68,13 +73,15 @@
     "id": 13,
     "name": "Securing Bytes: Encryption Essentials",
     "time": "2:30 PM - 3:15 PM",
-    "speaker": "Hrijul Bhatnagar"
+    "speaker": "Hrijul Bhatnagar",
+    "track": "Web Track 2"
   },
   {
     "id": 14,
     "name": "Where should I run my stuff? Choosing compute options",
     "time": "3:15 PM - 4:00 PM",
-    "speaker": "Vaibhav Malpani"
+    "speaker": "Vaibhav Malpani",
+    "track": "Cloud Track 2"
   },
   {
     "id": 15,
@@ -83,18 +90,31 @@
   },
   {
     "id": 16,
-    "name": "Creating SDKs in Kotlin Multiplatform",
+    "name": "Creating SDKs in Kotlin Multi-platform",
     "time": "4:15 PM - 5:00 PM",
-    "speaker": "Rivu Chakraborty"
+    "speaker": "Rivu Chakraborty",
+    "track": "Android Track 2"
   },
   {
     "id": 17,
-    "name": "Panel Discussion by WTM",
-    "time": "5:05 PM - 5:30 PM"
+    "name": "Stop making things GOOD LOOKING",
+    "time": "5:05 PM - 5:30 PM",
+    "speaker": "Priya Ranjan",
+    "track": "Design Creativity"
   },
   {
     "id": 18,
+    "name": "Panel Discussion by Women Tech Makers Bhubaneswar",
+    "time": "5:30 PM - 6:00 PM"
+  },
+  {
+    "id": 19,
+    "name": "TechLeaders Thrive: Navigating Challenges with Mental Resilience",
+    "time": "5:30 PM - 6:00 PM"
+  },
+  {
+    "id": 20,
     "name": "Closing Ceremony, Swag Distribution and High-Tea with Networking",
-    "time": "5:30 PM onwards"
+    "time": "6:00 PM onwards"
   }
 ]

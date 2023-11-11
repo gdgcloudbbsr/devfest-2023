@@ -1,14 +1,17 @@
 // import SecondaryBtn from "../Components/SecondaryBtn";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import SectionHeadingText from "../Components/SectionHeadingText";
 import SpeakerCard from "../Components/SpeakerCard";
 import Wrapper from "../Components/Wrapper";
 import data from "../Data/data.json";
 
 import gsap from "gsap";
+import PrimaryBtn from "../Components/PrimaryBtn";
+import { Router } from "../router/appRouter";
 
 const SpeakerSection = () => {
   const main = useRef(null);
+  const [totalIndex, setTotalIndex] = useState(4);
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from("#SpeakerSection-heading-text", {
@@ -48,11 +51,20 @@ const SpeakerSection = () => {
         </div>
         <div id="SpeakerSection-container">
           {data.speaker.speakerlists.map((elem, index) => {
-            if (index < 6) {
+            if (index < totalIndex) {
               return <SpeakerCard key={index} data={elem} />;
             }
             return null;
           })}
+        </div>
+        <div
+          style={{
+            marginTop: "4rem",
+            maxWidth: "max-content",
+            marginInline: "auto",
+          }}
+        >
+          <PrimaryBtn text={"View all"} link={Router.speakers} />
         </div>
       </Wrapper>
     </div>

@@ -852,6 +852,65 @@ button {
 
 // hero
 
+.EventCounter {
+  margin-bottom: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+  margin-inline: auto;
+  @include breakpoints(mdMax) {
+    margin-inline: 0rem !important;
+    gap: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 6rem !important;
+  }
+
+  @include breakpoints(smMax) {
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    .item {
+      padding: 2rem;
+      max-width: 150px;
+    }
+  }
+
+  @media (max-width: 454px) {
+    .item {
+      max-width: 140px !important;
+    }
+  }
+  .item {
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.8rem 1rem;
+    border-radius: 1rem;
+    border-top: 2px solid var(--red);
+    border-right: 2px solid var(--blue);
+    border-bottom: 2px solid var(--green);
+    border-left: 2px solid var(--yellow);
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    h2 {
+      font-size: var(--fs-47);
+      font-weight: bold;
+      font-family: var(--fontS);
+    }
+    span {
+      font-size: var(--fs-18);
+      font-weight: normal;
+      color: var(--gray);
+    }
+  }
+}
+
 .overlayBg {
   width: 100%;
   height: 100%;
@@ -898,7 +957,7 @@ button {
   padding-bottom: 4rem !important;
 
   #AfterMovie {
-    margin-top: 6rem;
+    margin-top: 3rem;
     @include breakpoints(md) {
       margin-top: 2rem;
     }
@@ -1066,8 +1125,8 @@ button {
 #stats {
   width: 100%;
   height: 100%;
-  margin-top: 4rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 6rem;
   .text-stats {
     background-color: var(--red);
     max-width: max-content;
@@ -1088,18 +1147,23 @@ button {
     gap: 1rem;
     row-gap: 2rem;
     .statsBox {
-      width: 100%;
+      width: calc(100%);
       height: 100%;
-      max-width: 140px;
+      max-width: 180px;
       padding: 1rem;
       background-color: var(--black);
       border-radius: 0.5rem;
       box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px,
         rgba(0, 0, 0, 0.24) 0px 1px 2px;
-      h1 {
+      border-radius: 1rem;
+      border-top: 2px solid var(--red);
+      border-right: 2px solid var(--blue);
+      border-bottom: 2px solid var(--green);
+      border-left: 2px solid var(--yellow);
+      h2 {
         span {
           color: var(--white);
-          font-family: "GoogleSansRegular" !important;
+          // font-family: "GoogleSansRegular" !important;
         }
       }
       span {
@@ -1110,7 +1174,7 @@ button {
 
     @include breakpoints(md) {
       .statsBox {
-        max-width: 180px;
+        // max-width: 180px;
       }
     }
   }
@@ -1668,6 +1732,7 @@ button {
 #SpeakerSection {
   margin-top: 6rem;
   padding-inline: 1rem;
+  margin-bottom: 6rem;
 
   &-heading {
     display: flex;
@@ -4468,10 +4533,24 @@ li {
   &-container {
     &-item {
       margin-bottom: 4rem !important;
+      &:nth-child(2n + 1) {
+        .Track {
+          background-color: var(--blue);
+        }
+      }
       h4 {
         font-weight: 400;
         line-height: 1.5;
         color: var(--black);
+      }
+
+      .Track {
+        padding: 0.5rem 1rem;
+        background-color: var(--green);
+        margin-top: 0.5rem;
+        border-radius: 3rem;
+        max-width: max-content;
+        margin-left: auto;
       }
 
       .Speaker {

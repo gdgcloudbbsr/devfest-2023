@@ -20,7 +20,7 @@ const Stats = () => {
           },
         });
 
-        let bh1 = b.querySelector(".statsBox-container h1 span");
+        let bh1 = b.querySelector(".statsBox-container h2 span");
 
         gsap.to(bh1, {
           innerText: num,
@@ -56,10 +56,10 @@ const Stats = () => {
           {data.stats.map((elem, index) => (
             <div className="statsBox" key={index} data-n={elem.num}>
               <div className="statsBox-container">
-                <h1>
+                <h2>
                   <span>00</span>
                   {(index === 0 || index === 3) && "+"}
-                </h1>
+                </h2>
                 <span>{elem.text}</span>
               </div>
             </div>
