@@ -4570,3 +4570,10 @@ li {
     }
   }
 }
+
+.ScheduleTimeline-container-item-date {
+  @media (max-width: 1170px) {
+    color: var(--black) !important;
+    font-size: var(--fs-18) !important;
+  }
+}
