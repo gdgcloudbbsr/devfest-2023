@@ -8,6 +8,7 @@ import data from "../Data/data.json";
 import gsap from "gsap";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import { Router } from "../router/appRouter";
+import Carousel from "react-multi-carousel";
 
 const SpeakerSection = () => {
   const main = useRef(null);
@@ -39,6 +40,27 @@ const SpeakerSection = () => {
 
     return () => ctx.revert();
   }, []);
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 12000, min: 1000 },
+      items: 2,
+    },
+    desktop: {
+      breakpoint: { max: 1000, min: 768 },
+      items: 2,
+    },
+    tablet: {
+      breakpoint: { max: 768, min: 500 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 500, min: 0 },
+      items: 1,
+    },
+  };
+
   return (
     <div id="SpeakerSection" ref={main}>
       <Wrapper>
@@ -50,14 +72,24 @@ const SpeakerSection = () => {
           {/* <SecondaryBtn text={"View all"} /> */}
         </div>
         <div id="SpeakerSection-container">
-          {data.speaker.speakerlists.map((elem, index) => {
+          {/* {data.speaker.speakerlists.map((elem, index) => {
             if (index < totalIndex) {
               return <SpeakerCard key={index} data={elem} />;
             }
             return null;
-          })}
+          })} */}
+          <Carousel
+            responsive={responsive}
+            infinite={true}
+            autoPlay={true}
+            autoPlaySpeed={3000}
+          >
+            {data.speaker.speakerlists.map((elem, index) => {
+              return <SpeakerCard key={index} data={elem} />;
+            })}
+          </Carousel>
         </div>
-        <div
+        {/* <div
           style={{
             marginTop: "4rem",
             maxWidth: "max-content",
@@ -65,7 +97,7 @@ const SpeakerSection = () => {
           }}
         >
           <PrimaryBtn text={"View all"} link={Router.speakers} />
-        </div>
+        </div> */}
       </Wrapper>
     </div>
   );
