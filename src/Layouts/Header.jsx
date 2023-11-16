@@ -133,13 +133,15 @@ const Header = () => {
               </div>
               <div className="btn-groups">
                 <div
+                  className="div1"
                   onClick={() => {
                     setMenuOpen(false);
-                    dispatch(setPopModal(!comingModal));
                   }}
-                  className="div1"
                 >
-                  <SecondaryBtn text={"Get profile badge"} />
+                  <SecondaryBtn
+                    text={"Get profile badge"}
+                    link={Router.badge}
+                  />
                 </div>
                 {!authStatus && (
                   <div

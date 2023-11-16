@@ -20,6 +20,7 @@ import {
 } from "../Pages/index";
 
 import PrivateRouter from "./PrivateRouter";
+import Badge from "../Pages/Badge";
 // import TicketTemplatePdf from "../Components/TicketTemplatePdf";
 
 const Router = {
@@ -41,6 +42,7 @@ const Router = {
   cfp: "/cfp",
   myTickets: "/my_tickets",
   checkout: "/ticket/checkout",
+  badge: "/badge",
 };
 
 const appRouter = createBrowserRouter([
@@ -107,6 +109,10 @@ const appRouter = createBrowserRouter([
       {
         path: Router.checkout,
         element: <CheckOut />,
+      },
+      {
+        path: Router.badge,
+        element: <Badge />,
       },
       // {
       //   path: "/demo",
