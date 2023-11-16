@@ -22,7 +22,7 @@ const Speakers = () => {
       </div>
       <Wrapper>
         <div id="Speakers-container">
-          <div id="callForSpeakers">
+          {/* <div id="callForSpeakers">
             <div id="callForSpeakers-text">
               <h3>Call for Speakers</h3>
               <p>
@@ -44,7 +44,7 @@ const Speakers = () => {
                 alt="DevFest 2023 Bhubaneswar Speakers"
               />
             </div>
-          </div>
+          </div> */}
           <div id="Speakers-container-heading">
             <SectionHeadingText text={"DevFest 2023 Speakers"} />
             <p>

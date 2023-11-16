@@ -263,12 +263,10 @@
         "name": "Priya Ranjan",
         "designation": "Creative Director, Visual Brand Strategist",
         "topicName": "Design",
-        "socialLinks": {
-          
-        },
+        "socialLinks": {},
         "img": "/assets/images/Speaker/priya.webp",
         "talk": "Stop making things good looking",
-        
+
         "Category": "Design",
         "color": "#ff5145"
       },
@@ -307,6 +305,17 @@
         "talk": "Google Cloud Architecture Framework for Developers",
         "Category": "Cloud",
         "color": "#428eff"
+      },
+      {
+        "name": "Niladri Mohanty",
+        "designation": "Joint Director (IT) & Scientist - D, National Informatics Center, GOI.",
+        "socialLinks": {
+          "linkedin": ""
+        },
+        "img": "/assets/images/Speaker/niladri.webp",
+        "talk": "Artificial Intelligence and Machine Learning in Space Tech",
+        "Category": "ML",
+        "color": "#ff5145"
       }
     ]
   },

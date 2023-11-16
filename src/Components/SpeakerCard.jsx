@@ -33,102 +33,104 @@ const SpeakerCard = ({ data }) => {
   }, []);
 
   return (
-    <div className="SpeakerCard" ref={main}>
-      <img src="/assets/redBlock1.svg" alt="red block" className="redBlock" />
+    <div className="mainSpeakerCard">
+      <div className="SpeakerCard" ref={main}>
+        <img src="/assets/redBlock1.svg" alt="red block" className="redBlock" />
 
-      <div className="SpeakerCard-container">
-        <div className="SpeakerCard-container-img">
-          <img src={data.img} alt={`${data.name} Image`} />
-        </div>
-        <div className="SpeakerCard-container-text">
-          <img src="/assets/redRec.svg" alt="vector" className="BlueRec" />
-          <img
-            src="/assets/redDevFest.svg"
-            alt="vector"
-            className="BlueDevFest"
-          />
-          <div
-            className="name"
-            style={{
-              marginTop: "1rem",
-            }}
-          >
-            <h4>{data.name}</h4>
-            <span>{data.designation}</span>
+        <div className="SpeakerCard-container">
+          <div className="SpeakerCard-container-img">
+            <img src={data.img} alt={`${data.name} Image`} />
           </div>
-          <div className="topicName">
+          <div className="SpeakerCard-container-text">
+            <img src="/assets/redRec.svg" alt="vector" className="BlueRec" />
+            <img
+              src="/assets/redDevFest.svg"
+              alt="vector"
+              className="BlueDevFest"
+            />
             <div
+              className="name"
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                flexWrap: "wrap",
+                marginTop: "1rem",
               }}
             >
-              <span className="tag">
-                {data.talk === undefined ? "Track" : "Talk"}
-              </span>
-              {data.Category && (
-                <span
-                  className="tag"
-                  style={{
-                    backgroundColor: `${data.color}`,
-                    color: "var(--white)",
-                  }}
-                >
-                  {data.Category}
-                </span>
-              )}
+              <h4>{data.name}</h4>
+              <span>{data.designation}</span>
             </div>
-            <h5>{data.talk === undefined ? data.topicName : data.talk}</h5>
-          </div>
-          <div className="socialLinks">
-            {data.socialLinks.instagram && (
-              <a
-                className="facebook social-item"
-                href={data.socialLinks.instagram}
-                target="_blank"
+            <div className="topicName">
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  flexWrap: "wrap",
+                }}
               >
-                <div className="ico">
-                  <span>
-                    <FaFacebookF />
+                <span className="tag">
+                  {data.talk === undefined ? "Track" : "Talk"}
+                </span>
+                {data.Category && (
+                  <span
+                    className="tag"
+                    style={{
+                      backgroundColor: `${data.color}`,
+                      color: "var(--white)",
+                    }}
+                  >
+                    {data.Category}
                   </span>
-                </div>
-              </a>
-            )}
-            {data.socialLinks.linkedin && (
-              <a
-                className="linkedin social-item"
-                href={data.socialLinks.linkedin}
-                target="_blank"
-              >
-                <div className="ico">
-                  <span>
-                    <FaLinkedinIn />
-                  </span>
-                </div>
-              </a>
-            )}
-            {!data.socialLinks.linkedin && (
+                )}
+              </div>
+              <h5>{data.talk === undefined ? data.topicName : data.talk}</h5>
+            </div>
+            <div className="socialLinks">
+              {data.socialLinks.instagram && (
+                <a
+                  className="facebook social-item"
+                  href={data.socialLinks.instagram}
+                  target="_blank"
+                >
+                  <div className="ico">
+                    <span>
+                      <FaFacebookF />
+                    </span>
+                  </div>
+                </a>
+              )}
+              {data.socialLinks.linkedin && (
+                <a
+                  className="linkedin social-item"
+                  href={data.socialLinks.linkedin}
+                  target="_blank"
+                >
+                  <div className="ico">
+                    <span>
+                      <FaLinkedinIn />
+                    </span>
+                  </div>
+                </a>
+              )}
+              {!data.socialLinks.linkedin && (
                 <div>
                   <span>
                     <br></br>
                   </span>
                 </div>
-            )}
-            {data.socialLinks.twitter && (
-              <a
-                className="twitter social-item"
-                href={data.socialLinks.twitter}
-                target="_blank"
-              >
-                <div className="ico">
-                  <span>
-                    <FaTwitter />
-                  </span>
-                </div>
-              </a>
-            )}
+              )}
+              {data.socialLinks.twitter && (
+                <a
+                  className="twitter social-item"
+                  href={data.socialLinks.twitter}
+                  target="_blank"
+                >
+                  <div className="ico">
+                    <span>
+                      <FaTwitter />
+                    </span>
+                  </div>
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
