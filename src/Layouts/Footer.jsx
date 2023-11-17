@@ -22,7 +22,8 @@ const Footer = () => {
     if (
       location.pathname === Router.myTickets ||
       location.pathname === Router.checkout ||
-      location.pathname === Router.contact
+      location.pathname === Router.contact ||
+      location.pathname === Router.badge
     ) {
       refSocial.current.style.display = "none";
       refFooter.current.style.paddingTop = "0rem";
